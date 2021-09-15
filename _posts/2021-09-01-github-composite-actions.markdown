@@ -55,6 +55,8 @@ Even though there are some limitations, they are certainly a vast improvement to
 
 A few months ago I got to do some work on the documentation for [DevOps for ASP.NET Core Developers](https://docs.microsoft.com/en-us/dotnet/architecture/devops-for-aspnet-developers/). The repo with example is on [GitHub](https://github.com/dotnet-architecture/eShopOnContainers). The sample application runs as a set of microservices on Kubernetes. Let's take a look at the Action to build the `basketAPI`:
 
+~~~yaml
+{% raw %}
     name: basket-api
     
     on:
@@ -181,6 +183,8 @@ A few months ago I got to do some work on the documentation for [DevOps for ASP.
             docker --config ~/.docker manifest create ${{ secrets.REGISTRY_ENDPOINT }}/${{ env.IMAGE }}:${{ env.BRANCH }} ${{ secrets.REGISTRY_ENDPOINT }}/${{ env.IMAGE }}:linux-${{ env.BRANCH }}
             docker --config ~/.docker manifest push ${{ secrets.REGISTRY_ENDPOINT }}/${{ env.IMAGE }}:${{ env.BRANCH }}
           shell: bash
+{% endraw %}
+~~~
 
 This file is 126 lines long - which is not too bad for a single service. But there are 14 services! Before Composite Actions, you had no option but to copy/paste the code for each microservice. And that's bad - since copy/paste inevitably leads to errors. And even if you don't fat-finger it, what if you need to change something in the build process? Now you have to update 14 files. There are also deployment Actions for all the services - so now we have 28 files to maintain!
 
@@ -195,6 +199,8 @@ The steps for these logical actions are the same if we can parameterize them app
 
 Have a look at the `BuildLinux` job above - this is the job that executes steps to "Build and push an image". Here is what this job looks like if we refactor the steps into a Composite Action (which we'll see next):
 
+~~~yaml
+{% raw %}
       BuildLinux:
         runs-on: ubuntu-latest
         if: ${{ github.event_name != 'pull_request' }}
@@ -209,6 +215,8 @@ Have a look at the `BuildLinux` job above - this is the job that executes steps 
             image_name: ${{ env.IMAGE }}
             registry_username: ${{ secrets.USERNAME }}
             registry_password: ${{ secrets.PASSWORD }}
+{% endraw %}
+~~~
 
 That's much better! We're checking out the repo using `actions/checkout@v2` (we need to do this to get access to the code for the Composite Actions as well as the application code) and then we're executing a Composite Action that is going to run all the steps we had inline previously.
 
@@ -218,6 +226,8 @@ If Composite Actions could read `secrets`, we'd save another 4 lines. However, s
 
 Let's have a look at the `action.yml` for this Composite Action:
 
+~~~yaml
+{% raw %}
     name: "Build and push image"
     description: "Builds and pushes an image to a registry"
     
@@ -289,6 +299,8 @@ Let's have a look at the `action.yml` for this Composite Action:
         run: |
           docker --config ~/.docker manifest create ${{ inputs.registry_endpoint }}/${{ inputs.image_name }}:${{ env.BRANCH }} ${{ inputs.registry_endpoint }}/${{ inputs.image_name }}:linux-${{ env.BRANCH }}
           docker --config ~/.docker manifest push ${{ inputs.registry_endpoint }}/${{ inputs.image_name }}:${{ env.BRANCH }}
+{% endraw %}
+~~~
 
 Nothing too complex here - we have `name` and `description` attributes, followed by a map of input parameters. Each parameter has a `description` and `required` attribute, and can optionally have a `default` attribute too. Then we have a `runs` keyword with the `using` set to `composite`. Thereafter, we have steps as we would in any other Action - including the ability to use other Actions (not only `run` scripts)!
 
