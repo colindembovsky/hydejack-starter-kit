@@ -22,10 +22,12 @@ To get the data for an entity, you need to use OData queries. Some of these are 
 
 Here’s an example. Let’s imagine you want a list of all builds (build runs) from Sep 1st to today. The Build entity has the ProjectSK (an identifier to the project), but you’ll probably want to expand to get the Project name. Similarly, the Build entity includes a reference to the Build Definition ID, but you’ll have to expand to get the Build Definition Name. Here’s what the request would look like:
 
+~~~plaintext
     https://analytics.dev.azure.com/{organization}/_odata/v3.0-preview/Builds?
        $apply=filter(CompletedDate ge 2019-09-01Z "
        &amp;$select=* 
        &amp;$expand=Project($select=ProjectName),BuildPipeline($select=BuildPipelineName),Branch($select=RepositoryId,BranchName)
+~~~
 
 If you look at the metadata for the Build entity, you’ll see that there are navigation properties for Project, BuildPipeline, Branch and a couple others. These are the names I use in the $expand directive, using an internal $select to specify which fields of the related entities I want to select.
 
@@ -33,6 +35,7 @@ If you look at the metadata for the Build entity, you’ll see that there are na
 
 To connect with PowerBI, you just connect to an OData field. You then have to expand some of the columns and do some other cleanup. Here’s what the M query looks like (view it by navigating to the “Advanced editor” for a query) for getting all the Builds since September 1st:
 
+~~~plaintext
     let
         Source = OData.Feed ("https://analytics.dev.azure.com/" &amp; #"AzureDevOpsOrg" &amp; "/_odata/v3.0-preview/Builds?"
             &amp; "$apply=filter(CompletedDate ge " &amp; Date.ToText(Date.From(Date.AddDays(DateTime.LocalNow(), -14)), "yyyy-MM-dd") &amp; "Z )"
@@ -46,6 +49,7 @@ To connect with PowerBI, you just connect to an OData field. You then have to ex
         #"Expanded Project" = Table.ExpandRecordColumn(#"Renamed Columns", "Project", {"ProjectName"}, {"ProjectName"})
     in
         #"Expanded Project"
+~~~
 
 Notes:
 
@@ -80,22 +84,26 @@ Enough caveats – let’s get to it!
 
 The first step is to create a function that can call the Azure DevOps API. Here’s the function to get a list of repositories for a give Team Project:
 
+~~~plaintext
     (project as text) =&gt;
     let
         Source = Json.Document(Web.Contents("https://dev.azure.com/" &amp; #"AzureDevOpsOrg" &amp; "/" &amp; project &amp; "/_apis/git/repositories?api-version=5.1"))
     in
         Source
+~~~
 
 This function takes a single arg called “project” of type text.
 
 Now that we have the function defined, we can use it to expand a table with a list of Team Projects to end up with a list of all the repos in an org. Add a new Data Source, open the advanced editor and paste in this query:
 
+~~~plaintext
     let
         Source = OData.Feed ("https://analytics.dev.azure.com/" &amp; #"AzureDevOpsOrg" &amp; "/_odata/v3.0-preview/Projects?"
             &amp;"&amp;$select=ProjectSK, ProjectName "
         ,null, [Implementation="2.0",OmitValues = ODataOmitValues.Nulls,ODataVersion = 4])
     in
         Source
+~~~
 
 If it runs, you’ll get a table of projects in your Azure DevOps organization:
 
@@ -129,6 +137,7 @@ Don’t forget to change the “in” to #“Filter nulls”. You will then need
 
 Now we can finally see the fields for the repo itself – I just selected name, size, defaultBranch and webUrl. Now you can update any types and rename columns as you need. We now have a list of repos! Here’s the final M query:
 
+~~~plaintext
     let
        Source = OData.Feed ("https://analytics.dev.azure.com/" &amp; #"AzureDevOpsOrg" &amp; "/_odata/v3.0-preview/Projects?"
             &amp;"&amp;$select=ProjectSK, ProjectName "
@@ -141,6 +150,7 @@ Now we can finally see the fields for the repo itself – I just selected name, 
         #"Renamed Columns1" = Table.RenameColumns(#"Expanded Repos.value2",{ {"Repos.value.id", "RepositoryId"}, {"Repos.value.name", "Name"}, {"Repos.value.defaultBranch", "DefaultBranch"}, {"Repos.value.size", "Size"}, {"Repos.value.webUrl", "WebURL"}})
     in
         #"Renamed Columns1"
+~~~
 
 For adding queue information to builds, I created a function to get build detail for a build number (so that I could extract the queue). For code coverage, I created a function to call the coverage API for a build – again expanding the records that came back. You can see the final queries in the template.
 
