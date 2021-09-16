@@ -1,9 +1,9 @@
 ---
 # Featured tags need to have either the `list` or `grid` layout (PRO only).
 layout: list
-title: actions
-slug: actions
+title: github
+slug: github
 description: >
-  Posts about GitHub Actions.
+  Older posts about TFS Lab Management (which is now deprecated).
 sitemap: false
 ---

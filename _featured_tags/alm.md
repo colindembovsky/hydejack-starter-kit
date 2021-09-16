@@ -1,9 +1,9 @@
 ---
 # Featured tags need to have either the `list` or `grid` layout (PRO only).
 layout: list
-title: actions
-slug: actions
+title: alm
+slug: alm
 description: >
-  Posts about GitHub Actions.
+  Posts about Application Lifecycle Management (ALM).
 sitemap: false
 ---

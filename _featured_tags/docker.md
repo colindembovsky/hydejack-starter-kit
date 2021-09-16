@@ -1,9 +1,9 @@
 ---
 # Featured tags need to have either the `list` or `grid` layout (PRO only).
 layout: list
-title: actions
-slug: actions
+title: docker
+slug: docker
 description: >
-  Posts about GitHub Actions.
+  Posts about Docker development and DevOps.
 sitemap: false
 ---

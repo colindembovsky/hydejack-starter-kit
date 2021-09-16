@@ -1,9 +1,9 @@
 ---
 # Featured tags need to have either the `list` or `grid` layout (PRO only).
 layout: list
-title: actions
-slug: actions
+title: tfsconfig
+slug: tfsconfig
 description: >
-  Posts about GitHub Actions.
+  Older posts about Team Foundation Server (TFS) configuration.
 sitemap: false
 ---

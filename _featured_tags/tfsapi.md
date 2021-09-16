@@ -1,9 +1,9 @@
 ---
 # Featured tags need to have either the `list` or `grid` layout (PRO only).
 layout: list
-title: actions
-slug: actions
+title: tfsapi
+slug: tfsapi
 description: >
-  Posts about GitHub Actions.
+  Posts about the TFS (Azure DevOps) API.
 sitemap: false
 ---

@@ -1,9 +1,9 @@
 ---
 # Featured tags need to have either the `list` or `grid` layout (PRO only).
 layout: list
-title: actions
-slug: actions
+title: security
+slug: security
 description: >
-  Posts about GitHub Actions.
+  Posts about security.
 sitemap: false
 ---

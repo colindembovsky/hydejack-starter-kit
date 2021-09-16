@@ -1,9 +1,9 @@
 ---
 # Featured tags need to have either the `list` or `grid` layout (PRO only).
 layout: list
-title: actions
-slug: actions
+title: analytics
+slug: analytics
 description: >
-  Posts about GitHub Actions.
+  Posts about Analytics.
 sitemap: false
 ---

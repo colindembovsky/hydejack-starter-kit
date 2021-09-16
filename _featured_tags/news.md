@@ -1,9 +1,9 @@
 ---
 # Featured tags need to have either the `list` or `grid` layout (PRO only).
 layout: list
-title: actions
-slug: actions
+title: news
+slug: news
 description: >
-  Posts about GitHub Actions.
+  Posts containing anouncements.
 sitemap: false
 ---
