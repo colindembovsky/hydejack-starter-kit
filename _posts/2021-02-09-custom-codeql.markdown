@@ -27,6 +27,8 @@ The CodeQL syntax is very powerful - but, just like many other security tools, i
 
 Let's look at an example GitHub Action that performs a CodeQL scan on a Python repo:
 
+~~~yaml
+{% raw %}
     jobs:
       analyze:
         name: Analyze
@@ -52,6 +54,8 @@ Let's look at an example GitHub Action that performs a CodeQL scan on a Python r
     
         - name: Perform CodeQL Analysis
           uses: github/codeql-action/analyze@v1
+{% endraw %}
+~~~
 
 Notes:
 
@@ -69,6 +73,8 @@ There are a couple of levels of customizations for scanning. The easiest are cus
 
 To do this, add a yml file to your repo - you can place it anywhere, but convention is to place this file in `.github/codeql` inside your repo. Let's look at this simple config:
 
+~~~yaml
+{% raw %}
     name: "Custom CodeQL Config"
     
     queries:
@@ -80,6 +86,8 @@ To do this, add a yml file to your repo - you can place it anywhere, but convent
     paths-ignore:
     - src/node_modules
     - '**/*.test.js'
+{% endraw %}
+~~~
 
 Notes:
 
@@ -91,11 +99,15 @@ Ignoring paths is useful when you want to exclude test code or 3rd party librari
 
 Next, we update the `codeql-action/init` task to tell it to use our custom config file:
 
+~~~yaml
+{% raw %}
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v1
       with:
         languages: ${{ matrix.language }}
         config-file: ./.github/codeql/codeql-config.yml
+{% endraw %}
+~~~
 
 Now when scans are performed, CodeQL will read in the config file and configure itself according to our settings.
 
@@ -139,6 +151,8 @@ For `problem` queries, we must only output two values: a CodeQL object and a des
 
 I was working with a customer that wanted to ensure that files are deleted in a certain way. As a naïve check, we wanted to find all calls to `shutil.rmtree()` in the code base and surface them as warnings for review. Here's the `problem` CodeQL query we wrote:
 
+~~~plaintext
+{% raw %}
     /**
     * @id python/call-to-shutil-rmtree
     * @name Use of shutil.rmtree
@@ -159,6 +173,8 @@ I was working with a customer that wanted to ensure that files are deleted in a 
     where eval = Value::named("shutil.rmtree") and
           call = eval.getACall()
     select call, "Call to 'shutil.rmtree' detected."
+{% endraw %}
+~~~
 
 Let's first examine the metadata:
 
@@ -192,21 +208,28 @@ In the results pane on the right, we can see the message text as well as a link 
 When this is run against a codebase that contains calls to `shutil.rmtree`, we'll see alerts like this in the CodeQL scanning alerts section of the Security tab in the repo:
 
 <figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="/assets/images/2021/2/91640_image.png" class="kg-image" alt loading="lazy"><figcaption>Results of matches to CodeQL queries</figcaption></figure>
+
 ## Custom Queries in Your Action
 
 Now that we have a query, we need to customize the CodeQL config to tell the engine to include our query when performing a scan.
 
 The first thing we need to do is create a `qlpack` file - this tells the CodeQL engine where to find any dependencies. In our case, we have a dependency on the `python` core libs, so we create a `qlpack` file like so:
 
+~~~yaml
+{% raw %}
     name: Custom Python Queries
     version: 0.0.0
     libraryPathDependencies:
     - codeql-python
+{% endraw %}
+~~~
 
 This specifies a `name` for the pack (which is any query in this folder, so we put the `qlpack` file in the `.github/codeql/custom-queries/python` folder). We also specify a `version` and list the `libraryPathDependencies`.
 
 Next, we update the `codeql-config.yml` file to look as follows:
 
+~~~yaml
+{% raw %}
     name: "Custom CodeQL Config"
     
     disable-default-queries: true
@@ -214,6 +237,8 @@ Next, we update the `codeql-config.yml` file to look as follows:
     queries:
     - uses: security-and-quality
     - uses: ./.github/codeql/custom-queries/python
+{% endraw %}
+~~~
 
 We disable the default queries (so that we don't get duplicates) and specify that we want to run the `security-and-quality` suite as well as the custom queries in the `.github/codeql/custom-queries/python` folder.
 
