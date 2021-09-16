@@ -6,15 +6,15 @@ tags:
 - build
 ---
 
-I love the [new build engine in VSO / TFS 2015]( __GHOST_URL__ /post/why-you-should-switch-to-build-vnext). You can get pretty far with the out of the box tasks, but there are cases where a custom task improves the user experience. The “Microsoft” version of this is SonarQube integration – you can run the SonarQube MSBuild Runner by using a “Command Line” task and calling the exe. However, there are two tasks on the [Microsoft Task Github repo](https://github.com/Microsoft/vso-agent-tasks/) that clean up the experience a little – SonarQube PreBuild and SonarQube PostTest. A big benefit of the tasks is that they actually “wrap” the exe within the task, so you don’t need to install the runner on the build machine yourself.
+I love the [new build engine in VSO / TFS 2015](/why-you-should-switch-to-build-vnext). You can get pretty far with the out of the box tasks, but there are cases where a custom task improves the user experience. The “Microsoft” version of this is SonarQube integration – you can run the SonarQube MSBuild Runner by using a “Command Line” task and calling the exe. However, there are two tasks on the [Microsoft Task Github repo](https://github.com/Microsoft/vso-agent-tasks/) that clean up the experience a little – SonarQube PreBuild and SonarQube PostTest. A big benefit of the tasks is that they actually “wrap” the exe within the task, so you don’t need to install the runner on the build machine yourself.
 
-One customization I almost always make in my customers’ build processes is to [match binary versions to the build number]( __GHOST_URL__ /post/matching-binary-version-to-build-number-version-in-tfs-2013-builds). In TFS 2012, this required a custom windows workflow task – a real pain to create and maintain. In 2013, you could enable it much more easily by invoking a PowerShell script. The same script can be invoked in Build vNext by using a PowerShell task.
+One customization I almost always make in my customers’ build processes is to [match binary versions to the build number](/matching-binary-version-to-build-number-version-in-tfs-2013-builds). In TFS 2012, this required a custom windows workflow task – a real pain to create and maintain. In 2013, you could enable it much more easily by invoking a PowerShell script. The same script can be invoked in Build vNext by using a PowerShell task.
 
 The only down side to this is that the script has to be in source control somewhere. If you’re using TFVC, then this isn’t a problem, since all your builds (within a Team Project Collection) can use the same script. However, for Git repos it’s not so simple – you’re left with dropping the script into a known location on all build servers or committing the script to each Git repo you’re building. Neither option is particularly appealing. However, if we put the script “into” a custom build task for Build vNext, then we don’t have to keep the script anywhere else!
 
 ## TL;DR
 
-I want to discuss creating a task in some detail, so I’m splitting this into two posts. This post will look at scaffolding a task and then customizing the manifest and PowerShell implementation. In the [next post]( __GHOST_URL__ /post/developing-a-custom-build-vnext-task-part-2) I’m going to show the node implementation (along with some info on developing in TypeScript and VS Code) and how to upload the task.
+I want to discuss creating a task in some detail, so I’m splitting this into two posts. This post will look at scaffolding a task and then customizing the manifest and PowerShell implementation. In the [next post](/developing-a-custom-build-vnext-task-part-2) I’m going to show the node implementation (along with some info on developing in TypeScript and VS Code) and how to upload the task.
 
 If you just want the task, you can get the source at [this repo](https://github.com/colindembovsky/cols-agent-tasks).
 
@@ -210,7 +210,7 @@ Once I had the inputs (and the build number) I just pasted the existing script. 
 
 In this post I covered how to use tfx-cli to scaffold a task, then customize the manifest and implement a PowerShell script.
 
-In the [next post]( __GHOST_URL__ /post/developing-a-custom-build-vnext-task-part-2) I’ll show you how to write the node implementation of the task, using TypeScript and VS Code. I’ll also show you how to upload the task and use it in a build.
+In the [next post](/developing-a-custom-build-vnext-task-part-2) I’ll show you how to write the node implementation of the task, using TypeScript and VS Code. I’ll also show you how to upload the task and use it in a build.
 
 Happy customizing!
 

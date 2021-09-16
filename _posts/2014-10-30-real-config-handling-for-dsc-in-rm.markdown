@@ -6,7 +6,7 @@ tags:
 - releasemanagement
 ---
 
-In my [previous post]( __GHOST_URL__ /post/using-webdeploy-in-vnext-releases) I showed you how to use PowerShell DSC and Release Management to configure machines and deploy an application. There was one part of the solution that I wasn’t satisfied with, and in the comments section you’ll see that @BigFan picks it up: the configuration is hard-coded.
+In my [previous post](/using-webdeploy-in-vnext-releases) I showed you how to use PowerShell DSC and Release Management to configure machines and deploy an application. There was one part of the solution that I wasn’t satisfied with, and in the comments section you’ll see that @BigFan picks it up: the configuration is hard-coded.
 
 ## cScriptWithParams Resource
 
@@ -77,7 +77,7 @@ Some notes:
 
 ## Removing Config Files Altogether
 
-Now that we can (neatly) parameterize the custom scripts we want to run, we can use the [new config variable options in RM]( __GHOST_URL__ /post/new-vnext-config-variable-options-in-rm-update-4-rc) to completely remove the need for a config file. Of course you could still use the config file if you wanted to. Here’s the final script for deploying my web application:
+Now that we can (neatly) parameterize the custom scripts we want to run, we can use the [new config variable options in RM](/new-vnext-config-variable-options-in-rm-update-4-rc) to completely remove the need for a config file. Of course you could still use the config file if you wanted to. Here’s the final script for deploying my web application:
 
     Configuration FabFibWeb_Site
     {

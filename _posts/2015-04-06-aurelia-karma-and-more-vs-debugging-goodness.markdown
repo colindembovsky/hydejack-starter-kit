@@ -7,11 +7,11 @@ tags:
 - testing
 ---
 
-In my [previous post]( __GHOST_URL__ /post/aurelia--debugging-from-within-visual-studio) I walked through how to change [Aurelia](http://aurelia.io/) to load modules via [Require.js](http://requirejs.org/) so that you can set breakpoints and debug from VS when you run your Aurelia project. In this post I want to share some tips about unit testing your Aurelia view-models.
+In my [previous post](/aurelia--debugging-from-within-visual-studio) I walked through how to change [Aurelia](http://aurelia.io/) to load modules via [Require.js](http://requirejs.org/) so that you can set breakpoints and debug from VS when you run your Aurelia project. In this post I want to share some tips about unit testing your Aurelia view-models.
 
 ## Unit Testing Javascript
 
-If you aren’t yet convinced of the value of unit testing, please read my [post about why you absolutely should be]( __GHOST_URL__ /post/why-you-absolutely-need-to-unit-test). Unfortunately, unit testing Javascript in Visual Studio (and during automated builds) is a little harder to do than running unit tests on managed code. This post will show you some of the techniques I use to unit test Javascript in my Aurelia project – though of course you don’t need to be using Aurelia to make use of these techniques. If you want to see the code I’m using for this post, check out [this repo](https://github.com/colindembovsky/aurelia-appInsights).
+If you aren’t yet convinced of the value of unit testing, please read my [post about why you absolutely should be](/why-you-absolutely-need-to-unit-test). Unfortunately, unit testing Javascript in Visual Studio (and during automated builds) is a little harder to do than running unit tests on managed code. This post will show you some of the techniques I use to unit test Javascript in my Aurelia project – though of course you don’t need to be using Aurelia to make use of these techniques. If you want to see the code I’m using for this post, check out [this repo](https://github.com/colindembovsky/aurelia-appInsights).
 
 ### But I’ve already got tests!
 

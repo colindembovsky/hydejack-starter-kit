@@ -11,7 +11,7 @@ It’s finally here – the new [web-based Release Management](https://www.visua
 
 I’ve blogged frequently about Release Management, the “old” WPF tool that Microsoft purchased from InCycle (it used to be called InRelease). The tool was good in some ways, and horrible in others – but it always felt like a bit of a stop-gap while Microsoft implemented something truly great – which is what WebRM is!
 
-One of the most common deployment scenarios is deploying web apps – to IIS or to Azure. I blogged about using the old tool along with WebDeploy [here]( __GHOST_URL__ /post/webdeploy-and-release-management--the-proper-way). This post is a follow-on – how to use WebDeploy and WebRM correctly.
+One of the most common deployment scenarios is deploying web apps – to IIS or to Azure. I blogged about using the old tool along with WebDeploy [here](/webdeploy-and-release-management--the-proper-way). This post is a follow-on – how to use WebDeploy and WebRM correctly.
 
 First I want to outline a problem with the out-of-the-box Tasks for deploying web apps. Then I’ll talk about how to tokenize the build package ready for multi-environment deployments, and finally I’ll show you how to create a Release Definition.
 
@@ -71,7 +71,7 @@ Of course, the “parameter substituting script” has to be checked into the so
 
 ### Creating a Tokenized WebDeploy Package in a Team Build
 
-Good releases start with good packages. Since the same package is going to be deployed to multiple environments, you cannot “hardcode” any config settings into the package. So you have to create the package in such a way that it has tokens for any config values that the Release pipeline will replace with Environment specific values at deployment time. In my previous [WebDeploy and Release Management post]( __GHOST_URL__ /post/webdeploy-and-release-management--the-proper-way), I explain how to add the parameters.xml file and how to create a publish profile to do exactly that. That technique stays exactly the same as far as the VS solution goes.
+Good releases start with good packages. Since the same package is going to be deployed to multiple environments, you cannot “hardcode” any config settings into the package. So you have to create the package in such a way that it has tokens for any config values that the Release pipeline will replace with Environment specific values at deployment time. In my previous [WebDeploy and Release Management post](/webdeploy-and-release-management--the-proper-way), I explain how to add the parameters.xml file and how to create a publish profile to do exactly that. That technique stays exactly the same as far as the VS solution goes.
 
 Here’s my sample parameters.xml file for this post:
 

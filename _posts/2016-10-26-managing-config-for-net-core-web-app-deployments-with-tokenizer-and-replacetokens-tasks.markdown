@@ -8,7 +8,7 @@ tags:
 - build
 ---
 
-Last week I posted an [end-to-end walkthrough]( __GHOST_URL__ /post/end-to-end-walkthrough-deploying-web-applications-using-team-build-and-release-management) about how to build and deploy web apps using Team Build and Release Management – including config management. The post certainly helps you if you’re on the .NET 4.x Framework – but what about deploying .NET Core apps?
+Last week I posted an [end-to-end walkthrough](/end-to-end-walkthrough-deploying-web-applications-using-team-build-and-release-management) about how to build and deploy web apps using Team Build and Release Management – including config management. The post certainly helps you if you’re on the .NET 4.x Framework – but what about deploying .NET Core apps?
 
 ## The Build Once Principle
 

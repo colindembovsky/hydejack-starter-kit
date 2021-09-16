@@ -6,7 +6,7 @@ tags:
 - build
 ---
 
-In a [previous post]( __GHOST_URL__ /post/unit-testing-javascript-in-vs-2012) I wrote about how to do JavaScript unit testing in VS 2012. The same procedure applies to VS 2013 – but the [Chutzpah test adapter](http://visualstudiogallery.msdn.microsoft.com/f8741f04-bae4-4900-81c7-7c9bfb9ed1fe) now allows you to run code coverage too. At the end of my post I link to another blog entry about how to enable the tests to run during team builds.
+In a [previous post](/unit-testing-javascript-in-vs-2012) I wrote about how to do JavaScript unit testing in VS 2012. The same procedure applies to VS 2013 – but the [Chutzpah test adapter](http://visualstudiogallery.msdn.microsoft.com/f8741f04-bae4-4900-81c7-7c9bfb9ed1fe) now allows you to run code coverage too. At the end of my post I link to another blog entry about how to enable the tests to run during team builds.
 
 I recently added some tests to a VS 2013 solution I was working on and was pleased to see that when you “Analyze Code Coverage for all Tests” in the Test Explorer, VS pops open a nicely formatted html page that shows you your JavaScript coverage. I wanted to have that file available in my build results too. Looking at the test results folder of the local VS test run, I saw that Chutzpah created an html file called “\_Chutzpah.coverage.html”. I wanted that script to be copied to the drop folder of the build and create a link in the build summary that you could click to open it.
 

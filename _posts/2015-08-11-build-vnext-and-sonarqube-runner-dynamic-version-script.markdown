@@ -15,7 +15,7 @@ If you’ve never installed SonarQube before, then I highly recommend this [eGui
 
 ## Integrating into TeamBuild vNext – with Dynamic Versioning
 
-Once you’ve got the server installed and configured, you’re ready to integrate with TeamBuild. It’s easy enough using [build VNext Command Line task](https://github.com/SonarSource/sonar-.net-documentation/blob/master/doc/analyze-from-tfs.md#analyzing-projects-using-the-new-tfs-2015-build-system). However, one thing bugged me as I was setting this up – hard-coding the version number. I like to [version my assemblies from the build number]( __GHOST_URL__ /post/matching-binary-version-to-build-number-version-in-tfs-2013-builds) on the build using a PowerShell script. Here’s the 2015 version (since the [environment variable names](https://msdn.microsoft.com/Library/vs/alm/Build/scripts/variables) have changed):
+Once you’ve got the server installed and configured, you’re ready to integrate with TeamBuild. It’s easy enough using [build VNext Command Line task](https://github.com/SonarSource/sonar-.net-documentation/blob/master/doc/analyze-from-tfs.md#analyzing-projects-using-the-new-tfs-2015-build-system). However, one thing bugged me as I was setting this up – hard-coding the version number. I like to [version my assemblies from the build number](/matching-binary-version-to-build-number-version-in-tfs-2013-builds) on the build using a PowerShell script. Here’s the 2015 version (since the [environment variable names](https://msdn.microsoft.com/Library/vs/alm/Build/scripts/variables) have changed):
 
     Param(
       [string]$pathToSearch = $env:BUILD_SOURCESDIRECTORY,

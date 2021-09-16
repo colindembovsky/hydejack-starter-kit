@@ -99,7 +99,7 @@ So I could now publishing successfully from VS. Next up: deploying from Team Bui
 
 ## Docker Publish from Team Build vNext
 
-(Just to make things a little simple, I going to use “build” interchangeably with “build vNext” or even “team build”. I’ve switched over completely from the old XAML builds – [so should you]( __GHOST_URL__ /post/why-you-should-switch-to-build-vnext)).
+(Just to make things a little simple, I going to use “build” interchangeably with “build vNext” or even “team build”. I’ve switched over completely from the old XAML builds – [so should you](/why-you-should-switch-to-build-vnext)).
 
 If you’ve looked at the build tasks on VSO, you’ll notice that there is a “Docker” task:
 

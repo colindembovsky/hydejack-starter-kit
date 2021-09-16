@@ -9,10 +9,10 @@ tags:
 Series:
 
 - Part 1: Intro (this post)
-- [Part 2: Traefik Basics]( __GHOST_URL__ /post/container-devops-beyond-build-part-2---traefik)
-- [Part 3: Canary Testing]( __GHOST_URL__ /post/container-devops-beyond-build-part-3---canary-testing)
-- [Part 4: Telemetry with Prometheus]( __GHOST_URL__ /post/container-devops-beyond-build-part-4---telemetry-with-prometheus)
-- [Part 5: Prometheus Operator]( __GHOST_URL__ /post/container-devops-beyond-build-part-5---prometheus-operator)
+- [Part 2: Traefik Basics](/container-devops-beyond-build-part-2---traefik)
+- [Part 3: Canary Testing](/container-devops-beyond-build-part-3---canary-testing)
+- [Part 4: Telemetry with Prometheus](/container-devops-beyond-build-part-4---telemetry-with-prometheus)
+- [Part 5: Prometheus Operator](/container-devops-beyond-build-part-5---prometheus-operator)
 
 I've written before that I think that containers - and Kubernetes (k8s) - are the way of the future. I was fortunate enough to attend my first KubeCon last year in Seattle, and I was happy to see the uptake of k8s and the supporting cloud native technologies around k8s are robust and healthy. But navigating the myriad of services, libraries and techniques is a challenge! This is going to be the first in a series of posts about Container DevOps - and I don't just mean building images and deploying them. What about monitoring? And A/B testing? And all the other stuff that successful DevOps teams are supposed to be doing? We'll look at how you can implement some of these tools and techniques in this series.
 
@@ -38,7 +38,7 @@ There are some more that I think should be on the list that I haven't yet gotten
 
 ### Building Quality
 
-I've [previously blogged]( __GHOST_URL__ /post/net-core-multi-stage-dockerfile-with-test-and-code-coverage-in-azure-pipelines) about how to run unit tests - and publish the test and code coverage results - in Azure DevOps pipelines. It was a good exercise, but as I look at it now I realize why I prefer to build code outside the container and copy the binaries in: it's hard to do ancillary work (like unit test, code scans etc.) in a Dockerfile. One advantage to the multi-stage Dockerfile that you'll lose is the dependency management - you have to manage that on the build machine (or container) if you're building the code outside the Dockerfile. But I think the dependency management ends up being simpler than trying to run (and publish) tests and test coverage and static analysis inside the Dockerfile. My post covered how to do unit testing/code coverage, but when I thought about adding SonarQube analysis or vulnerability scanning with WhiteSource, I realized the Dockerfile starts becoming clumsy. I think it's easier to just drop in the SonarQube and WhiteSource tasks into a pipeline and build on the build machine - and then just have a Dockerfile copy the compiled binaries in to create the final light-weight container image.
+I've [previously blogged](/net-core-multi-stage-dockerfile-with-test-and-code-coverage-in-azure-pipelines) about how to run unit tests - and publish the test and code coverage results - in Azure DevOps pipelines. It was a good exercise, but as I look at it now I realize why I prefer to build code outside the container and copy the binaries in: it's hard to do ancillary work (like unit test, code scans etc.) in a Dockerfile. One advantage to the multi-stage Dockerfile that you'll lose is the dependency management - you have to manage that on the build machine (or container) if you're building the code outside the Dockerfile. But I think the dependency management ends up being simpler than trying to run (and publish) tests and test coverage and static analysis inside the Dockerfile. My post covered how to do unit testing/code coverage, but when I thought about adding SonarQube analysis or vulnerability scanning with WhiteSource, I realized the Dockerfile starts becoming clumsy. I think it's easier to just drop in the SonarQube and WhiteSource tasks into a pipeline and build on the build machine - and then just have a Dockerfile copy the compiled binaries in to create the final light-weight container image.
 
 ### Environment Isolation
 
@@ -48,7 +48,7 @@ There are a couple of ways to do this: the most isolated (and expensive) is to s
 
 This one took a while for me to wrap my head around. Initially I struggled with this concept because I was too married to the Azure Web App version, which works as follows:
 
-1. [Traffic Manager]( __GHOST_URL__ /post/testing-in-production-routing-traffic-during-a-release) routes 0% traffic to the "blue" slot
+1. [Traffic Manager](/testing-in-production-routing-traffic-during-a-release) routes 0% traffic to the "blue" slot
 2. Deploy the new build to the blue slot - it doesn't matter if this slot is down, since no traffic is incoming anyway
 3. Update Traffic Manager to divert some percentage of traffic to the blue slot
 4. Monitor metrics

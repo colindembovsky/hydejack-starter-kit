@@ -6,7 +6,7 @@ tags:
 - testing
 ---
 
-I recently worked with a customer that had some containers running Python code. The code was written by data scientists and recently a dev had been hired to help the team get some real process in place. As I was helping them with their CI/CD pipeline (which used a Dockerfile to build their image, publish to Azure Container Registry and then spun up the containers in Azure Container Instances), I noted that there were no unit tests. Fortunately the team was receptive to adding tests and I didn't have to have a long discussion proving that they [absolutely need to be unit testing]( __GHOST_URL__ /post/why-you-absolutely-need-to-unit-test).
+I recently worked with a customer that had some containers running Python code. The code was written by data scientists and recently a dev had been hired to help the team get some real process in place. As I was helping them with their CI/CD pipeline (which used a Dockerfile to build their image, publish to Azure Container Registry and then spun up the containers in Azure Container Instances), I noted that there were no unit tests. Fortunately the team was receptive to adding tests and I didn't have to have a long discussion proving that they [absolutely need to be unit testing](/why-you-absolutely-need-to-unit-test).
 
 ## Python Testing with PyTest
 

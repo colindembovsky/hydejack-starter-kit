@@ -246,7 +246,7 @@ Notes:
 
 ### Tip 7: Use Plain PowerShell for Application Install and Config
 
-Expressing application state and configuration as a DSC script can be challenging. I once wrote some DSC that could [install SQL]( __GHOST_URL__ /post/install-and-configure-sql-server-using-powershell-dsc). However, I ended up using a Script resource - and the TestScript just checked to see if a SQL service was running. This check isn't enough to determine if SQL features are installed according to some config.
+Expressing application state and configuration as a DSC script can be challenging. I once wrote some DSC that could [install SQL](/install-and-configure-sql-server-using-powershell-dsc). However, I ended up using a Script resource - and the TestScript just checked to see if a SQL service was running. This check isn't enough to determine if SQL features are installed according to some config.
 
 Instead of writing long Script resources, I just revert to "plain" PowerShell for app install and configuration. This is especially true for more complicated apps. Just make sure your script are _idempotent_ - that is that they can run and succeed every time. For example, if you're installing a service, you may want to first check to see if the service exists before running the installer (otherwise the installer may fail since the service already exists). This allows you to re-run scripts again if other scripts fail.
 

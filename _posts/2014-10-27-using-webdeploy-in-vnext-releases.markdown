@@ -17,16 +17,16 @@ In my mind there were two distinct steps that I wanted to be able to manage usin
 
 The RM/DSC posts I’ve blogged so far deal with readying the environment:
 
-- [Using PowerShell DSC in Release Management: The Hidden Manual]( __GHOST_URL__ /post/using-powershell-dsc-in-release-management-the-hidden-manual)
-- [More DSC Release Management Goodness: Readying a Webserver for Deployment]( __GHOST_URL__ /post/more-dsc-release-management-goodness-readying-a-webserver-for-deployment)
-- [Install and Configure SQL Server using PowerShell DSC]( __GHOST_URL__ /post/install-and-configure-sql-server-using-powershell-dsc)
-- [New vNext Config Variable Options in RM Update 4 RC]( __GHOST_URL__ /post/new-vnext-config-variable-options-in-rm-update-4-rc)
+- [Using PowerShell DSC in Release Management: The Hidden Manual](/using-powershell-dsc-in-release-management-the-hidden-manual)
+- [More DSC Release Management Goodness: Readying a Webserver for Deployment](/more-dsc-release-management-goodness-readying-a-webserver-for-deployment)
+- [Install and Configure SQL Server using PowerShell DSC](/install-and-configure-sql-server-using-powershell-dsc)
+- [New vNext Config Variable Options in RM Update 4 RC](/new-vnext-config-variable-options-in-rm-update-4-rc)
 
 So we’re now at a point where we can ensure that the machines that we want to deploy our application to are ready for our application – in the case of a SQL server SQL is installed and configured correctly. In the case of a webserver, IIS is installed and configured, additional runtimes are present (like MVC) and Webdeploy is installed and ports opened so that I can deploy using Webdeploy. So how then do I deploy my application?
 
 ## Good Packages
 
-Good deployment always beings with good packages. To get a good package, you’ll need an [automated build]( __GHOST_URL__ /post/automated-buildswhy-theyre-absolutely-essential-(part-1)) that ties into source control (and hopefully work items) and performs automated unit testing with coverage. This gives you some metrics as to the quality of your builds. The next critical piece that you’ll need is to make sure that you can manage multiple configurations – after all, you’ll be wanting to deploy the same package to Production that you deployed and testing in UAT, so the package shouldn’t have configuration hard-coded in. In my agent-based [Webdeploy/RM post]( __GHOST_URL__ /post/webdeploy-and-release-management--the-proper-way), I show how you can create a team build that puts placeholders into the SetParameters.xml file, so that you can put in environment-specific values when you deploy. The package I created for that deployment process can be used for deployment via DSC as well – just showing that if you create a good package during build, you have more release options available to you.
+Good deployment always beings with good packages. To get a good package, you’ll need an [automated build](/automated-buildswhy-theyre-absolutely-essential-(part-1)) that ties into source control (and hopefully work items) and performs automated unit testing with coverage. This gives you some metrics as to the quality of your builds. The next critical piece that you’ll need is to make sure that you can manage multiple configurations – after all, you’ll be wanting to deploy the same package to Production that you deployed and testing in UAT, so the package shouldn’t have configuration hard-coded in. In my agent-based [Webdeploy/RM post](/webdeploy-and-release-management--the-proper-way), I show how you can create a team build that puts placeholders into the SetParameters.xml file, so that you can put in environment-specific values when you deploy. The package I created for that deployment process can be used for deployment via DSC as well – just showing that if you create a good package during build, you have more release options available to you.
 
 Besides the package, you’ll want to source control your DSC scripts. This way you can track changes that you make to your scripts over time. Also, having the scripts “travel” with your binaries means you only have to look in one location to find both deployment packages (or binaries) and the scripts you need to deploy them. Here’s how I organized my website and scripts in TF Version Control:
 
@@ -70,7 +70,7 @@ Calling the script with $pathToCopy set to DscScripts will result in my DSC scri
 <!--kg-card-begin: html-->[![image](/assets/images/files/48ac1d7f-c1eb-4fec-8302-b123c8c50bed.png "image")](/assets/images/files/394bb737-3143-4f8e-a417-415513160dcd.png)<!--kg-card-end: html-->
 - The MSBuild arguments build a Webdeploy package for me. The profile (specified when you right-click the project and select “Publish”) also inserts RM placeholders into environment specific settings (like connection strings, for example). I don’t hard-code the values since this same package can be deployed to multiple environments. Later we’ll see how the actual values replace the tokens at deploy time.
 - The post-build script is the script above, and I pass “-pathToCopy DscScripts” to the script in order to copy the scripts to the bin (and ultimately the drop) folder.
-- I also use a pre-build script to version my assemblies so that I can match the [binary file versions with the build]( __GHOST_URL__ /post/matching-binary-version-to-build-number-version-in-tfs-2013-builds).
+- I also use a pre-build script to version my assemblies so that I can match the [binary file versions with the build](/matching-binary-version-to-build-number-version-in-tfs-2013-builds).
 
 Here’s what my build output folders look like:
 
@@ -267,9 +267,9 @@ When working with DSC, you have to think about idempotency. In other words, the 
 
 ## Deploying a Website using WebDeploy
 
-You could be publishing your website out of Visual Studio. But don’t – seriously, [don’t EVER do this]( __GHOST_URL__ /post/automated-buildswhy-theyre-absolutely-essential-(part-1)). So you’re smart: you’ve got an automated build to compile your website. Well done! Now you could be deploying this site using xcopy. Don’t – primarily because managing configuration is hard to do using this method, and you usually end up deploying all sorts of files that you don’t actually require (like web.debug.config etc.). You should be using [WebDeploy](http://www.hanselman.com/blog/WebDeploymentMadeAwesomeIfYoureUsingXCopyYoureDoingItWrong.aspx)!
+You could be publishing your website out of Visual Studio. But don’t – seriously, [don’t EVER do this](/automated-buildswhy-theyre-absolutely-essential-(part-1)). So you’re smart: you’ve got an automated build to compile your website. Well done! Now you could be deploying this site using xcopy. Don’t – primarily because managing configuration is hard to do using this method, and you usually end up deploying all sorts of files that you don’t actually require (like web.debug.config etc.). You should be using [WebDeploy](http://www.hanselman.com/blog/WebDeploymentMadeAwesomeIfYoureUsingXCopyYoureDoingItWrong.aspx)!
 
-I’ve got a post about [how to use WebDeploy with agent-based templates]( __GHOST_URL__ /post/webdeploy-and-release-management--the-proper-way). What follows is how to deploy sites using WebDeploy in vNext templates (using PowerShell DSC). In a [previous post]( __GHOST_URL__ /post/more-dsc-release-management-goodness-readying-a-webserver-for-deployment) I show how you can use DSC to ready a webserver for your application. Now we can look at what we need to do to actually deploy a site using WebDeploy. Here’s the script I use:
+I’ve got a post about [how to use WebDeploy with agent-based templates](/webdeploy-and-release-management--the-proper-way). What follows is how to deploy sites using WebDeploy in vNext templates (using PowerShell DSC). In a [previous post](/more-dsc-release-management-goodness-readying-a-webserver-for-deployment) I show how you can use DSC to ready a webserver for your application. Now we can look at what we need to do to actually deploy a site using WebDeploy. Here’s the script I use:
 
     Configuration FabFibWeb_Site
     {
@@ -391,7 +391,7 @@ In order to run vNext (a.k.a. agent-less a.k.a DSC) deployments, you need to imp
 
 <!--kg-card-begin: html-->[![image](/assets/images/files/6bddda2e-8136-4ba1-8a15-03989bb30af9.png "image")](/assets/images/files/19e05d8e-b16c-41ac-ac41-e4dc6d5b2c4f.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](/assets/images/files/3422cd7a-b93d-4e8a-a0cf-cd28bb087d81.png "image")](/assets/images/files/db1b526e-b3f7-4bdc-8fa7-e195118e41cf.png)<!--kg-card-end: html-->
 
-You can specify other [configuration variables and defaults in RM Update 4 RC]( __GHOST_URL__ /post/new-vnext-config-variable-options-in-rm-update-4-rc).
+You can specify other [configuration variables and defaults in RM Update 4 RC](/new-vnext-config-variable-options-in-rm-update-4-rc).
 
 ### vNext Components
 

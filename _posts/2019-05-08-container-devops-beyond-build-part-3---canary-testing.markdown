@@ -8,13 +8,13 @@ tags:
 
 Series:
 
-- [Part 1: Intro]( __GHOST_URL__ /post/container-devops-beyond-build-part-1)
-- [Part 2: Traefik Basics]( __GHOST_URL__ /post/container-devops-beyond-build-part-2---traefik)
+- [Part 1: Intro](/container-devops-beyond-build-part-1)
+- [Part 2: Traefik Basics](/container-devops-beyond-build-part-2---traefik)
 - Part 3: Canary Testing (this post)
-- [Part 4: Telemetry with Prometheus]( __GHOST_URL__ /post/container-devops-beyond-build-part-4---telemetry-with-prometheus)
-- [Part 5: Prometheus Operator]( __GHOST_URL__ /post/container-devops-beyond-build-part-5---prometheus-operator)
+- [Part 4: Telemetry with Prometheus](/container-devops-beyond-build-part-4---telemetry-with-prometheus)
+- [Part 5: Prometheus Operator](/container-devops-beyond-build-part-5---prometheus-operator)
 
-In my [previous post]( __GHOST_URL__ /post/container-devops-beyond-build-part-2---traefik) I compared [Istio](https://istio.io/), [Linkerd](https://linkerd.io/) and [Traefik](https://traefik.io/) and motivated why I preferred Traefik for Container DevOps. I showed how I was able to spin up Traefik controllers - one for internal cluster traffic routing, one for external cluster in-bound traffic routing. With that foundation in place, I can easily implement canary testing - both for external endpoints as well as internal services.
+In my [previous post](/container-devops-beyond-build-part-2---traefik) I compared [Istio](https://istio.io/), [Linkerd](https://linkerd.io/) and [Traefik](https://traefik.io/) and motivated why I preferred Traefik for Container DevOps. I showed how I was able to spin up Traefik controllers - one for internal cluster traffic routing, one for external cluster in-bound traffic routing. With that foundation in place, I can easily implement canary testing - both for external endpoints as well as internal services.
 
 ## Canary Testing
 

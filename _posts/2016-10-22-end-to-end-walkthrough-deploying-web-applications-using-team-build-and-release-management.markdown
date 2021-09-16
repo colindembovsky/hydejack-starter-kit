@@ -8,7 +8,7 @@ tags:
 - build
 ---
 
-I’ve posted previously about deploying web applications using Team Build and Release Management (see [Config Per Environment vs Tokenization in Release Management]( __GHOST_URL__ /post/config-per-environment-vs-tokenization-in-release-management) and [WebDeploy, Configs and Web Release Management]( __GHOST_URL__ /post/webdeploy-configs-and-web-release-management)). However, reviewing those posts recently at customers I’ve been working with, I’ve realized that these posts are a little outdated, you need pieces of both to form a full picture and the scripts that I wrote for those posts are now encapsulated in Tasks in my [marketplace extension](https://marketplace.visualstudio.com/items?itemName=colinsalmcorner.colinsalmcorner-buildtasks). So in this post I’m going to do a complete end-to-end walkthrough of deploying web applications using Team Build and Release Management. I’ll be including handling configs – arguably the hardest part of the whole process.
+I’ve posted previously about deploying web applications using Team Build and Release Management (see [Config Per Environment vs Tokenization in Release Management](/config-per-environment-vs-tokenization-in-release-management) and [WebDeploy, Configs and Web Release Management](/webdeploy-configs-and-web-release-management)). However, reviewing those posts recently at customers I’ve been working with, I’ve realized that these posts are a little outdated, you need pieces of both to form a full picture and the scripts that I wrote for those posts are now encapsulated in Tasks in my [marketplace extension](https://marketplace.visualstudio.com/items?itemName=colinsalmcorner.colinsalmcorner-buildtasks). So in this post I’m going to do a complete end-to-end walkthrough of deploying web applications using Team Build and Release Management. I’ll be including handling configs – arguably the hardest part of the whole process.
 
 ## Overview
 
@@ -137,7 +137,7 @@ You’re now ready to create the build definition. There are some additional bui
 - Run unit tests, code analysis and other build verification tasks
 - Create the WebDeploy package
 
-To version the assemblies, you can use the VersionAssemblies task from my [build tasks extension in the marketplace](https://marketplace.visualstudio.com/items?itemName=colinsalmcorner.colinsalmcorner-buildtasks). You’ll need the ReplaceTokens task for the release later, so just install the extension even if you’re not versioning. To show the minimum setup required to get the release working, I’m skipping unit tests and code analysis – but this is only for brevity. I highly recommend that [unit testing]( __GHOST_URL__ /post/why-you-absolutely-need-to-unit-test) and code analysis become part of every build you have.
+To version the assemblies, you can use the VersionAssemblies task from my [build tasks extension in the marketplace](https://marketplace.visualstudio.com/items?itemName=colinsalmcorner.colinsalmcorner-buildtasks). You’ll need the ReplaceTokens task for the release later, so just install the extension even if you’re not versioning. To show the minimum setup required to get the release working, I’m skipping unit tests and code analysis – but this is only for brevity. I highly recommend that [unit testing](/why-you-absolutely-need-to-unit-test) and code analysis become part of every build you have.
 
 Once you’ve created a build definition:
 

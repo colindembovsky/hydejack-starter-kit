@@ -7,7 +7,7 @@ tags:
 - docker
 ---
 
-I unashamedly love [Docker](https://www.docker.com/). Late last year I posted some thoughts I had on [Docker DevOps]( __GHOST_URL__ /post/docker-devops). In this post I’m going to take a look at Docker DevOps using [DotNet Core 1.0.0](https://www.microsoft.com/net/core), [Docker Tools for Visual Studio](https://visualstudiogallery.msdn.microsoft.com/0f5b2caa-ea00-41c8-b8a2-058c7da0b3e4), [Docker for Windows](https://docs.docker.com/docker-for-windows/) and [VSTS](https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx).
+I unashamedly love [Docker](https://www.docker.com/). Late last year I posted some thoughts I had on [Docker DevOps](/docker-devops). In this post I’m going to take a look at Docker DevOps using [DotNet Core 1.0.0](https://www.microsoft.com/net/core), [Docker Tools for Visual Studio](https://visualstudiogallery.msdn.microsoft.com/0f5b2caa-ea00-41c8-b8a2-058c7da0b3e4), [Docker for Windows](https://docs.docker.com/docker-for-windows/) and [VSTS](https://www.visualstudio.com/en-us/products/visual-studio-team-services-vs.aspx).
 
 Just before I continue – I’m getting tired of typing “DotNet Core 1.0.0” so for the rest of this post when I say “.NET Core” I mean “DotNet Core 1.0.0” (unless otherwise stated!).
 

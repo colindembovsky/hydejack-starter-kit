@@ -9,13 +9,13 @@ tags:
 
 Series:
 
-- [Part 1: Intro]( __GHOST_URL__ /post/container-devops-beyond-build-part-1)
-- [Part 2: Traefik Basics]( __GHOST_URL__ /post/container-devops-beyond-build-part-2---traefik)
-- [Part 3: Canary Testing]( __GHOST_URL__ /post/container-devops-beyond-build-part-3---canary-testing)
-- [Part 4: Telemetry with Prometheus]( __GHOST_URL__ /post/container-devops-beyond-build-part-4---telemetry-with-prometheus)
+- [Part 1: Intro](/container-devops-beyond-build-part-1)
+- [Part 2: Traefik Basics](/container-devops-beyond-build-part-2---traefik)
+- [Part 3: Canary Testing](/container-devops-beyond-build-part-3---canary-testing)
+- [Part 4: Telemetry with Prometheus](/container-devops-beyond-build-part-4---telemetry-with-prometheus)
 - Part 5: Prometheus Operator (this post)
 
-In [part 4]( __GHOST_URL__ /post/container-devops-beyond-build-part-4---telemetry-with-prometheus) of this series I showed how I created a metrics endpoint using [Prometheus](https://prometheus.io/) in my .NET Core application. While not perfect for business telemetry, Prometheus is a standard for performance metrics. But that only exposes an endpoint for metrics - it doesn't do any visualization. In this post I'll go over how I used [Prometheus Operator](https://github.com/coreos/prometheus-operator) in a k8s cluster to easily scrape metrics from services and then in the next post I'll cover how I configured [Grafana](https://grafana.com/) &nbsp;to visualize those metrics - first by hand and then using infrastructure-as-code so that I can audit and/or recreate my entire monitoring environment from source code.
+In [part 4](/container-devops-beyond-build-part-4---telemetry-with-prometheus) of this series I showed how I created a metrics endpoint using [Prometheus](https://prometheus.io/) in my .NET Core application. While not perfect for business telemetry, Prometheus is a standard for performance metrics. But that only exposes an endpoint for metrics - it doesn't do any visualization. In this post I'll go over how I used [Prometheus Operator](https://github.com/coreos/prometheus-operator) in a k8s cluster to easily scrape metrics from services and then in the next post I'll cover how I configured [Grafana](https://grafana.com/) &nbsp;to visualize those metrics - first by hand and then using infrastructure-as-code so that I can audit and/or recreate my entire monitoring environment from source code.
 
 ## Container DevOps Recap: The Importance of Monitoring
 

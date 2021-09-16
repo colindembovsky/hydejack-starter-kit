@@ -6,7 +6,7 @@ tags:
 - build
 ---
 
-In [part 1]( __GHOST_URL__ /post/developing-a-custom-build-vnext-task-part-1) I showed you how to scaffold a task using [tfx-cli](https://github.com/microsoft/tfs-cli), how to customize the manifest and how to implement the PowerShell script for my [VersionAssemblies task](https://github.com/colindembovsky/cols-agent-tasks/tree/master/Tasks/VersionAssemblies). In this post I’ll show you how I went about developing the Node version of the task and how I uploaded the completed task to my TFS server.
+In [part 1](/developing-a-custom-build-vnext-task-part-1) I showed you how to scaffold a task using [tfx-cli](https://github.com/microsoft/tfs-cli), how to customize the manifest and how to implement the PowerShell script for my [VersionAssemblies task](https://github.com/colindembovsky/cols-agent-tasks/tree/master/Tasks/VersionAssemblies). In this post I’ll show you how I went about developing the Node version of the task and how I uploaded the completed task to my TFS server.
 
 ### VS Code
 
@@ -248,7 +248,7 @@ My code ended up being perfect. Just kidding – I had to sort out some errors, 
 
 ## Uploading the Task
 
-In [part 1]( __GHOST_URL__ /post/developing-a-custom-build-vnext-task-part-1) I introduced [tfx-cli](http://github.com/microsoft/tfs-cli). I now returned to the command line in order to test uploading the task. I changed to the cols-agent-tasks\Tasks directory and ran
+In [part 1](/developing-a-custom-build-vnext-task-part-1) I introduced [tfx-cli](http://github.com/microsoft/tfs-cli). I now returned to the command line in order to test uploading the task. I changed to the cols-agent-tasks\Tasks directory and ran
 
 <!--kg-card-begin: html--><font size="2" face="Courier New">tfx-cli build tasks upload .\VersionAssemblies</font><!--kg-card-end: html-->
 

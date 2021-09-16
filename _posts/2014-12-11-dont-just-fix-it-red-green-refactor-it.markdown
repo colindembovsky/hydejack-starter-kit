@@ -56,7 +56,7 @@ Now the simple thing to do would have been to simply add the missing call to Spl
 
 ## Working with Quality in Mind
 
-When you’re coding you should be working with quality in mind – that’s why I love unit testing so much. If you’re doing dev without unit testing, you’re only setting yourself up for long hours of painful in-production debugging. Not fun. Build with quality up front – while it may _feel_ like it’s taking longer to deliver, [you’ll save time in the long run]( __GHOST_URL__ /post/why-you-absolutely-need-to-unit-test) since you’ll be adding new features instead of debugging poor quality code.
+When you’re coding you should be working with quality in mind – that’s why I love unit testing so much. If you’re doing dev without unit testing, you’re only setting yourself up for long hours of painful in-production debugging. Not fun. Build with quality up front – while it may _feel_ like it’s taking longer to deliver, [you’ll save time in the long run](/why-you-absolutely-need-to-unit-test) since you’ll be adding new features instead of debugging poor quality code.
 
 Here’s what you \*should\* be doing when you come across “hanky” code:
 

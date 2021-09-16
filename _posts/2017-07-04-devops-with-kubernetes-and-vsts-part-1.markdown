@@ -11,7 +11,7 @@ If you've read my blog before, you'll probably know that I am huge fan of [Docke
 
 However, as cool as containers are for packaging up apps, there's still a lot of uncertainty about how to actually run containers in production. Creating a single container is a cool and satisfying experience for a developer, but how do you run a cluster and scale containers? How do you monitor your containers? How do you manage faults? This is where we enter the world of container orchestration.
 
-This post will cover the local development experience with Kubernetes and minikube. [Part 2]( __GHOST_URL__ /post/devops-with-kubernetes-and-vsts-part-2) covers the CI/CD pipeline to a Kubernetes cluster in Azure.
+This post will cover the local development experience with Kubernetes and minikube. [Part 2](/devops-with-kubernetes-and-vsts-part-2) covers the CI/CD pipeline to a Kubernetes cluster in Azure.
 
 ## Orchestrator Wars
 
@@ -31,7 +31,7 @@ So what would the developer workflow look like? Something like this:
 
 It turns out that Visual Studio 2017 (and/or VS Code), Docker and MiniKube make this a really smooth experience.
 
-Eventually you're going to move to the DevOps pipeline - starting with a build. The build will take the source files and Dockerfiles and build images and push them to a private container registry. Then you'll want to push configuration to a Kubernetes cluster to actually run/deploy the new images. It turns out that using Azure and VSTS makes this DevOps pipeline smooth as butter! That will be the subject of [Part 2]( __GHOST_URL__ /post/devops-with-kubernetes-and-vsts-part-2) - for now, we'll concentrate on the developer workflow.
+Eventually you're going to move to the DevOps pipeline - starting with a build. The build will take the source files and Dockerfiles and build images and push them to a private container registry. Then you'll want to push configuration to a Kubernetes cluster to actually run/deploy the new images. It turns out that using Azure and VSTS makes this DevOps pipeline smooth as butter! That will be the subject of [Part 2](/devops-with-kubernetes-and-vsts-part-2) - for now, we'll concentrate on the developer workflow.
 
 ## Setting up the Developer Environment
 
@@ -77,7 +77,7 @@ You now have a 1-node cluster, ready for development!
 
 ## Get Some Code
 
-I recently blogged about [Aurelia development with Azure and VSTS]( __GHOST_URL__ /post/aurelia-azure-and-vsts). Since I already had a couple of .NET Core sites, I thought I would see if I could get them running in a Kubernetes cluster. Clone [this repo](https://github.com/colindembovsky/AzureAureliaDemo) and checkout the docker branch. I've added some files to the repo to support both building the Docker images as well as specifying Kubernetes configuration. Let's take a look.
+I recently blogged about [Aurelia development with Azure and VSTS](/aurelia-azure-and-vsts). Since I already had a couple of .NET Core sites, I thought I would see if I could get them running in a Kubernetes cluster. Clone [this repo](https://github.com/colindembovsky/AzureAureliaDemo) and checkout the docker branch. I've added some files to the repo to support both building the Docker images as well as specifying Kubernetes configuration. Let's take a look.
 
 The docker-compose.yml file specifies a composite application made up of two images: api and frontend:
 
@@ -179,7 +179,7 @@ Notes:
 - Line 30 specifies the name of the container within the pod (in this case we only have a single container in this pod anyway, which is generally what you want to do)
 - Line 31 specifies the name of the image to run - this is the same name as we specified in the docker-compose file for the backend image
 - Line 33 exposes port 80 on this container to the cluster
-- Line 34 specifies that we never want Kubernetes to pull the image since we're going to build the images into the minikube docker context. In a production cluster, we'll want to specify other policies so that the cluster can get updated images from a container registry (we'll see that in [Part 2]( __GHOST_URL__ /post/devops-with-kubernetes-and-vsts-part-2)).
+- Line 34 specifies that we never want Kubernetes to pull the image since we're going to build the images into the minikube docker context. In a production cluster, we'll want to specify other policies so that the cluster can get updated images from a container registry (we'll see that in [Part 2](/devops-with-kubernetes-and-vsts-part-2)).
 
 The frontend definition for the frontend service is very similar - except there's also some "magic" for configuration. Let's take a quick look:
 

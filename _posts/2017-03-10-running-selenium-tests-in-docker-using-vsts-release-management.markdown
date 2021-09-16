@@ -200,7 +200,7 @@ This technique is quite elegant – but there are pros and cons.
 
 Pros:
 
-- Get lots of Selenium nodes registered to a Selenium hub to enable lots of parallel testing (refer to my previous blog on how to [run tests in parallel in a grid]( __GHOST_URL__ /post/parallel-testing-in-a-selenium-grid-with-vsts))
+- Get lots of Selenium nodes registered to a Selenium hub to enable lots of parallel testing (refer to my previous blog on how to [run tests in parallel in a grid](/parallel-testing-in-a-selenium-grid-with-vsts))
 - No config required – you can run tests on the nodes as-is
 
 Cons:

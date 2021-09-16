@@ -6,7 +6,7 @@ tags:
 - devops
 ---
 
-In my previous couple of posts ([PowerShell DSC: Configuring a Remote Node to “RebootIfNeeded”]( __GHOST_URL__ /post/powershell-dsc-remotely-configuring-a-node-to-rebootnodeifneeded) and [Using PowerShell DSC in Release Management: The Hidden Manual]( __GHOST_URL__ /post/using-powershell-dsc-in-release-management-the-hidden-manual)) I started to experiment with Release Management’s new PowerShell DSC capabilities. I’ve been getting some great help from Bishal Prasad, one of the developers on Release Management – without his help I’d never have gotten this far!
+In my previous couple of posts ([PowerShell DSC: Configuring a Remote Node to “RebootIfNeeded”](/powershell-dsc-remotely-configuring-a-node-to-rebootnodeifneeded) and [Using PowerShell DSC in Release Management: The Hidden Manual](/using-powershell-dsc-in-release-management-the-hidden-manual)) I started to experiment with Release Management’s new PowerShell DSC capabilities. I’ve been getting some great help from Bishal Prasad, one of the developers on Release Management – without his help I’d never have gotten this far!
 
 ## Meta Mofs
 

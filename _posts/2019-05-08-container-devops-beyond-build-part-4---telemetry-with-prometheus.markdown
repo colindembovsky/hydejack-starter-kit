@@ -8,21 +8,21 @@ tags:
 
 Series:
 
-- [Part 1: Intro]( __GHOST_URL__ /post/container-devops-beyond-build-part-1)
-- [Part 2: Traefik Basics]( __GHOST_URL__ /post/container-devops-beyond-build-part-2---traefik)
-- [Part 3: Canary Testing]( __GHOST_URL__ /post/container-devops-beyond-build-part-3---canary-testing)
+- [Part 1: Intro](/container-devops-beyond-build-part-1)
+- [Part 2: Traefik Basics](/container-devops-beyond-build-part-2---traefik)
+- [Part 3: Canary Testing](/container-devops-beyond-build-part-3---canary-testing)
 - Part 4: Telemetry with Prometheus (this post)
-- [Part 5: Prometheus Operator]( __GHOST_URL__ /post/container-devops-beyond-build-part-5---prometheus-operator)
+- [Part 5: Prometheus Operator](/container-devops-beyond-build-part-5---prometheus-operator)
 
-In my [previous post]( __GHOST_URL__ /post/container-devops-beyond-build-part-3---canary-testing) in this series I wrote about how I used [Traefik](https://traefik.io/) to do traffic shifting and canary testing. I asserted that without proper telemetry, canary testing is (almost) pointless. Without some way to determine the efficacy of a canary deployment, you may as well just deploy straight out and not pretend.
+In my [previous post](/container-devops-beyond-build-part-3---canary-testing) in this series I wrote about how I used [Traefik](https://traefik.io/) to do traffic shifting and canary testing. I asserted that without proper telemetry, canary testing is (almost) pointless. Without some way to determine the efficacy of a canary deployment, you may as well just deploy straight out and not pretend.
 
-I've also written about how I love and use [Application Insights to monitor .NET applications]( __GHOST_URL__ /post/appinsights-analytics-in-the-real-world). Application Insights (or AppInsights for short) is still my go-to telemetry tool. And it's not only a .NET tool - there are SDKs for Java, Javascript and Python among others. But since we're delving into container-land, I wanted to at least explore one of the popular k8s tools: [Prometheus](https://prometheus.io/). There are other monitoring tools (like [Datadog](https://www.datadoghq.com/)) and I think it'll be worth doing a compare/contrast of various monitoring tools at some stage. But for this post, I'll stick to Prometheus.
+I've also written about how I love and use [Application Insights to monitor .NET applications](/appinsights-analytics-in-the-real-world). Application Insights (or AppInsights for short) is still my go-to telemetry tool. And it's not only a .NET tool - there are SDKs for Java, Javascript and Python among others. But since we're delving into container-land, I wanted to at least explore one of the popular k8s tools: [Prometheus](https://prometheus.io/). There are other monitoring tools (like [Datadog](https://www.datadoghq.com/)) and I think it'll be worth doing a compare/contrast of various monitoring tools at some stage. But for this post, I'll stick to Prometheus.
 
 ## Business vs Performance Telemetry
 
 Most developers that are using any kind of telemetry understand "performance" telemetry - requests per second, read/writes per second, errors per second, memory and CPU usage - usual, bread-and-butter telemetry. However, I often encourage teams not to stop at _performance_ telemetry and to also start looking at how to instrument their applications with "business" telemetry. _Business telemetry_ is telemetry that has nothing to do with the running application - and everything to do with how the site or application is doing in business terms. For example, how many products of a certain category were sold today? What products are popular in which geos? And so on.
 
-AppInsights is one of my go-to tools because you get performance telemetry "for free" - just add it to your project and you get all of the perf telemetry you need to have a good view of your application performance - and that's without changing a single line of code! However, if you do want business telemetry, you can add a few lines of code and it's simple to get business telemetry. Add to that the ability to connect PowerBI to your telemetry (something I've written about [before]( __GHOST_URL__ /post/appinsights-analytics-in-the-real-world)) and you're able to produce the telemetry and have business users consume it using PowerBI - that's a recipe for success!
+AppInsights is one of my go-to tools because you get performance telemetry "for free" - just add it to your project and you get all of the perf telemetry you need to have a good view of your application performance - and that's without changing a single line of code! However, if you do want business telemetry, you can add a few lines of code and it's simple to get business telemetry. Add to that the ability to connect PowerBI to your telemetry (something I've written about [before](/appinsights-analytics-in-the-real-world)) and you're able to produce the telemetry and have business users consume it using PowerBI - that's a recipe for success!
 
 On the down-side, making sense of AppInsights telemetry definitely isn't simple, and the learning curve for analyzing your data is steep. The AppInsights query language is a delight though, and even has some built-in [machine learning capabilities](https://docs.microsoft.com/en-us/azure/azure-monitor/app/proactive-diagnostics)).
 

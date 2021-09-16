@@ -6,7 +6,7 @@ tags:
 - releasemanagement
 ---
 
-A couple of months ago I did a series of posts ([this one]( __GHOST_URL__ /post/using-webdeploy-in-vnext-releases) has the summary of all my RM/DSC posts) about using PowerShell DSC in Release Management. I set out to see if I could create a DSC script that RM could invoke that would prep the environment and install the application. I managed to get it going, but never felt particularly good about the final solution – it always felt a little bit hacky. Not the entire solution per se – really just the _application_ bit.
+A couple of months ago I did a series of posts ([this one](/using-webdeploy-in-vnext-releases) has the summary of all my RM/DSC posts) about using PowerShell DSC in Release Management. I set out to see if I could create a DSC script that RM could invoke that would prep the environment and install the application. I managed to get it going, but never felt particularly good about the final solution – it always felt a little bit hacky. Not the entire solution per se – really just the _application_ bit.
 
 The main reason for this was the fact that I need to hack the Script Resource in order to let me run commands on the target node with parameters. Initially I thought that the inability to do this natively in DSC was short-sighted from the architecture of DSC – but the more I thought about it, the more I realized that I was trying to shoehorn application installation into DSC.
 

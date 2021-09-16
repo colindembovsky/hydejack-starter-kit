@@ -7,7 +7,7 @@ tags:
 - releasemanagement
 ---
 
-I've written before about Selenium testing ([Parallel Testing in a Selenium Grid with VSTS]( __GHOST_URL__ /post/parallel-testing-in-a-selenium-grid-with-vsts) and [Running Selenium Tests in Docker using VSTS and Release Management]( __GHOST_URL__ /post/running-selenium-tests-in-docker-using-vsts-release-management)). The problem with these solutions, however, is that you need a VM! However, I was setting up a demo last week and decided to try to solve this challenge using [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) (ACI), and I have a neat solution.
+I've written before about Selenium testing ([Parallel Testing in a Selenium Grid with VSTS](/parallel-testing-in-a-selenium-grid-with-vsts) and [Running Selenium Tests in Docker using VSTS and Release Management](/running-selenium-tests-in-docker-using-vsts-release-management)). The problem with these solutions, however, is that you need a VM! However, I was setting up a demo last week and decided to try to solve this challenge using [Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/) (ACI), and I have a neat solution.
 
 So why ACI? Why not a Kubernetes cluster? This solution would definitely work in a k8s cluster, but I wanted something more light-weight. If you don't have a k8s cluster, spinning one up just for Selenium testing seemed a bit heavy handed. Also, I discovered that ACI now lets you spin up multiple containers in the same ACI group via a yaml file.
 
