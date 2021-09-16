@@ -96,6 +96,8 @@ Horrible. Just horrible.
 
 Before I get to some workarounds for some of the challenges, I want to mention how I lost several hours of my life. Take a look at this snippet:
 
+~~~yaml
+{% raw %}
     - name: Install TF
       uses: hashicorp/setup-terraform@v1
       with:
@@ -108,18 +110,26 @@ Before I get to some workarounds for some of the challenges, I want to mention h
       run: |
         url=$(terraform output -raw webAppURL)
         echo "The URL is $url"
+{% endraw %}
+~~~
 
 This workflow snippet is really modelling the following commands:
 
+~~~yaml
+{% raw %}
     terraform init --backend-config="key=DEV.terraform.tfstate"
     url=$(terraform output -raw webAppURL)
     echo "The URL is $url"
+{% endraw %}
+~~~
 
 When running these locally, I get `The URL is http://<url>` which is what I expect.
 
 When running the workflow, I could not get this to work. I wasted a lot of time trying to figure out what I was doing wrong. The message looked something like this:
 
-    The url is [command]/home/runner/work/_temp/056bc345-efd0-4b6d-ae6c-94094f124a7f/terraform-bin output -raw
+```
+The url is [command]/home/runner/work/_temp/056bc345-efd0-4b6d-ae6c-94094f124a7f/terraform-bin output -raw
+```
 
 Turns out that all I had done wrong was make an assumption about how the `hashicorp/setup-terraform@v1` task works. I assumed it just installed `terraform`. However, in this configuration, it installs `terraform` and creates a wrapper around the executable, so you cannot treat terraform commands as you would locally - you have to access the output parameters.
 
@@ -151,12 +161,16 @@ In fact, I don't really need the `PROD-PLAN` environment at all in this case - t
 
 You can create a manual trigger for a workflow - but there are some gotchas. Firstly, you have to specify a `workflow_dispatch` `on` event - even if it's empty like so:
 
+~~~yaml
+{% raw %}
     on:
       workflow_dispatch: # manual trigger
       push:
         branches:
         - main
         - actions  
+{% endraw %}
+~~~
 
 The empty `workflow_dispatch:` looks a bit odd, but that is the correct syntax.
 
@@ -174,12 +188,16 @@ I initially had a workflow called `End to End`. When I split it into two files f
 
 Let's have a look at the `url` attribute of the `environment` in an app deployment workflow job:
 
+~~~yaml
+{% raw %}
     prod_deploy:
       needs: prod_deploy_canary
       runs-on: ubuntu-latest
       environment:
         name: PROD
         url: ${{ steps.slot_swap.outputs.url }}
+{% endraw %}
+~~~
 
 This will set the URL of the job in the UI accordingly so that users can easily link to the environment - as long as it's a _valid_ URL. The URL has to start with `http://` or `https://` otherwise it won't show anything. This foxed me for a while - since some `az cli` commands just output the URL without the protocol, like `somesite.azurewebsites.net`. Remember to prepend `http://` or they won't show.
 

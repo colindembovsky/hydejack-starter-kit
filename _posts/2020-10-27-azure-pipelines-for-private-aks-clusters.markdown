@@ -27,6 +27,8 @@ Fortunately, we can provision private agents for deployments. The procedure is a
 
 You can (of course) do this manually, but if you're using Terraform, then you can use the following code to spin up a VM and execute a custom script that will register the agent:
 
+~~~terraform
+{% raw %}
     resource "azurerm_linux_virtual_machine" "devopsvm" {
       name = var.devops_vm_name
       resource_group_name = azurerm_resource_group.azdorg.name
@@ -58,11 +60,15 @@ You can (of course) do this manually, but if you're using Terraform, then you ca
     
       tags = var.tags
     }
+{% endraw %}
+~~~
 
 > Note: I'm not showing all the resources here, just the main VM resource. This is spinning up an Ubuntu 18.04 VM and attaching it to the VNet that has my AKS cluster private link.
 
 Once you have the VM defined, you need to add a custom extension:
 
+~~~terraform
+{% raw %}
     resource "azurerm_virtual_machine_extension" "installtools" {
         name = "customconfig"
         virtual_machine_id = azurerm_linux_virtual_machine.devopsvm.id
@@ -81,6 +87,8 @@ Once you have the VM defined, you need to add a custom extension:
         SETTINGS
         depends_on = [azurerm_linux_virtual_machine.devopsvm]
     }
+{% endraw %}
+~~~
 
 The trick here is to invoke a script (`install_tools.sh`) with the args that it requires, namely the agent user name and token, the agent pool and the AzDO account URL.
 
@@ -88,6 +96,8 @@ The trick here is to invoke a script (`install_tools.sh`) with the args that it 
 
 Let's have a look at the `install_tools.sh` script:
 
+~~~bash
+{% raw %}
     #!/bin/bash
     agentuser=${AGENT_USER}
     pool=${AGENT_POOL}
@@ -133,6 +143,8 @@ Let's have a look at the `install_tools.sh` script:
     # install and start the service
     ./svc.sh install
     ./svc.sh start
+{% endraw %}
+~~~
 
 This script will:
 
@@ -146,12 +158,16 @@ This script will:
 
 To use this agent in a YML pipeline, just set the `pool` property to the name of the pool you registered the agent to:
 
+~~~yaml
+{% raw %}
     jobs:  
     - job: Build
       displayName: Build
       pool: my-private-pool
       steps:
       - script: echo Hello from private agent!
+{% endraw %}
+~~~
 
 Now you can push/pull to/from your private ACR - as long as the build runs on the private agent, just use the `docker` [tasks](https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/build/docker?view=azure-devops#build-and-push)as per normal.
 
@@ -186,11 +202,15 @@ That means that we have to fall back on creating a `generic` k8s endpoint using 
 
 To extract your cluster's `kubeconfig` you'll need to connect to a VM in the VNet. You can then use `az cli` to login and then get the credentials for the AKS cluster:
 
+~~~bash
+{% raw %}
     # login to azure
     az login
     
     # login to the AKS cluster
     az aks get-credentials -n <cluster_name> -g <cluster_resource_group_name>
+{% endraw %}
+~~~
 
 At this point, you can just copy the `~/.kube/config` file.
 
@@ -216,6 +236,8 @@ We now have a `generic` environment for approvals and a `kubeconfig` service con
 
 We can now make use of the environment and service connection in our pipelines. Here is a snippet showing that:
 
+~~~yaml
+{% raw %}
     stages:
     - stage: dev
       displayName: DEV
@@ -241,6 +263,8 @@ We can now make use of the environment and service connection in our pipelines. 
                   releaseName: 'release-name'
                   valueFile: '/path/to/value/file'
                   arguments: '--create-namespace'
+{% endraw %}
+~~~
 
 On line 7, we're specifying the private agent pool so that this pipeline stage runs on the private agent. On line 8 we specify the environment we created earlier - if there are any approvals and/or gates configured for this environment, the stage would only proceed once the approvals and gates have passed. On line 17 we specify that the `helm` task should authenticate via a `Kubernetes Service Connection` and we specify the connection name in line 18.
 
