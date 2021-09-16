@@ -64,6 +64,8 @@ We now have all the pieces to script this into a pipeline! Let’s encapsulate s
 
 I based this script off this [GitHub repo](https://github.com/justb4/docker-jmeter) by Just van den Broecke.
 
+~~~bash
+{% raw %}
     #!/bin/bash
     #
     # Run JMeter Docker image with options
@@ -77,6 +79,8 @@ I based this script off this [GitHub repo](https://github.com/justb4/docker-jmet
     docker stop $NAME &gt; /dev/null 2&gt;&amp;1
     docker rm $NAME &gt; /dev/null 2&gt;&amp;1
     docker run --name $NAME -i -v $ROOTPATH:/test -w /test $IMAGE ${@:2}
+{% endraw %}
+~~~
 
 Notes:
 
@@ -90,6 +94,8 @@ Notes:
 
 Now we have a generic way to launch the container, map the files and run the tests. Let’s wrap this call into a script for executing the CartTest.jmx test plan:
 
+~~~bash
+{% raw %}
     #!/bin/bash
     #
     rootPath=$1
@@ -122,6 +128,8 @@ Now we have a generic way to launch the container, map the files and run the tes
     
     echo "==== HTML Test Report ===="
     echo "See HTML test report in $R_DIR/index.html"
+{% endraw %}
+~~~
 
 Notes:
 
@@ -136,16 +144,24 @@ As long as we have Docker, we can run the script and we don’t need to install 
 
 We can execute the test from bash like so:
 
-<!--kg-card-begin: html--><font face="Courier New">./test.sh $PWD CartTest.jmx cdpartsun2-dev.azurewebsites.net</font><!--kg-card-end: html-->
+```
+./test.sh $PWD CartTest.jmx cdpartsun2-dev.azurewebsites.net
+```
+
 ### WSL Gotcha
 
 One caveat for Windows Subsystem for Linux (WSL): $PWD will not work for the volume mapping. This is because Docker for Windows is running on Windows, while the WSL paths are mounted in the Linux subsystem. In my case, the folder in WSL is “/mnt/c/repos/10m/partsunlimited/jmeter”, while the folder in Windows is “c:\repos\10m\partsunlimited\jmeter”. It took me a while to figure this out – the volume mapping works, but the volume is always empty. To work around this, just pass in the Windows path instead:
 
-<!--kg-card-begin: html--><font face="Courier New">./test.sh 'C:\repos\10m\partsunlimited\jmeter' CartTest.jmx cdpartsun2-dev.azurewebsites.net</font><!--kg-card-end: html-->
+```
+./test.sh 'C:\repos\10m\partsunlimited\jmeter' CartTest.jmx cdpartsun2-dev.azurewebsites.net
+```
+
 ## Executing from a Pipeline
 
 We’ve done most of the hard work – now we can put the script into a pipeline. We need to execute the test script with the correct arguments and upload the test results and we’re done! Here’s the pipeline:
 
+~~~bash
+{% raw %}
     variables:
       host: cdpartsun2-dev.azurewebsites.net
     
@@ -168,12 +184,15 @@ We’ve done most of the hard work – now we can put the script into a pipeline
         inputs:
           targetPath: jmeter/report
           artifact: jmeter
+{% endraw %}
+~~~
 
 This is very simple – and we don’t even have to worry about installing Java or JMeter – the only prerequisite we have is that the agent is able to run Docker containers! The first step executes the test.sh script, passing in the arguments just like we did from in the console. The second task publishes the report folder so that we can analyze the run.
 
 Here’s a snippet of the log while the test is executing: we can see the download of the Docker image and the boot up – now we just wait for the test to complete.
 
-<!--kg-card-begin: html-->[![image](/assets/images/files/9a0be48f-24f9-49b0-b18b-88d91491d76f.png "image")](/assets/images/files/8d34e502-8ec6-40cb-a6bc-9749ecc61b6b.png)<!--kg-card-end: html-->
+[![image](/assets/images/files/9a0be48f-24f9-49b0-b18b-88d91491d76f.png "image")](/assets/images/files/8d34e502-8ec6-40cb-a6bc-9749ecc61b6b.png)
+
 ### Executable Attributes
 
 One quick note: initially when I committed the scripts to the repo, they didn’t have the executable attribute set – this caused the build to fail because the scripts were not executable. To set the executable attribute, I ran the following command in the folder containing the sh files:

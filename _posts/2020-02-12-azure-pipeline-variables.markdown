@@ -12,11 +12,15 @@ I am a big fan of Azure Pipelines. Yes it’s YAML, but once you get over that i
 
 Every variable is really a key:value pair. The key is the name of the variable, and it has a string value. To dereference a variable, simply wrap the key in `$()`. Let’s consider this simple example:
 
+~~~yaml
+{% raw %}
     variables:
       name: colin
     
     steps:
     - script: echo "Hello, $(name)!"
+{% endraw %}
+~~~
 
 This will write “Hello, colin!” to the log.
 
@@ -24,6 +28,8 @@ This will write “Hello, colin!” to the log.
 
 Inline variables are variables that are hard coded into the pipeline YML file itself. Use these for specifying values that are not sensitive and that are unlikely to change. A good example is an image name: let’s imagine you have a pipeline that is building a Docker container and pushing that container to a registry. You are probably going to end up referencing the image name in several steps (such as tagging the image and then pushing the image). Instead of using a value in-line in each step, you can create a variable and use it multiple times. This keeps to the DRY (Do not Repeat Yourself) principle and ensures that you don’t inadvertently misspell the image name in one of the steps. In the following example, we create a variable called “imageName” so that we only have to maintain the value once rather than in multiple places:
 
+~~~yaml
+{% raw %}
     trigger:
     - master
     
@@ -48,6 +54,8 @@ Inline variables are variables that are hard coded into the pipeline YML file it
         repository: $(imageName)
         command: push
         tags: $(Build.BuildNumber)
+{% endraw %}
+~~~
 
 Note that you obviously you cannot create "secret" inline variables. If you need a variable to be secret, you’ll have to use pipeline variables, variable groups or dynamic variables.
 
@@ -75,6 +83,8 @@ If you specify “Let users override this value when running this pipeline” th
 
 Let's look at a simple pipeline that consumes the pipeline variable:
 
+~~~yaml
+{% raw %}
     name: 1.0$(Rev:.r)
     
     trigger:
@@ -87,6 +97,8 @@ Let's look at a simple pipeline that consumes the pipeline variable:
     - job: echo
       steps:
       - script: echo "BuildConfiguration is $(buildConfiguration)"
+{% endraw %}
+~~~
 
 Running the pipeline without editing the variable produces the following log:
 
@@ -114,38 +126,62 @@ Dynamic variables are variables that are created and/or calculated at run time. 
 
 To create or set a variable dynamically, you can use [logging commands](https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash). Imagine you need to get the username of the current user for use in subsequent steps. Here’s how you can create a variable called “currentUser” with the value:
 
+~~~yaml
+{% raw %}
     - script: |
         curUser=$(whoami)
         echo "##vso[task.setvariable variable=currentUser;]$curUser"
+{% endraw %}
+~~~
 
 When writing bash or PowerShell commands, don’t confuse “$(var)” with “$var”. “$(var)” is interpolated by Azure DevOps when the step is executed, while “$var” is a bash or PowerShell variable. I often use “env” to create environment variables rather than dereferencing variables inline. For example, I could write:
 
+~~~yaml
+{% raw %}
     - script: echo $(Build.BuildNumber)
+{% endraw %}
+~~~
 
 but I can also use environment variables:
 
+~~~yaml
+{% raw %}
     - script: echo $buildNum
       env:
         buildNum: $(Build.BuildNumber)
+{% endraw %}
+~~~
 
 This may come down to personal preference, but I’ve avoided confusion by consistently using env for my scripts!
 
 To make the variable a secret, simple add “issecret=true” into the logging command:
 
+~~~yaml
+{% raw %}
     echo "##vso[task.setvariable variable=currentUser;issecret=true]$curUser"
+{% endraw %}
+~~~
 
 You could do the same thing using PowerShell:
 
+~~~yaml
+{% raw %}
     - powershell: |
         Write-Host "##vso[task.setvariable variable=currentUser;]$env:UserName"
+{% endraw %}
+~~~
 
 Note that there are two flavors of PowerShell: “powershell” is for Windows and “pwsh” is for PowerShell Core which is cross-platform (so it can run on Linux and Mac!).
 
 One special case of a dynamic variable is a calculated build number. For that, calculate the build number however you need to and then use the “build.updatebuildnumber” logging command:
 
+~~~yaml
+{% raw %}
     - script: |
         buildNum=$(...) # calculate the build number somehow
         echo "##vso[build.updatebuildnumber]$buildNum"
+{% endraw %}
+~~~
 
 Other logging commands are documented [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/scripts/logging-commands?view=azure-devops&tabs=bash#build-commands).
 
@@ -178,6 +214,8 @@ You can also integrate variable groups to Azure KeyVaults. When you create the v
 
 Now that we have some variable groups, we can consume them in a pipeline. Let's consider this pipeline:
 
+~~~yaml
+{% raw %}
     trigger:
     - master
     
@@ -208,6 +246,8 @@ Now that we have some variable groups, we can consume them in a pipeline. Let's 
         value: Prod
       steps:
       - script: echo "ConStr is $(ConStr) in enviroment $(environment)"
+{% endraw %}
+~~~
 
 When this pipeline runs, we’ll see the DEV, QA and Prod values from the variable groups in the corresponding jobs.
 
@@ -217,6 +257,8 @@ Notice that the format for inline variables alters slightly when you have variab
 
 There is another type of template that can be useful - if you have a set of inline variables that you want to share across multiple pipelines, you can create a template. The template can then be referenced in multiple pipelines:
 
+~~~yaml
+{% raw %}
     # templates/variables.yml
     variables:
     - name: buildConfiguration
@@ -235,6 +277,8 @@ There is another type of template that can be useful - if you have a set of inli
     - template: templates/variables.yml
     steps:
     - script: echo 'Arch: ${{ variables.buildArchitecture }}, config ${{ variables.buildConfiguration }}'
+{% endraw %}
+~~~
 
 ## Precedence and Expansion
 
@@ -242,6 +286,8 @@ Variables can be defined at various scopes in a pipeline. When you define a vari
 
 You should also be aware of _when_ variables are expanded. They are expanded at the beginning of the run, as well as before each step. This example shows how this works:
 
+~~~yaml
+{% raw %}
     jobs:
     - job: A
       variables:
@@ -252,6 +298,8 @@ You should also be aware of _when_ variables are expanded. They are expanded at 
             echo '##vso[task.setvariable variable=a]20'
             echo $(a) # This will also be 10, since the expansion of $(a) happens before the step
         - bash: echo $(a) # This will be 20, since the variables are expanded just before the step
+{% endraw %}
+~~~
 
 ## Conclusion
 

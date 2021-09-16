@@ -45,6 +45,8 @@ After registration (or renewal) there's a hook for executing a script. So I coul
 
 Let's start with the `yml` file that describes the containers I spin up in my multi-container app:
 
+~~~yaml
+{% raw %}
     version: '3.3'
     
     services:
@@ -71,6 +73,7 @@ Let's start with the `yml` file that describes the containers I spin up in my mu
         restart: always
         volumes:
         - ${WEBAPP_STORAGE_HOME}/certbot/letsencrypt:/etc/letsencrypt # maps to persistent storage
+{% endraw %}
 
 Notes:
 
@@ -80,6 +83,8 @@ Notes:
 
 Let's now look at the `nginx.conf` file:
 
+~~~nginx
+{% raw %}
     user nginx;
     worker_processes 1;
     
@@ -126,6 +131,8 @@ Let's now look at the `nginx.conf` file:
             }
         }
     }
+{% endraw %}
+~~~
 
 Notes:
 
@@ -135,14 +142,20 @@ Notes:
 
 **Note:** I spent many hours debugging an infinte loop of redirects - I found that I had to ensure that none of the directives below were specified in the location rules. This is something to do with how Azure Web Apps handles incoming traffic.
 
+~~~nginx
+{% raw %}
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+{% endraw %}
+~~~
 
 ## CertBot Customization
 
 To customize CertBot to handle certificate registration and renewal, I customized the `CMD` for the container to invoke this script:
 
+~~~bash
+{% raw %}
     #!/bin/sh
     
     rsa_key_size=4096
@@ -185,6 +198,8 @@ To customize CertBot to handle certificate registration and renewal, I customize
         # register the renewed cert
         trap exit TERM; while :; do certbot renew --post-hook "deploy-cert-az-webapp.sh"; sleep $timeout & wait $!; done;
     fi
+{% endraw %}
+~~~
 
 Notes:
 
@@ -198,6 +213,8 @@ Notes:
 
 Here's the script to register the cert with Azure Web Apps:
 
+~~~bash
+{% raw %}
     #!/bin/sh
     
     certPath="$WORKING_PATH/live/$CDN"
@@ -242,6 +259,8 @@ Here's the script to register the cert with Azure Web Apps:
     fi
     
     echo "Done!"
+{% endraw %}
+~~~
 
 Notes:
 

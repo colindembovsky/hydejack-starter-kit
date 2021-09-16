@@ -45,8 +45,8 @@ You'll also want to use the `-o` parameter to specify the output. For scripts, u
 
 For example, if you want to determine if a Team Project already exists, you can use the `az devops project list` command: but it will return an array of objects which you'll have to try to parse:
 
-<!--kg-card-begin: markdown-->
-
+~~~bash
+{% raw %}
     /home/colin/repos/foo [master ≡]> az devops project list --org $orgUrl
     {
       "continuationToken": null,
@@ -90,20 +90,21 @@ For example, if you want to determine if a Team Project already exists, you can 
         }
       ]
     }
-
-<!--kg-card-end: markdown-->
+{% endraw %}
+~~~
 
 Using the `--query` parameter, we can return a simple array of strings (each entry is a Team Project name) making parsing much simpler: `az devops project list --org $orgUrl --query "value[].name" -o tsv`:
 
-<!--kg-card-begin: markdown-->
-
+~~~bash
+{% raw %}
     /home/colin/repos/foo [master ≡]> az devops project list --org $orgUrl --query "value[].name" -o tsv
     Project1
     Project2
     ...
     Projectn
+{% endraw %}
+~~~
 
-<!--kg-card-end: markdown-->
 ## Authentication
 
 To authenticate, you need to run `az devops login` which will ask for a Personal Access Token (PAT) to connect to your Azure DevOps organization. Being prompted is fine when you're working in a console, but if you want to automate `az devops` commands, you're going to want to log in without the prompt. To do this, you can set an environment variable called `AZURE_DEVOPS_EXT_PAT` to the value of your PAT. In my `pwsh` (cross-platform PowerShell) scripts, this didn't seem to work totally, so I ended up piping the PAT to the login command too: `$pat | az devops login`.
@@ -142,16 +143,17 @@ Getting a list of Repo names in a Team Project is easy:
 
 Next I wanted to determine if a repo with a given name existed. Since I'm in `pwsh` on linux, I initially tried `-contains` but this is a case sensitive search. To make the search case insensitive, I convert the list to an `ObjectCollection` and use `FindIndex`:
 
-<!--kg-card-begin: markdown-->
-
+~~~bash
+{% raw %}
     $repoCollection = [Collections.Generic.List[Object]]$repoList
     if ($repoCollection -and $repoCollection.FindIndex({ $args[0] -eq $RepoName }) -ge 0) {
         Write-Host "Repo already exists"
     } else {
         Write-Host "Cloning repo..."
     }
+{% endraw %}
+~~~
 
-<!--kg-card-end: markdown-->
 ### Example 4: Creating a Git Repo and Importing an External Repo
 
 Before importing a repo, we have to have a repo to import into. To create an empty Git repo, we can use this command:
@@ -184,8 +186,12 @@ Finally, we use the encoded PAT when performing remote `git` operations (like `c
 
 When you create a new Team Project (using Git) you get a repo with the same name as the Team Project. We wanted to delete that repo. First, get the repo id and then delete it:
 
+~~~bash
+{% raw %}
     $repoId = az repos show -r $ProjectName -p $ProjectName --org $orgUrl --query "id" -o tsv
     az repos delete --id $repoId --org $orgUrl -p $ProjectName -y
+{% endraw %}
+~~~
 
 ### Example 7: Creating an ARM Service Endpoint
 
@@ -195,8 +201,12 @@ We needed to create a Service Endpoint to an Azure Subscription in our script. O
 
 One more thing: once we created the endpoint, we wanted it to be authorized for all pipelines. Fortunately we can do this using `az devops` too! First we retrieve the ID of the newly created endpoint, and then update it:
 
+~~~bash
+{% raw %}
     $epId = az devops service-endpoint list --org $orgUrl -p $ProjectName --query "[?name=='$ServiceEndpointName'].id" -o tsv
     az devops service-endpoint update --id $epId --enable-for-all true --org $orgUrl -p $ProjectName
+{% endraw %}
+~~~
 
 ### Example 8: Creating and Deleting (YML) Environments using invoke
 
@@ -216,6 +226,8 @@ Armed with this, we can formulate the request for the `az devops invoke` command
 
 We can then query the environments. If we decide that we want to create an environment, we'll need to do a `POST`. `az devops invoke` requires a JSON file as the body of the `POST`, so we can create the body and dump it to a json file and then pass that in as the `--in-file` argument:
 
+~~~bash
+{% raw %}
     $envBody = @{
       name = $env
       description = "My $env environment"
@@ -228,6 +240,8 @@ We can then query the environments. If we decide that we want to create an envir
        --http-method POST --in-file $infile `
        --api-version "6.0-preview"
     rm $infile -f
+{% endraw %}
+~~~
 
 To delete an environment, find its ID:
 

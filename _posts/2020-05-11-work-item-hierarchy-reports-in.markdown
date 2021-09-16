@@ -85,15 +85,15 @@ The final model looks like this:
 
 We then added the following calculated columns on the `Stories` table:
 
-<!--kg-card-begin: markdown-->
-
+~~~
+{% raw %}
     Iteration End Date = LOOKUPVALUE(Iterations[EndDate], Iterations[IterationSK], Stories[IterationSK])
     
     Iteration Start Date = LOOKUPVALUE(Iterations[StartDate], Iterations[IterationSK], Stories[IterationSK])
     
     StateCateroryOrder = RELATED(StoryStateCategories[Order])
-
-<!--kg-card-end: markdown-->
+{% endraw %}
+~~~
 
 These are just lookups to bring in the related values so that they are all "inline".
 
@@ -101,8 +101,8 @@ To utilize the `StateCategoryOrder` column, we click on the `StateCategory` colu
 
 For `Features` the calculations were a little more complex since we were aggregating the `Stories` value. For each `Features` row, we can perform calculations on `RELATEDTABLE(Stories)`: this is the subset of `Stories` rows that are related to the current `Features` row via the `Stories:ParentWorkItemID` -\> `Features:WorkItemID` relationship. With that in mind, we create the following calculated columns:
 
-<!--kg-card-begin: markdown-->
-
+~~~
+{% raw %}
     Stories Completed Count = 
     VAR num = CALCULATE(
         COUNTROWS(RELATEDTABLE(Stories)),
@@ -152,8 +152,8 @@ For `Features` the calculations were a little more complex since we were aggrega
     AssignedTo = LOOKUPVALUE(Users[UserName], Users[UserSK], Features[AssignedToUserSK])
     
     StateCategoryOrder = RELATED(FeatureStateCategory[Order])
-
-<!--kg-card-end: markdown-->
+{% endraw %}
+~~~
 
 We're calculating related `Stories` using a filter on `StateCategory` and just summing the count. We don't use Story Points, but you could easily sum the `Story Points` column to do the same operation on Story Points instead of work item count. We then calculate a `Completed Percentage`. We then add in calculations for the earliest start date and latest end date for related `Stories` (via the `Iteration`). This gives us a start and end date for each `Feature`. Finally, we added in the `StateCategoryOrder` and the `AssignedTo` lookup: the `AssignedTo` relationship to the user table didn't work as we expected, probably because we made the relationship inactive. Fortunately the lookup is simple.
 
