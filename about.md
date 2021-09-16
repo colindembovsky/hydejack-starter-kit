@@ -2,7 +2,7 @@
 layout: page
 image: /assets/img/blog/hydejack-9.jpg
 hide_description: true
-permalink: /about
+permalink: /about/
 ---
 <div style="text-align: center">
     <img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/4/23177_profile_mox.jpg" alt loading="lazy" width="350">
