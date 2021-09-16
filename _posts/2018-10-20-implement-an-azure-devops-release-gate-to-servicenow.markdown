@@ -160,15 +160,15 @@ Now we have the service endpoint and the gate, we're ready to publish and instal
 
 For the release to work, you'll need to make the CR a variable. I did this by adding the variable and making it settable at queue time:
 
-<!--kg-card-begin: html-->[![SNAGHTMLaca5f5b](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b2a33460-f6e7-448b-b85f-862ac2c19f86.png "SNAGHTMLaca5f5b")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/772b0be7-080e-439d-95cb-72e002288330.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![SNAGHTMLaca5f5b](/assets/images/files/b2a33460-f6e7-448b-b85f-862ac2c19f86.png "SNAGHTMLaca5f5b")](/assets/images/files/772b0be7-080e-439d-95cb-72e002288330.png)<!--kg-card-end: html-->
 
 Now when I queue the release, I have to add the CR. Of course you could imagine a release being queued off from an automated process, and that can pass the CR as part of the body of the REST API call to queue the release. For now, I'm entering it manually:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/03fc601c-eebd-435d-a80f-5bb40ae20032.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/900b68e0-511c-46bf-81e4-9f52d23df052.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/03fc601c-eebd-435d-a80f-5bb40ae20032.png "image")](/assets/images/files/900b68e0-511c-46bf-81e4-9f52d23df052.png)<!--kg-card-end: html-->
 
 So how do we specify the gate? Edit the release and click on the pre- or post-approval icon for the environment and open the Gates section. Click the + to add a new gate and select the "Change Request Status" gate. We can then configure the endpoint, the CR number and the State we want to pass on:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ea57f2f3-432b-4cab-9a3f-462598289d4f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/930b95a8-7435-4353-8e27-2b13152ac289.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ea57f2f3-432b-4cab-9a3f-462598289d4f.png "image")](/assets/images/files/930b95a8-7435-4353-8e27-2b13152ac289.png)<!--kg-card-end: html-->
 
 To create an endpoint, just click on "+ New" next to the Service Now endpoint drop-down - this will open a new tab to the Service Endpoints page where you can add a new ServiceNow endpoint.
 
@@ -180,11 +180,11 @@ Note how we set the Change Request number to the variable
 
 Finally, set the "Evaluation options" to configure the frequency, timeout and other gate settings:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e542cf32-4c7a-48fa-a0c8-e50b9d1edb9f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/dd675a14-0c80-47de-a015-96dcc14527c1.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/e542cf32-4c7a-48fa-a0c8-e50b9d1edb9f.png "image")](/assets/images/files/dd675a14-0c80-47de-a015-96dcc14527c1.png)<!--kg-card-end: html-->
 
 Once the release runs, we can see the Gate invocations and results:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/673645cc-d97d-499e-a210-a8d815201d42.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0a3ba383-88c6-41fa-bf64-9c1a8b2b60f1.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/673645cc-d97d-499e-a210-a8d815201d42.png "image")](/assets/images/files/0a3ba383-88c6-41fa-bf64-9c1a8b2b60f1.png)<!--kg-card-end: html-->
 
 Note that the Gate has to pass twice in a row before it's successful and moves the pipeline on.
 

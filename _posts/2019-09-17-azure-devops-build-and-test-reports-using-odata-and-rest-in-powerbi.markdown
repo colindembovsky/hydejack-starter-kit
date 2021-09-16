@@ -16,7 +16,7 @@ If you just want the PowerBI template, then head over to this [Github repo](http
 
 If you want to see what data you can grab from the OData endpoint for your Azure DevOps account, then navigate to this URL: [https://analytics.dev.azure.com/{organization}/\_odata/v3.0-preview/$metadata](https://analytics.dev.azure.com/{organization}/_odata/v3.0-preview/$metadata) (you’ll need to replace {organization} with your organization name). This gives an XML document that details the entities and relationships. Here’s a screenshot of what it looks like in Chrome:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/460e593f-294e-4d44-99a7-6e98319cba8b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fc5728e0-b6e5-4000-b62e-8839a2fdedb5.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/460e593f-294e-4d44-99a7-6e98319cba8b.png "image")](/assets/images/files/fc5728e0-b6e5-4000-b62e-8839a2fdedb5.png)<!--kg-card-end: html-->
 
 To get the data for an entity, you need to use OData queries. Some of these are pretty obscure, but powerful. First tip: pluralize the entity to get the entries. For example, the entity “Build” is queried by navigating to [https://analytics.dev.azure.com/{organization}/\_odata/v3.0-preview/Builds](https://analytics.dev.azure.com/{organization}/_odata/v3.0-preview/Builds). You definitely want to learn how to apply $filter (for filtering data), $select (for specifying which columns you want to select), $apply (for grouping and aggregating) and $expand (for expanding fields from related entities). Once you have some of these basics down, you’ll be able to get some pretty good data out of your Azure DevOps account.
 
@@ -107,7 +107,7 @@ Now that we have the function defined, we can use it to expand a table with a li
 
 If it runs, you’ll get a table of projects in your Azure DevOps organization:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d1946ae0-71da-45d5-9c8f-b8035b05f835.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/431f5012-0301-48e7-b4f2-cda45ee38ca7.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/d1946ae0-71da-45d5-9c8f-b8035b05f835.png "image")](/assets/images/files/431f5012-0301-48e7-b4f2-cda45ee38ca7.png)<!--kg-card-end: html-->
 
 Now comes the magic:
 
@@ -117,15 +117,15 @@ Now comes the magic:
 4. Select “GetGitRepos” (the function we created earlier) from the list of functions
 5. Make sure the type is set to column so that PowerBI will loop through each row in the table, calling the function
 6. Change the column to ProjectName – this is the value for the project arg for the function
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f1c24f59-153a-4310-9708-f452dc77d1e2.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/399078e0-171e-4fd1-a15e-29694500ce96.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f1c24f59-153a-4310-9708-f452dc77d1e2.png "image")](/assets/images/files/399078e0-171e-4fd1-a15e-29694500ce96.png)<!--kg-card-end: html-->
 
 Once you click OK, PowerBI will call the function for each row in the table – this is why you don’t want to do this on a table with more than a few hundred rows! Here’s what the result will look like:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/811a8e54-f2c8-4eb3-89dd-e75e0f0c3c6f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b636e87e-e41a-493a-a033-4114ecf030d8.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/811a8e54-f2c8-4eb3-89dd-e75e0f0c3c6f.png "image")](/assets/images/files/b636e87e-e41a-493a-a033-4114ecf030d8.png)<!--kg-card-end: html-->
 
 Now we want to expand the Record in each row, so click on the expand glyph to the right of the column name. We don’t really care about count, we just want value expanded and we don’t need the prefix:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/17876bb9-34a9-4162-9c62-3276d45d33cc.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/dd6da92a-83c5-4129-ad15-c673a29a0649.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/17876bb9-34a9-4162-9c62-3276d45d33cc.png "image")](/assets/images/files/dd6da92a-83c5-4129-ad15-c673a29a0649.png)<!--kg-card-end: html-->
 
 This expands, but we’ll need to expand “value” once more, since it too is a complex object. Click the expand glyph again and select “Expand to Rows”. You can now filter out nulls – I could only do this by adding a line in the Advanced Editor:
 
@@ -133,7 +133,7 @@ This expands, but we’ll need to expand “value” once more, since it too is 
 
 Don’t forget to change the “in” to #“Filter nulls”. You will then need to expand value again:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/56078f03-1d02-4e27-9c05-841004a5b5c3.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/11b4a832-1227-4756-b423-bb3f77a770c4.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/56078f03-1d02-4e27-9c05-841004a5b5c3.png "image")](/assets/images/files/11b4a832-1227-4756-b423-bb3f77a770c4.png)<!--kg-card-end: html-->
 
 Now we can finally see the fields for the repo itself – I just selected name, size, defaultBranch and webUrl. Now you can update any types and rename columns as you need. We now have a list of repos! Here’s the final M query:
 
@@ -158,7 +158,7 @@ For adding queue information to builds, I created a function to get build detail
 
 Now that I have a few entities, PowerBI detects most of the relationships. I added a CalendarDate table so that I could filter all builds/tests on a particular date (the CompletedDate column is a DateTime field, so this is necessary to group on a day). The final ERD looks like this:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1818879a-64cf-4fb8-8ef1-d341e48bbfef.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b93b844e-0f5b-4f78-bb03-20e7aba2396d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/1818879a-64cf-4fb8-8ef1-d341e48bbfef.png "image")](/assets/images/files/b93b844e-0f5b-4f78-bb03-20e7aba2396d.png)<!--kg-card-end: html-->
 
 I had some trouble relating branch to repo, so I eventually just added a LOOKUP function to lookup the repo name for the branch via the repositoryId. That’s why Repo isn’t related to other entities in the ERD. Similarly, I originally had a Project entity, but found that creating slicers on the Project column in the build worked just fine and kept the ERD simple.
 
@@ -166,7 +166,7 @@ I had some trouble relating branch to repo, so I eventually just added a LOOKUP 
 
 I created two simple reports in the template – one showing a Build Summary and another showing a test summary. Feel free to start from these and go make some pretty reports!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/06bbeb42-e245-4e2a-b7c5-455bd9da738f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c500998f-581e-494a-a96d-e1dc1ea054c9.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/06bbeb42-e245-4e2a-b7c5-455bd9da738f.png "image")](/assets/images/files/c500998f-581e-494a-a96d-e1dc1ea054c9.png)<!--kg-card-end: html-->
 
 To open the template, you can get it from this [Github repo](https://github.com/colindembovsky/azdo-build-test-pbi). There’s also instructions on how to update the auth.
 

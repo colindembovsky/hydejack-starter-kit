@@ -46,15 +46,15 @@ Now I have a couple of PowerShell tasks that copy the binaries (and other files)
 - I copy the scripts folder directly from the workspace into the staging folder using these arguments:
 - -srcDir MAIN\FabFiber\DscScripts -targetDir $(build.stagingDirectory)\Scripts
 - Finally, I publish the artifacts like so:
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/195bdd4c-4072-4709-9fcd-a0a63af64d70.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a3119a20-6a71-4853-8ddc-641d544411fb.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/195bdd4c-4072-4709-9fcd-a0a63af64d70.png "image")](/assets/images/files/a3119a20-6a71-4853-8ddc-641d544411fb.png)<!--kg-card-end: html-->
 
 Now my build artifact (yes, a single artifact) looks as follows:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5ad836ef-244d-46d5-a9fa-465161d97093.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3f6230c3-b086-4ad6-be08-7637a600b25a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5ad836ef-244d-46d5-a9fa-465161d97093.png "image")](/assets/images/files/3f6230c3-b086-4ad6-be08-7637a600b25a.png)<!--kg-card-end: html-->
 
 Back in Release Management, I made sure I had a component named “FabFiber” (to match the name of the artifact from the Publish Artifact task). I then also supplied “\FabFiber” as the root folder for my components:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c7cb6d5f-e997-4899-abad-a8ce8343c067.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d851e635-0537-49d6-98a5-f3c02d09db99.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/c7cb6d5f-e997-4899-abad-a8ce8343c067.png "image")](/assets/images/files/d851e635-0537-49d6-98a5-f3c02d09db99.png)<!--kg-card-end: html-->
 
 That at least cleared up the “cannot find artifact” error.
 
@@ -64,24 +64,24 @@ A bonus of this is that you can now use server drops for releases instead of hav
 
 During my experimentation I renamed the component in Release Management that I was using in the release. This caused some strange behavior when trying to create releases: the build version picker was missing:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3e2dd5b6-b22d-44e3-b785-ebfb16aaa240.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/72187323-5516-4637-b0de-4789ae8c22b5.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/3e2dd5b6-b22d-44e3-b785-ebfb16aaa240.png "image")](/assets/images/files/72187323-5516-4637-b0de-4789ae8c22b5.png)<!--kg-card-end: html-->
 
 I had to open the release template and set the component from the drop-down everywhere that it was referenced!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7ff7d1ae-0492-4ece-a747-7d2e9882e902.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f080521b-ab6f-4dff-85f5-478cd4c77b96.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/7ff7d1ae-0492-4ece-a747-7d2e9882e902.png "image")](/assets/images/files/f080521b-ab6f-4dff-85f5-478cd4c77b96.png)<!--kg-card-end: html-->
 
 Once that was done, I got the build version picker back:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f515207a-6b1d-455e-b53b-e368e47e3853.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f1d0cb99-2307-4847-bc0a-b6485e2ce1a6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f515207a-6b1d-455e-b53b-e368e47e3853.png "image")](/assets/images/files/f1d0cb99-2307-4847-bc0a-b6485e2ce1a6.png)<!--kg-card-end: html-->
 
 Deployments started working again – [my name is Boris, and I am invincible](https://www.youtube.com/watch?v=b18DjXWyWuc)!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/98897692-3bd7-4f88-85ce-e311e02ad465.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8c7af39b-f730-4585-ba6b-fb41ca58befb.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/98897692-3bd7-4f88-85ce-e311e02ad465.png "image")](/assets/images/files/8c7af39b-f730-4585-ba6b-fb41ca58befb.png)<!--kg-card-end: html-->
 ## The Parameter is Incorrect
 
 A further error I encountered had to do with the upgrade from RM 2013. At least, I think that was the cause. The deployment would copy the files to the target server, but when the PowerShell task was invoked, I got a failure stating (helpfully – not!), “The parameter is incorrect.”
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/50078e51-ce0c-4f62-8a3e-78cd05e09024.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/30296ba5-af98-49bd-9618-cd50fd3fe04a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/50078e51-ce0c-4f62-8a3e-78cd05e09024.png "image")](/assets/images/files/30296ba5-af98-49bd-9618-cd50fd3fe04a.png)<!--kg-card-end: html-->
 
 At first I thought it was an error in my script – turns out that all you have to do to resolve this one is re-enter the password in the credentials for the PowerShell task in the release template. All of them. Again. Sigh… Hopefully this is just me and doesn’t happen to you when you upgrade your RM server.
 

@@ -45,15 +45,15 @@ At the top of the Gulp file, there is a /// comment that allows you to bind VS e
 Here’s the workaround:
 
 - Remove the BeforeBuild binding from the Gulp file (i.e. when you build your solution, the Gulp is not triggered). You can see your bindings in the Task Runner Explorer – you want to make sure “Before Build” and “After Build” are both showing 0:
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ffdc4f2a-2252-4913-a7d0-ad319441e07d.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/52d9d0d7-57d9-4c1e-bd63-87e51fe08c0b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ffdc4f2a-2252-4913-a7d0-ad319441e07d.png "image")](/assets/images/files/52d9d0d7-57d9-4c1e-bd63-87e51fe08c0b.png)<!--kg-card-end: html-->
 - Add the following into the Pre-Build event on your Web project Build Events tab:
 - set NODE\_ENV=$(ConfigurationName)
 - gulp
-<figure class="kg-card kg-image-card"><img src="https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7708bf5c-ba1a-48b0-add0-2442734925a8.png" class="kg-image" alt="image" loading="lazy" title="image"></figure>
+<figure class="kg-card kg-image-card"><img src="/assets/images/files/7708bf5c-ba1a-48b0-add0-2442734925a8.png" class="kg-image" alt="image" loading="lazy" title="image"></figure>
 
 That’s it! Now you can just change your configuration from “Debug” to “Release” in the configuration dropdown in VS and when you build, Gulp will find the correct environment setting. Here you can see I set the config to Debug, the build executes in Debug and Gulp is correctly reading the configuration setting:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4ed9d16f-af16-4f65-9e4c-1c884c49472b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b6e9a620-1c68-4d7b-a65a-705f3ec21f79.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4ed9d16f-af16-4f65-9e4c-1c884c49472b.png "image")](/assets/images/files/b6e9a620-1c68-4d7b-a65a-705f3ec21f79.png)<!--kg-card-end: html-->
 ### Caveats
 
 There are always some – in this case only two that I can think of:

@@ -80,15 +80,15 @@ So now that I get dll’s versions matching my build number, why not SonarQube t
 
 I drop this into the same folder as the MsBuild.SonarQube.Runner.exe so that I don’t have to fiddle with more paths. Here’s the task in my build:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/54dbdda6-9975-48dd-875c-858fa7c55b0d.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8f4dad3d-6859-4220-a674-89b99f03542b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/54dbdda6-9975-48dd-875c-858fa7c55b0d.png "image")](/assets/images/files/8f4dad3d-6859-4220-a674-89b99f03542b.png)<!--kg-card-end: html-->
 
 The call to the SonarQube runner “end” doesn’t need any arguments, so I’ve left that as a plain command line call:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/995b513c-35c3-4919-be0b-e129c25cd40e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1173de53-ef4d-4ea9-bc36-04d29ffd8f9a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/995b513c-35c3-4919-be0b-e129c25cd40e.png "image")](/assets/images/files/1173de53-ef4d-4ea9-bc36-04d29ffd8f9a.png)<!--kg-card-end: html-->
 
 Now when the build runs, the version number passed to SonarQube matches the version number of my assemblies which I can tie back to my builds. Sweet!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/11a02d4c-7fd8-418c-9d81-1404f74f2ee4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7f59f375-b594-4b3a-bee7-adff7b134e47.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/11a02d4c-7fd8-418c-9d81-1404f74f2ee4.png "image")](/assets/images/files/7f59f375-b594-4b3a-bee7-adff7b134e47.png)<!--kg-card-end: html-->
 
 One more change you could make is to specify the key and name arguments as variables. That way you can manage them as build variables instead of managing them in the call to the script on the task.
 

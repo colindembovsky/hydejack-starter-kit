@@ -33,11 +33,11 @@ The source code is in a Github repo - no problem! We'll import into VSTS and the
 
 Log in to VSTS and navigate to the Code hub. Then click on the repo button in the toolbar and click Import repository.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/08219779-1135-43bf-80e2-f9087a65728f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/91750378-2cfa-495b-a5f6-af825264b2ec.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/08219779-1135-43bf-80e2-f9087a65728f.png "image")](/assets/images/files/91750378-2cfa-495b-a5f6-af825264b2ec.png)<!--kg-card-end: html-->
 
 Enter the URL and click Import.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e61c0caa-3020-4d46-8188-27fd66e94780.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2534aeeb-1d20-43ee-9945-41310a7ec541.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/e61c0caa-3020-4d46-8188-27fd66e94780.png "image")](/assets/images/files/2534aeeb-1d20-43ee-9945-41310a7ec541.png)<!--kg-card-end: html-->
 
 Now we have the code in VSTS! Remember, this is just Git, so this is just another remote (that happens to be in VSTS).
 
@@ -45,23 +45,23 @@ Now we have the code in VSTS! Remember, this is just Git, so this is just anothe
 
 Now we can import the build definition. First, navigate to the Github repo and clone it or download the [PythonTesting-CI.json](https://raw.githubusercontent.com/colindembovsky/python-testing-101/master/PythonTesting-CI.json) file. Then open VSTS and navigate to a team project and click on Build and Release (in the Blue toolbar at the top) to navigate to the build and release hub. Click on Builds (in the grey secondary toolbar) and click the "+Import" button.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d05252d7-302d-4f37-863d-439e94dca7e1.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2a8e693c-4001-4164-a038-eb3e7da9f3ab.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/d05252d7-302d-4f37-863d-439e94dca7e1.png "image")](/assets/images/files/2a8e693c-4001-4164-a038-eb3e7da9f3ab.png)<!--kg-card-end: html-->
 
 In the import dialog, browse to the json file you downloaded previously and click Import.
 
 You'll then see the build definition - there are a couple things that need to be fixed, but the steps are all there.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/362b9fba-dd5c-4304-8998-66ba8504e225.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1d354115-a9c1-41af-9630-50057828a7e7.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/362b9fba-dd5c-4304-8998-66ba8504e225.png "image")](/assets/images/files/1d354115-a9c1-41af-9630-50057828a7e7.png)<!--kg-card-end: html-->
 
 Note how the Agent queue is specifying "Hosted Linux Preview" - yep, this is running on a Linux VM. Now you don't have to do this, since Python will run on Windows, but I like the Linux agent - and it's fast too! Rename the definition if you want to.
 
 Now we'll fix the "Get sources" section. Click on "Get sources" to tell the build where to get the sources from. Make sure the "This account" tile is selected and then set the repository to "python-testing-101" or whatever you named your repo when you imported. You can optionally set Tag sources and other settings.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/45ea0341-58af-4baf-98ad-fad4542d1d2f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/665b7439-24b2-46a9-98fb-196994ab1e9a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/45ea0341-58af-4baf-98ad-fad4542d1d2f.png "image")](/assets/images/files/665b7439-24b2-46a9-98fb-196994ab1e9a.png)<!--kg-card-end: html-->
 
 One more addition: click on the Triggers tab and enable the CI trigger:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2ce2e585-3411-4d7b-886d-a84c622408b7.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c82f05c7-13d6-4413-9780-baceb95d0bd8.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/2ce2e585-3411-4d7b-886d-a84c622408b7.png "image")](/assets/images/files/c82f05c7-13d6-4413-9780-baceb95d0bd8.png)<!--kg-card-end: html-->
 
 Now you can click Save and queue to queue a new build! While it's running, let's look at the tasks.
 
@@ -74,37 +74,37 @@ Now you can click Save and queue to queue a new build! While it's running, let's
 
 Really simple! Let's navigate to the build run (click on the build number that you just queued) and - oh dear, the tests failed!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7b25d688-d302-4162-a6bb-1983a926c91f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4dd40cfd-99ee-42a9-b179-228b9d2fa75d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/7b25d688-d302-4162-a6bb-1983a926c91f.png "image")](/assets/images/files/4dd40cfd-99ee-42a9-b179-228b9d2fa75d.png)<!--kg-card-end: html-->
 
 Seems there is a bug in the code. Take a moment to see how great the test result section is - even though there are failing tests. Then click on Tests to see the failing tests:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3572e034-a824-4163-adb9-393a2bec1270.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/42081e0d-1e79-4e14-9272-91ddac06237c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/3572e034-a824-4163-adb9-393a2bec1270.png "image")](/assets/images/files/42081e0d-1e79-4e14-9272-91ddac06237c.png)<!--kg-card-end: html-->
 
 All 4 failing tests have "subtract" in them - easy to guess that we have a problem in the subtract method! If we click on a test we can also see the stack trace and the failed assertions from the test failure. Click on the "Bug" button above the test to log a bug with tons of detail!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b213d4ba-5798-4615-8250-1c389cb66a13.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e08df916-71bd-424b-a02d-c47a35118e09.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/b213d4ba-5798-4615-8250-1c389cb66a13.png "image")](/assets/images/files/e08df916-71bd-424b-a02d-c47a35118e09.png)<!--kg-card-end: html-->
 
 Just look at that bug: with a single button click we have exception details, stack traces and links to the failing build. Sweet!
 
 Now let's fix the bug: click on the Code hub and navigate to example-py-pytest/com/automationpanda/example and click on the calc\_func.py file. Yep, there's a problem in the subtract method:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4e7f26c6-076d-40aa-bd2f-c1fd51c9c945.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/48900b7f-f977-47a2-a5bd-505fd6fc4c32.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4e7f26c6-076d-40aa-bd2f-c1fd51c9c945.png "image")](/assets/images/files/48900b7f-f977-47a2-a5bd-505fd6fc4c32.png)<!--kg-card-end: html-->
 
 Click on the Edit button and change that pesky + to a much better -. Note, this isn't what you'd usually do - you'd normally create a branch from the Bug, pull the repo, fix the bug and push. Then you'd submit a PR. For the sake of this blog, I'm just fixing the code in the code editor.
 
 Click the Commit button to save the change. In "Work items to link" find the Bug that we created earlier and select it. Then click Commit.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7c85af86-a3fa-4bbf-abd6-a90720c1518c.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/bbaa4bb5-bd5f-4102-9ac9-7e1eec1306ea.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/7c85af86-a3fa-4bbf-abd6-a90720c1518c.png "image")](/assets/images/files/bbaa4bb5-bd5f-4102-9ac9-7e1eec1306ea.png)<!--kg-card-end: html-->
 
 The commit will trigger a new build! Click on Build and you'll see a build is already running. Click on the build number to open the build.
 
 This time it's a success! Click on the build number to see the report - this time, we see all the tests are passing and we have 100% coverage - nice!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f375f567-c826-4992-8b53-0ff340255d17.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/03d94fec-57e8-4cab-bcb8-411df3902a1b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/f375f567-c826-4992-8b53-0ff340255d17.png "image")](/assets/images/files/03d94fec-57e8-4cab-bcb8-411df3902a1b.png)<!--kg-card-end: html-->
 
 If you click on "Code Coverage\*" just below the header, you'll see the (prettified) HTML reports. Normally you won't have 100% coverage and you'll want to see which methods have coverage and which don't - you would do so by browsing your files here and noting which lines are covered or not by the color highlighting:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1ec474e5-75a6-4efc-9bdf-e9559eefa776.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b89fe1f2-adcc-486a-bff1-a1a2fc167905.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/1ec474e5-75a6-4efc-9bdf-e9559eefa776.png "image")](/assets/images/files/b89fe1f2-adcc-486a-bff1-a1a2fc167905.png)<!--kg-card-end: html-->
 
 Also note that we can see that this build is related to the Bug (under Associated work items). It's almost like we're professional developers…
 

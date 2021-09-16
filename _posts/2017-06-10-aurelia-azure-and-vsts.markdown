@@ -58,7 +58,7 @@ I also created a .gitignore (helpful tip: if you open the folder in Visual Studi
 
 Then I created a new dotnet webapi project to “host” the Aurelia app in a folder called frontend and another dotnet project to be the API in a folder called API:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8ba06ff0-8452-4001-976f-c6de8fda1880.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/61a4dc74-b9ef-466e-839c-e8bef965e68e.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/8ba06ff0-8452-4001-976f-c6de8fda1880.png "image")](/assets/images/files/61a4dc74-b9ef-466e-839c-e8bef965e68e.png)<!--kg-card-end: html-->
 
 The commands are:
 
@@ -72,11 +72,11 @@ The commands are:
 
 I then opened the API project in Visual Studio. Pressing save prompted me to create a solution file, which I did in the API folder. I also created an empty readme.txt file in the wwwroot folder (I’ll explain why when we get to the build) and changed the Launch URL in the project properties to “api/values”:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a47cfea4-6910-4eed-9de0-2f1d957b7db0.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1e7d032a-075e-4e00-a32d-7ee0b27dfcdc.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a47cfea4-6910-4eed-9de0-2f1d957b7db0.png "image")](/assets/images/files/1e7d032a-075e-4e00-a32d-7ee0b27dfcdc.png)<!--kg-card-end: html-->
 
 When I press F5 to debug, I see this:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8714a2ae-aeeb-4750-a9cb-3569af41e412.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/637a8409-48f7-484c-b183-aa6a0a39f59a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/8714a2ae-aeeb-4750-a9cb-3569af41e412.png "image")](/assets/images/files/637a8409-48f7-484c-b183-aa6a0a39f59a.png)<!--kg-card-end: html-->
 ### Creating the Aurelia Project
 
 I was now ready to create the Aurelia skeleton. The last time I used Aurelia, there was no such thing as the [aurelia-cli](https://github.com/aurelia/cli) – so it was a little bumpy getting started. I found using the cli and the project structure it creates for building/bundling made development smooth as butter. So I cd’d back to the frontend folder and ran the aurelia-cli command to create the Aurelia project:
@@ -98,7 +98,7 @@ I was now ready to create the Aurelia skeleton. The last time I used Aurelia, th
 
 That created the Aurelia project for me and installed all of the nodejs packages that Aurelia requires. Once the install completed, I was able to run by typing “au run”:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/143629bb-f9f7-4c0e-ba77-251c16e29728.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/886c77ba-42fe-4bc1-b1e4-c2006b7ee226.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/143629bb-f9f7-4c0e-ba77-251c16e29728.png "image")](/assets/images/files/886c77ba-42fe-4bc1-b1e4-c2006b7ee226.png)<!--kg-card-end: html-->
 
 Whoop! The skeleton is up, so it’s time to commit!
 
@@ -127,7 +127,7 @@ There is already an empty tslint.json file in the root of the frontend project. 
 
 Now you’ll see some warnings and green squigglies in the code:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a91465e3-2b40-4ba1-97c6-6180273b61f4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5e8d659a-4185-48d6-8b46-96fa9fdbc862.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a91465e3-2b40-4ba1-97c6-6180273b61f4.png "image")](/assets/images/files/5e8d659a-4185-48d6-8b46-96fa9fdbc862.png)<!--kg-card-end: html-->
 
 I don’t care about the type of quotation marks (single or double) and I don’t care about alphabetically ordering my imports, so I override those rules:
 
@@ -235,7 +235,7 @@ Finally, we need to enable CORS on the Web API (since it does not allow CORS by 
 
 Now we can get this when we run the project (using “au run”):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5e26fa9e-fbff-4216-9280-37081283ae84.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2d4e4be1-dd11-422d-990c-b33fe7969174.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5e26fa9e-fbff-4216-9280-37081283ae84.png "image")](/assets/images/files/2d4e4be1-dd11-422d-990c-b33fe7969174.png)<!--kg-card-end: html-->
 
 If you’re following along in the [repo](https://github.com/colindembovsky/AzureAureliaDemo) code, the changes are on the “Step1-AddFetch” branch.
 
@@ -647,7 +647,7 @@ Now when you run “au test” you get a result file and coverage results for th
 
 We now have all the pieces in place to do a build. The build is fairly straightforward once you work out how to invoke the Arelia cli. Starting with a .NET Core Web App template, here is the definition I ended up with:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0573ca73-9e3b-4e2e-98f0-448f5d9c50ae.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/72b236bf-fd45-45b3-9070-3287303247e6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/0573ca73-9e3b-4e2e-98f0-448f5d9c50ae.png "image")](/assets/images/files/72b236bf-fd45-45b3-9070-3287303247e6.png)<!--kg-card-end: html-->
 
 Here are the task settings:
 
@@ -685,17 +685,17 @@ Here are the task settings:
 
 Now when I run the build, I get test and coverage results in the summary:
 
-<!--kg-card-begin: html-->[![SNAGHTML323918f](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ac8a03f6-4c0b-489f-a757-e7fa56b35e3c.png "SNAGHTML323918f")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9b01b4c6-bca4-4f1e-8fb9-2d4498b76231.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![SNAGHTML323918f](/assets/images/files/ac8a03f6-4c0b-489f-a757-e7fa56b35e3c.png "SNAGHTML323918f")](/assets/images/files/9b01b4c6-bca4-4f1e-8fb9-2d4498b76231.png)<!--kg-card-end: html-->
 
 The coverage files are there if you click the Code Coverage results tab, but there’s a problem with the css.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ae799414-0963-480f-9fbb-5e64273d45d4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/54921ef4-6167-46e1-9de3-4277bda6fa3e.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ae799414-0963-480f-9fbb-5e64273d45d4.png "image")](/assets/images/files/54921ef4-6167-46e1-9de3-4277bda6fa3e.png)<!--kg-card-end: html-->
 
 The \<link\> elements are stripped out of the html pages when the iFrame for the coverage results shows – I’m working with the product team to find a workaround for this. If you download the results from the Summary page and unzip them, you get the correct rendering.
 
 I can also see both web projects ready for deployment in the Artifacts tab:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e91eff17-6284-4452-b096-c421006379b4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1fe95c7d-f588-4063-abda-479c87794755.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/e91eff17-6284-4452-b096-c421006379b4.png "image")](/assets/images/files/1fe95c7d-f588-4063-abda-479c87794755.png)<!--kg-card-end: html-->
 
 We’re ready for a release!
 
@@ -705,11 +705,11 @@ I won’t put the whole release to Azure here – the key point to remember is t
 
 Once you’ve set up an Azure endpoint, you can add in an “Azure App Services Deploy” task. Select the subscription and app service and then change the “Package or folder” from “$(System.DefaultWorkingDirectory)/\*\*/\*.zip” to “$(System.DefaultWorkingDirectory)/drop/frontend.zip” (or API.zip) to deploy the corresponding site. To handle the configuration, you simply add “wwwroot/config/config.json” to the “JSON variable substitution”.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0e80ad3c-4056-4ed3-87f7-ec8247095fa8.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e1ee97d8-a7a6-4ecc-bb7c-4a16cf65dc6e.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/0e80ad3c-4056-4ed3-87f7-ec8247095fa8.png "image")](/assets/images/files/e1ee97d8-a7a6-4ecc-bb7c-4a16cf65dc6e.png)<!--kg-card-end: html-->
 
 Now we can define an environment variable for the substitution. Just add one with the full “JSON path” for the variable. In our case, we want “api.baseUri” to be the name and then put in whatever the corresponding environment value is:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/17a16497-36e7-4011-86d1-f1ea5718de6d.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/09a2c2e9-0ad1-459a-8832-963872835b86.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/17a16497-36e7-4011-86d1-f1ea5718de6d.png "image")](/assets/images/files/09a2c2e9-0ad1-459a-8832-963872835b86.png)<!--kg-card-end: html-->
 
 We can repeat this for other variables if we need more.
 

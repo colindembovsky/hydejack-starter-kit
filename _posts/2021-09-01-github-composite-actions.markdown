@@ -45,7 +45,7 @@ Below we'll look at an example. Before we do, let's consider the limitations tha
 - You cannot use `if` conditions for steps
 - Composite Actions cannot read `secrets` - you have to pass secrets in as parameters
 - The Actions log does not show a separate log per step as you would see in a "normal" Action - all the steps of the Composite are executed as if they were a single step, making debugging Composite Action logs harder to analyze:
-<figure class="kg-card kg-image-card"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2021/9/1175_image.png" class="kg-image" alt loading="lazy"></figure>
+<figure class="kg-card kg-image-card"><img src="/assets/images/2021/9/1175_image.png" class="kg-image" alt loading="lazy"></figure>
 
 > Note how the entire Composite Action only shows as a single step in the log, even though there are multiple steps in the Composite itself.
 

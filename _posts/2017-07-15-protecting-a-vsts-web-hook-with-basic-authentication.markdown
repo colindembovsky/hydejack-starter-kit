@@ -135,7 +135,7 @@ Notes:
 
 To run the site using SSL from VS, you'll need to enable that in the project properties. Click on the web project node (so that it is selected in the Solution Explorer). Then press F4 to open the properties pane (this is different to right-click -\> Properties). Change SSL Enabled to true. Make a note of the https URL.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b0210614-f998-4aee-953f-8bd3721efc98.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/31e35e22-1262-4041-b8e5-a43bf734d7f2.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/b0210614-f998-4aee-953f-8bd3721efc98.png "image")](/assets/images/files/31e35e22-1262-4041-b8e5-a43bf734d7f2.png)<!--kg-card-end: html-->
 
 You can now right-click the project and select Properties. Change the startup URL to the https URL so that you always get the SSL site.
 
@@ -145,28 +145,28 @@ You can now run the site. You'll notice when you first run it that the cert is i
 
 I opened Postman and entered this url: [https://localhost:44388/api/webhooks/incoming/vsts?code=C8B7F962-2B5A-4973-81F3-8888D53CF86E](https://localhost:44388/api/webhooks/incoming/vsts?code=C8B7F962-2B5A-4973-81F3-8888D53CF86E), changing the method to POST. I made sure that the code was the same value as the **MS\_WebHookReceiverSecret\_VSTS** key in my web.config. I then opened the [docs page](https://www.visualstudio.com/en-us/docs/integrate/get-started/service-hooks/events) and grabbed the sample payload for the WorkItemCreated event and pasted this into the Body for the request. I updated the type to application/json (which adds a header).
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/00633e1a-60d8-449b-9c7b-03fe820588fe.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/eabb86ad-f65d-4170-a82e-5119ed0e79d7.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/00633e1a-60d8-449b-9c7b-03fe820588fe.png "image")](/assets/images/files/eabb86ad-f65d-4170-a82e-5119ed0e79d7.png)<!--kg-card-end: html-->
 
 Hitting Send returns a 401 - which is expected since we haven't provided a username/password. Nice!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0ee8709a-76d9-4187-94bf-bfeb49b004cd.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/44208e26-fd6d-4ba9-9304-700b61e70ac1.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/0ee8709a-76d9-4187-94bf-bfeb49b004cd.png "image")](/assets/images/files/44208e26-fd6d-4ba9-9304-700b61e70ac1.png)<!--kg-card-end: html-->
 
 Now let's test adding the auth. Go back to Postman and click on Authorization. Change the Type to "Basic Auth" and enter the username/password that you hard-coded into your web.config. Click "Update Request" to add the auth header:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/13b944df-e31f-419a-9c8a-66f43396ee71.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8c112bd2-9ccb-44db-85dd-372515f3089a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/13b944df-e31f-419a-9c8a-66f43396ee71.png "image")](/assets/images/files/8c112bd2-9ccb-44db-85dd-372515f3089a.png)<!--kg-card-end: html-->
 
 Now press Send again. We get a 200!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4e9b82ff-9334-4f31-945e-567ee190eb21.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/13c9ee7e-d172-410b-87ab-d62d7b943908.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/4e9b82ff-9334-4f31-945e-567ee190eb21.png "image")](/assets/images/files/13c9ee7e-d172-410b-87ab-d62d7b943908.png)<!--kg-card-end: html-->
 
 Of course you can now set breakpoints and debug normally. If you open AppInsights Viewer in VS you'll see the traces - these will eventually make their way to AppInsights (remember to update your key when you create a real AppInsights resource in Azure).
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ecb37096-1819-46c7-8bec-50f044f1d429.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/cdee7c12-ca3b-4803-9e44-a17da781fcf9.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ecb37096-1819-46c7-8bec-50f044f1d429.png "image")](/assets/images/files/cdee7c12-ca3b-4803-9e44-a17da781fcf9.png)<!--kg-card-end: html-->
 ## Registering the Secure Hook in VSTS
 
 You can now clean up the project a bit (remove the home controller etc.) and deploy the site to Azure (or your own IIS web server) using VSTS Build and Release Management ([friends don't let friends right-click Publish](https://twitter.com/damovisa/status/882953242468122624)) and you're ready to register the hook in VSTS. Open your VSTS Team Project and head to Configuration-\>Service Hooks. Add a new service hook. Enter the URL (including the code query param) for your service. Then just enter the same username/password you have in the website web.config and you're good to go! Hit test to make sure it works.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/207a4d9d-0c08-4967-9b6a-db12a1d28a88.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fdee901d-4294-4426-99cf-20712849312c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/207a4d9d-0c08-4967-9b6a-db12a1d28a88.png "image")](/assets/images/files/fdee901d-4294-4426-99cf-20712849312c.png)<!--kg-card-end: html-->
 ## Conclusion
 
 Securing your WebHooks from VSTS isn't all that hard - just add the BasicAuthHandler and configure the basic auth username/password in the WebHook subscription in VSTS. Now you can securely receive events from VSTS. I would really like to see the VSTS team update the NuGet packages to support .NET Core WebAPI, but the 4.x version is fine in the interim.

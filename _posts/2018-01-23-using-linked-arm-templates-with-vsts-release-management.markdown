@@ -149,7 +149,7 @@ Of course the parent template can contain other resources - I just kept this exa
 
 Here's a look at how I laid out the files in the Azure Resource Group project:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/70c8a31a-fe17-41ed-8319-a1db70eff95a.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d859a2fc-824c-4900-8029-6e6460e7874d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/70c8a31a-fe17-41ed-8319-a1db70eff95a.png "image")](/assets/images/files/d859a2fc-824c-4900-8029-6e6460e7874d.png)<!--kg-card-end: html-->
 
 You can see how the vNet.json (the child template) is inside a folder called "Resources". I use that as the relative path when constructing the URI to the child template.
 
@@ -159,13 +159,13 @@ Now all the hard work is done! To get this into a release, we just create a stor
 
 Now create a new release definition. Add the repo containing the templates as a release artifact. Then in your environment, drop two tasks: Azure File Copy and Azure Resource Group Deployment. We configure the Azure File Copy task to copy all our files to the storage account into a container called templates. We also need to give the task two variable names: one for the containerUri and one for the SAS token:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8cab0747-bb3c-4265-a0ea-58193364e490.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ef6934b9-1161-4256-9e49-e7ecbb5f86b0.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/8cab0747-bb3c-4265-a0ea-58193364e490.png "image")](/assets/images/files/ef6934b9-1161-4256-9e49-e7ecbb5f86b0.png)<!--kg-card-end: html-->
 
 Once this task has executed, the templates will be available in the (private) container with the same folder structure as we have in Visual Studio.
 
 On the next task, we can select the parent template as the template to invoke. We can pass in any parameters that are needed - at the very least, we need the containerUri and SAS token, so we pass in the variables from the previous task using $() notation:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/136c37f0-a276-4851-8ad5-bfad48ed208c.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/061159e7-1035-4924-b653-82cd7d7280cf.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/136c37f0-a276-4851-8ad5-bfad48ed208c.png "image")](/assets/images/files/061159e7-1035-4924-b653-82cd7d7280cf.png)<!--kg-card-end: html-->
 
 Now we can run the release and voila - we'll have a vNet with two subnets.
 

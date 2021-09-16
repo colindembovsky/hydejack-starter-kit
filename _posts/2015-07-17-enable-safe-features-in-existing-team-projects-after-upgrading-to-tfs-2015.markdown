@@ -264,15 +264,15 @@ Bear in mind that this script is a “best-effort” – make sure you test it i
 
 After running the script. you’ll be able to create Epic work items:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/76dbf0dc-5910-4ed4-a2d2-f5b39dbe0656.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/bb4f7202-9bc1-4f81-a9ea-edf90a783768.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/76dbf0dc-5910-4ed4-a2d2-f5b39dbe0656.png "image")](/assets/images/files/bb4f7202-9bc1-4f81-a9ea-edf90a783768.png)<!--kg-card-end: html-->
 
 You’ll be able to opt in/out of the Epic backlog in the Team Settings page:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8326d637-7260-4617-9c10-c8568f793fb4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/21cc8c7d-d422-4af5-87f0-acfb586e93b5.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/8326d637-7260-4617-9c10-c8568f793fb4.png "image")](/assets/images/files/21cc8c7d-d422-4af5-87f0-acfb586e93b5.png)<!--kg-card-end: html-->
 
 You’ll see “Value Area” on your Features and “Requirements”:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6f88f50f-4c71-4e68-974a-b359bcf91a10.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b55b60e2-7e74-4e3c-8edb-5dde3793208a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/6f88f50f-4c71-4e68-974a-b359bcf91a10.png "image")](/assets/images/files/b55b60e2-7e74-4e3c-8edb-5dde3793208a.png)<!--kg-card-end: html-->
 
 Happy upgrading!
 

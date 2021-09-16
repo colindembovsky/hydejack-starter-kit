@@ -39,7 +39,7 @@ The next thing you’ll need is my [VersionAssemblies custom build task](https:/
 
 Now go to your VSTS account and navigate to the Code hub. Create a new Build definition using the Visual Studio template. Select the appropriate source repo and branch (I’m just going to use master) and select the queue with your private agent. Select Continuous Integration to queue the build whenever a commit is pushed to the repo:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4a7acc11-01a8-47da-acaf-ad96ddc03ac0.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a1859eb3-7f2a-4937-be6c-a49dba822a8d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4a7acc11-01a8-47da-acaf-ad96ddc03ac0.png "image")](/assets/images/files/a1859eb3-7f2a-4937-be6c-a49dba822a8d.png)<!--kg-card-end: html-->
 
 Change the name of the build – I’ve called mine “VisualObjects”. Go to the General tab and change the build number format to be
 
@@ -51,11 +51,11 @@ Now we want to change the build so that it will match the ApplicationTypeVersion
 
 Configure the first one as follows:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8122a0ca-f3c9-4819-b976-fe95f71ab0ce.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4354826f-09b8-44e2-a2c5-d9d248012266.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/8122a0ca-f3c9-4819-b976-fe95f71ab0ce.png "image")](/assets/images/files/4354826f-09b8-44e2-a2c5-d9d248012266.png)<!--kg-card-end: html-->
 
 Configure the second one as follows:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/99b52c32-9907-4ad7-ac8b-674d86250a32.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2f967a07-15ca-493c-bea0-2279e02acd5c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/99b52c32-9907-4ad7-ac8b-674d86250a32.png "image")](/assets/images/files/2f967a07-15ca-493c-bea0-2279e02acd5c.png)<!--kg-card-end: html-->
 
 The first task finds the ApplicationManifest.xml file and replaces the version with the build number. The second task recursively finds all the ServiceManifest.xml files and then also replaces the version number of each service with the build number. After the build, the application and service versions will all match the build number.
 
@@ -63,19 +63,19 @@ The next 3 tasks should be “NuGet Installer”, “Visual Studio Build” and 
 
 Add a new “Visual Studio Build” task and place it just below the test task. Configure the Solution parameter to the path of the .sfproj in the solution (src/VisualObjects/VisualObjects/VisualObjects.sfproj). Make the MSBuild Arguments parameter “/t:Package). Finally, add $(BuildConfiguration) to the Configuration parameter. This task invokes Visual Studio to package the Service Fabric app:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/dd5d1ce8-3ff4-4c9d-96c0-72481c6c2576.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/14608904-483f-496c-9218-15c366b5d685.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/dd5d1ce8-3ff4-4c9d-96c0-72481c6c2576.png "image")](/assets/images/files/14608904-483f-496c-9218-15c366b5d685.png)<!--kg-card-end: html-->
 
 Now you’ll need to do some copying so that we get all the files we need into the artifact staging directory, ready for publishing. Add a couple “Copy” tasks to the build and configure them as follows:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7dc9fa90-26f4-4c43-824a-64b16fbe41d4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/25e4f774-60ad-46a7-9258-38be03773928.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/7dc9fa90-26f4-4c43-824a-64b16fbe41d4.png "image")](/assets/images/files/25e4f774-60ad-46a7-9258-38be03773928.png)<!--kg-card-end: html-->
 
 This copies the Service Fabric app package to the staging directory.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8eb44813-6d32-420a-8cc1-2421c9b7376e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/277b9095-4897-4410-b44a-67af02bc3389.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/8eb44813-6d32-420a-8cc1-2421c9b7376e.png "image")](/assets/images/files/277b9095-4897-4410-b44a-67af02bc3389.png)<!--kg-card-end: html-->
 
 This copies the Scripts folder to the staging directory (we’ll need this in the release to publish the app).
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e7d5f48e-3e9f-4679-a22a-fb6e617badce.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4f246bbb-567b-4338-95b1-86091360c51a.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/57a3cd79-ebc2-4fa8-bd8b-fc0ba3d6542e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fe5104b1-f723-4667-b0bb-fabfe59965be.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/e7d5f48e-3e9f-4679-a22a-fb6e617badce.png "image")](/assets/images/files/4f246bbb-567b-4338-95b1-86091360c51a.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](/assets/images/files/57a3cd79-ebc2-4fa8-bd8b-fc0ba3d6542e.png "image")](/assets/images/files/fe5104b1-f723-4667-b0bb-fabfe59965be.png)<!--kg-card-end: html-->
 
 These tasks copy the Publish Profiles and ApplicationParameters files to the staging directory. Again, these are needed for the release.
 
@@ -85,15 +85,15 @@ You can remove the Source Symbols task if you want to – it’s not going to ha
 
 Finally, make sure that your “Publish Build Artifacts” task is configured like this:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/17e165bf-d097-4bc0-96b9-fab4ca7e1304.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d65f9c73-a569-4b82-887f-246cb6823c2b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/17e165bf-d097-4bc0-96b9-fab4ca7e1304.png "image")](/assets/images/files/d65f9c73-a569-4b82-887f-246cb6823c2b.png)<!--kg-card-end: html-->
 
 Of course you can also choose a network folder rather than a server drop if you want. The tasks should look like this:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/94c65e36-bd1f-425b-906a-c03cb0f048d6.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/38590fa3-9e30-455e-b727-601734367fe0.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/94c65e36-bd1f-425b-906a-c03cb0f048d6.png "image")](/assets/images/files/38590fa3-9e30-455e-b727-601734367fe0.png)<!--kg-card-end: html-->
 
 Run the build to make sure that it’s all happy. The artifacts folder should look like this:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f48745e5-8e7e-4a99-9fa3-4eade351e3dd.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7a0e92a5-c56d-43d4-a725-8cf01ddbf37d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f48745e5-8e7e-4a99-9fa3-4eade351e3dd.png "image")](/assets/images/files/7a0e92a5-c56d-43d4-a725-8cf01ddbf37d.png)<!--kg-card-end: html-->
 ## Setting up the Release
 
 Now that the app is packaged, we’re almost ready to define the release pipeline. There’s a decision to make at this point: to ARM or not to ARM. In order to create the Azure Resource Group containing the cluster from the ARM template, VSTS will need a secure connection to the Azure subscription (follow [these instructions](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)). This connection is service principal based, so you need to have an AAD backing your Azure subscription and you need to have permissions to add new applications to the AAD (being an administrator or co-admin will work – there may be finer-grained RBAC roles for this, I’m not sure). However, if you don’t have an AAD backing your subscription or can’t create applications, you can manually create the cluster in your Azure subscription. Do so now if you’re going to create the cluster(s) manually (one for Test, one for Prod).
@@ -102,7 +102,7 @@ To create the release definition, go to the Release hub in VSTS and create a new
 
 Change the name of the first environment to “Test”. Edit the variables for the environment and add one called “AdminPassword” and another called “ClusterName”. Set the admin password to some password and padlock it to make it a secret. The name that you choose for the cluster is the DNS name that you’ll use to address your cluster. In my case, I’ve selected “colincluster-test” which will make the URL of my cluster “colincluster-test.eastus.cloudapp.azure.com”.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8419c3bc-7014-4c5e-a82d-082d37e88631.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b581edba-501a-42f1-abb1-910c6d0d292c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/8419c3bc-7014-4c5e-a82d-082d37e88631.png "image")](/assets/images/files/b581edba-501a-42f1-abb1-910c6d0d292c.png)<!--kg-card-end: html-->
 ### Create or Update the Cluster
 
 If you created the cluster manually, skip to the next task. If you want to create (or update) the cluster as part of the deployment, then add a new “Azure Resource Group Deployment” task to the Test environment. Set the parameters as follows:
@@ -118,7 +118,7 @@ If you created the cluster manually, skip to the next task. If you want to creat
 
 You can override any other parameters you need to in the Override parameters setting. For now, I’m just overriding the clusterName and adminPassword parameters.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ce833bce-d00f-44fb-9f68-0fe7269ec8fb.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/72527f6b-68ed-4604-935b-54bbccd2c276.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ce833bce-d00f-44fb-9f68-0fe7269ec8fb.png "image")](/assets/images/files/72527f6b-68ed-4604-935b-54bbccd2c276.png)<!--kg-card-end: html-->
 ### Replace Tokens
 
 The Service Fabric profiles contain the cluster connection information. Since you could be creating the cluster on the fly, I’ve tokenized the connection setting in the profile files as follows:
@@ -151,7 +151,7 @@ The Service Fabric profiles contain the cluster connection information. Since yo
 
 You can see that there is a \_\_ClusterName\_\_ token (the highlighted line). You’ve already defined a value for cluster name that you used in the ARM task. Wouldn’t it be nice if you could simply replace the token called \_\_ClusterName\_\_ with the value of the variable called ClusterName? Since you’ve already installed the [Colin's ALM Corner Build and Release](https://marketplace.visualstudio.com/items?itemName=colinsalmcorner.colinsalmcorner-buildtasks) extension from the marketplace, you get the [ReplaceTokens](https://github.com/colindembovsky/cols-agent-tasks/tree/master/Tasks/ReplaceTokens) task as well, which does exactly that! Add a ReplaceTokens task and set it as follows:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b69d8875-9efd-46f8-9f0f-daa427cffec6.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d8d5d37e-6787-4496-8388-1981bdc033d8.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/b69d8875-9efd-46f8-9f0f-daa427cffec6.png "image")](/assets/images/files/d8d5d37e-6787-4496-8388-1981bdc033d8.png)<!--kg-card-end: html-->
 
 **<u>IMPORTANT NOTE!</u>** The templates I’ve defined are not secured. In production, you’ll want to secure your clusters. The connection parameters then need a few more tokens like the ServerCertThumbprint and so on. You can also make these tokens that the ReplaceTokens task can substitute. Just note that if you make any of them secrets, you’ll need to specify the secret values in the Advanced section of the task.
 
@@ -165,7 +165,7 @@ Now that we have a cluster and we have a profile that can connect to the cluster
 
 The script needs to take at least the PublishProfile path and then the ApplicationPackage path. These paths are relative to the Scripts folder, so expand Advanced and set the working folder to the Scripts directory:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fc9e4139-477b-425d-87f0-44383e9b8895.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7b2458d3-f552-455e-9a56-c3590e7dd56f.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/fc9e4139-477b-425d-87f0-44383e9b8895.png "image")](/assets/images/files/7b2458d3-f552-455e-9a56-c3590e7dd56f.png)<!--kg-card-end: html-->
 
 That’s it! You can now run the release to deploy it to the Test environment. Of course you can add other tasks (like Cloud Load Tests etc.) and approvals. Go wild.
 
@@ -185,7 +185,7 @@ I mentioned earlier that this technique has a snag: if the release creates the c
 
 Lines 1 to 185 of the script are original, (I show line 185 as the first line of this snippet). The if statement alters slightly to take the $AppExists into account – the remainder of the script is as per the OOB script.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5e86b754-08cc-4227-b460-f17e2b6fe0eb.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e8408851-eccb-4d52-83b2-172eeeb05876.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5e86b754-08cc-4227-b460-f17e2b6fe0eb.png "image")](/assets/images/files/e8408851-eccb-4d52-83b2-172eeeb05876.png)<!--kg-card-end: html-->
 
 Now that you have the Test environment, you can clone it to the Prod environment. Change the parameter values (and the template and profile paths) to make the prod-specific and you’re done! One more tip: if you change the release name format (under the general tab) to
 
@@ -195,7 +195,7 @@ then you’ll get the build number as part of the release number.
 
 Here you can see my cluster with the Application Version matching the build number:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f51dbe3a-f2c3-4eca-9e5b-f0d548557f88.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/898c74ec-07c4-41f6-9fb5-cbaddbf83957.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f51dbe3a-f2c3-4eca-9e5b-f0d548557f88.png "image")](/assets/images/files/898c74ec-07c4-41f6-9fb5-cbaddbf83957.png)<!--kg-card-end: html-->
 
 Sweet! Now I can tell which build was used for my application right from my cluster!
 

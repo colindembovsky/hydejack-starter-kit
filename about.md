@@ -5,7 +5,7 @@ hide_description: true
 permalink: /about/
 ---
 <div style="text-align: center">
-    <img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/4/23177_profile_mox.jpg" alt loading="lazy" width="350">
+    <img src="/assets/images/2020/4/23177_profile_mox.jpg" alt loading="lazy" width="350">
 </div>
 
 Colin Dembovsky is a Field Solution Engineer for [GitHub](https://github.com). He is a DevOpsologist and [ALM MVP](https://mvp.microsoft.com/en-us/mvp/Colin%20Dembovsky-4034924) and is based in Spring, TX (formerly from South Africa). After completing an MSc in Computer Science at [Rhodes University](http://www.ru.ac.za/), he worked as a developer (first in Linux using C++ and moving to .NET and C#) and later systems architect. He left development work to start ALM consulting, and has been an ALM MVP since 2011. He was a DevOps practice lead before joining GitHub.

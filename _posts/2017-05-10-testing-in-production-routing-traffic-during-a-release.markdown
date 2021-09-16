@@ -27,27 +27,27 @@ To illustrate that, here’s an example. In this release I have DEV and QA envir
 
 Here is the entire release in one graphic:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/269dc0f8-c80b-4a80-8f06-91ca74aeb113.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f863725e-2677-44d2-801b-b47d56b7c930.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/269dc0f8-c80b-4a80-8f06-91ca74aeb113.png "image")](/assets/images/files/f863725e-2677-44d2-801b-b47d56b7c930.png)<!--kg-card-end: html-->
 
 In Prod-blue, the incoming build is deployed to the “blue” slot on the web app:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/900b2a20-072c-4f73-9e35-2a626ca8a461.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3732c09c-f70e-4358-838d-98553f39e19b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/900b2a20-072c-4f73-9e35-2a626ca8a461.png "image")](/assets/images/files/3732c09c-f70e-4358-838d-98553f39e19b.png)<!--kg-card-end: html-->
 
 Next, the Route Traffic task routes a percentage of traffic to the blue slot (in this case, 23%):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/29c131e0-2413-47ec-944c-4c1844dd96e8.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1fdf1cdb-3870-4ea4-a74d-5c38a6d69fb6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/29c131e0-2413-47ec-944c-4c1844dd96e8.png "image")](/assets/images/files/1fdf1cdb-3870-4ea4-a74d-5c38a6d69fb6.png)<!--kg-card-end: html-->
 
 If you now open the App Service in the Azure Portal, click on “Testing in Production” to view the traffic routing:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/bb224c40-b900-4187-b0ec-8c456be61e8b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/841a61a8-c97c-4be5-948d-876eb20b4d75.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/bb224c40-b900-4187-b0ec-8c456be61e8b.png "image")](/assets/images/files/841a61a8-c97c-4be5-948d-876eb20b4d75.png)<!--kg-card-end: html-->
 
 Now it’s time to monitor the two slots to check if the experiment is successful. Once you’ve determined the result, you can approve the Prod-blue environment, which automatically triggers the blue-cleanup environment, which updates the traffic routing to route 0% traffic to the blue slot (effectively removing the traffic route altogether).
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/26843d57-249c-4f73-a686-77af531c6027.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/de4dbdb2-e9fc-4772-abc3-3d64f629d583.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/26843d57-249c-4f73-a686-77af531c6027.png "image")](/assets/images/files/de4dbdb2-e9fc-4772-abc3-3d64f629d583.png)<!--kg-card-end: html-->
 
 Then the Prod-success environment is triggered with a manual pre-deployment configured – reject to end the experiment (if it failed) or approve to execute the swap slot task to make the experimental site production.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d79818cf-6180-44ea-8e95-e1939d4f4655.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b68db4d3-1553-4a7f-a7b2-a84ac73f5231.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/d79818cf-6180-44ea-8e95-e1939d4f4655.png "image")](/assets/images/files/b68db4d3-1553-4a7f-a7b2-a84ac73f5231.png)<!--kg-card-end: html-->
 
 Whew! We were able to automate an experiment fairly easily using the Route Traffic task!
 

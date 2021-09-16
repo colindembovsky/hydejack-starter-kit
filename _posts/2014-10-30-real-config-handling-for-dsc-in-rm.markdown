@@ -171,13 +171,13 @@ Now that we have the script, let’s see how we consume it. (Of course it’s ch
 
 We define the vNext Component the same way we did last time:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3afcf23f-dd5f-4ad5-bbbd-44b91f8da5c2.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9c1fe5be-55bb-49c4-b51b-eeb6588e82b2.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/3afcf23f-dd5f-4ad5-bbbd-44b91f8da5c2.png "image")](/assets/images/files/9c1fe5be-55bb-49c4-b51b-eeb6588e82b2.png)<!--kg-card-end: html-->
 
 Nothing magical here – this really just defines the root folder of the build drop for use in the deployment.
 
 Next we create the vNext template using our desired vNext release path. On the designer, you’ll see the major difference: we’re defining the variables on the surface itself:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/449bb9ac-2243-451e-945c-160302f3a9ed.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d1fc2e69-c46c-49a9-8f2c-2ff2e22062ed.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/449bb9ac-2243-451e-945c-160302f3a9ed.png "image")](/assets/images/files/d1fc2e69-c46c-49a9-8f2c-2ff2e22062ed.png)<!--kg-card-end: html-->
 
 Our script uses $ServerName (which you can see is set to fabfiberserver). It also uses ConStr and SiteName (these are the parameter values we specified in lines 44/45 of the above script – $ConStr &nbsp;and $SiteName). Of course if we deploy to another server (say in our production environment) we would simply specify other values for that server.
 
@@ -231,7 +231,7 @@ This is very straight-forward:
 
 Here’s how to use the script in a release template:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d2e3a8e8-83e9-4c55-9f79-c31ccd2a3b73.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3a7e1710-d951-4208-a764-5c178e547b36.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/d2e3a8e8-83e9-4c55-9f79-c31ccd2a3b73.png "image")](/assets/images/files/3a7e1710-d951-4208-a764-5c178e547b36.png)<!--kg-card-end: html-->
 
 By now you should be able to see how this designer is feeding values to the script!
 

@@ -49,11 +49,11 @@ Now I can just run “Set-DockerEnv” whenever I need to set the environment.
 
 So I have a Docker environment locally – great. Now I need to be able to deploy something into a container! Since I (mostly) use Visual Studio 2015, I installed the [VS Tools for Docker](https://visualstudiogallery.msdn.microsoft.com/0f5b2caa-ea00-41c8-b8a2-058c7da0b3e4) extension. Make sure you follow the install instructions carefully – the preview toolset is a bit picky. I wanted to play with Windows containers, but for starters I was working with Unix containers, so I needed some code that could run on Unix. Fortunately, ASP.NET 5 can! So I did a File –\> New Project and created an ASP.NET 5 Web application (this is a boilerplate MVC 6 application). Once I had the project created, I right-clicked the project and selected “Publish” to see the publish page. You’ll see the “Docker Containers” target:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/19648e75-30c9-4d00-921f-fcee25c486c4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/de79a882-4509-436e-b1fd-c16dd2b8e4d5.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/19648e75-30c9-4d00-921f-fcee25c486c4.png "image")](/assets/images/files/de79a882-4509-436e-b1fd-c16dd2b8e4d5.png)<!--kg-card-end: html-->
 
 You can select an Azure Docker VM if you have one – in my case I wanted to deploy locally, so I checked “Custom Docker Host” and clicked OK. I entered in the server url for my local docker host (tcp://10.0.0.19:2376) and left all the rest as default. Clicking “Validate Connection” however, failed. After some trial and error, I realized that the default directory for certificates for the “docker-machine” command I used is different to the default directory the VS Tools for Docker expects. So I just supplied additional settings for “Auth Options” and voila – I could now validate the connection:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/444c9664-94c1-4922-8968-90925e6b16e2.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/772b5fae-c29c-48df-9ab2-1cbe4b3a444f.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/444c9664-94c1-4922-8968-90925e6b16e2.png "image")](/assets/images/files/772b5fae-c29c-48df-9ab2-1cbe4b3a444f.png)<!--kg-card-end: html-->
 
 Here are the settings for “Auth Options” in full:
 
@@ -93,7 +93,7 @@ Once you’ve generated the Dockerfile, you need to be careful if you want to de
 
 VS is even smart enough to nest your Dockerfiles in your solution!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fa59a5da-eba6-4b0c-91a8-c99ff20825e3.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/988047ed-7b44-412e-9df1-b71e4c75abfb.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/fa59a5da-eba6-4b0c-91a8-c99ff20825e3.png "image")](/assets/images/files/988047ed-7b44-412e-9df1-b71e4c75abfb.png)<!--kg-card-end: html-->
 
 So I could now publishing successfully from VS. Next up: deploying from Team Build!
 
@@ -103,7 +103,7 @@ So I could now publishing successfully from VS. Next up: deploying from Team Bui
 
 If you’ve looked at the build tasks on VSO, you’ll notice that there is a “Docker” task:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/10654a6d-f1d0-46d4-bf83-bf194b8f5ca8.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/852aa52e-c937-4c92-85c0-51fb3f792a85.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/10654a6d-f1d0-46d4-bf83-bf194b8f5ca8.png "image")](/assets/images/files/852aa52e-c937-4c92-85c0-51fb3f792a85.png)<!--kg-card-end: html-->
 
 It’s a little unsatisfying, to be blunt. You can (supposedly) deploy a docker image – but there’s no way to get your code into the image (“docker build” the image) in the first place. Secondly, there doesn’t appear to be any security or advanced settings anywhere. Clicking “More Information” takes you to a placeholder markdown file – so no help there. Admittedly the team are still working on the “official” Docker tasks – but I didn’t want to wait!
 
@@ -111,7 +111,7 @@ It’s a little unsatisfying, to be blunt. You can (supposedly) deploy a docker 
 
 Taking a step back and delving into the files and scripts that VS Tools for Docker generated for me, I decided to take a stab at deploying using the PowerShell script in the PublishProfiles folder of my solution. I created a publish profile called “LocalDocker”, and sure enough VS had generated 3 files: the pubxml file (settings), a PowerShell publish file and a shell script publish file.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f659f186-1934-4fb1-9048-c0f8b9b9247f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f31824e0-7e6a-4f3d-8cef-092962a65d86.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f659f186-1934-4fb1-9048-c0f8b9b9247f.png "image")](/assets/images/files/f31824e0-7e6a-4f3d-8cef-092962a65d86.png)<!--kg-card-end: html-->
 
 To invoke the script, you need 3 things:
 
@@ -178,7 +178,7 @@ Notes:
 
 Just add a PowerShell task into your build (before the VS Build task) and browse your repo to the location of the script:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/da6bdd07-4250-40df-aaa8-1bd93802dfb0.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/01b2f7d4-d731-43e3-a63d-2ca6a56b8664.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/da6bdd07-4250-40df-aaa8-1bd93802dfb0.png "image")](/assets/images/files/01b2f7d4-d731-43e3-a63d-2ca6a56b8664.png)<!--kg-card-end: html-->
 
 Now you’re ready to call msbuild. In the VS Build task, set the solution to the xproj file (the project file for the ASP.NET project you want to publish). Then add the following msbuild arguments:
 
@@ -216,7 +216,7 @@ The _pathToDockerPublish_ is the path to Tasks/DockerPublish in the repo.
 
 Once you’ve done that, you can then add a Docker Publish task. Set the path to your pubxml (if you have one), the path to the Dockerfile you want to use and set the Pack Output Path to _$(Build.StagingDirectory)_ (or wherever the code you want to deploy to the container is). If you don’t have a pubxml file, leave “Path to Pubxml” empty – you’ll have to supply all the other details. If you have a pubxml, but want to overwrite some settings, just enter the settings in accordingly. The script will take the pubxml setting unless you supply a value in an override.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/143822bb-ee5f-475e-8294-08f0e08a2b44.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7e50a160-67d5-461a-935a-28bbbd28a5b5.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/143822bb-ee5f-475e-8294-08f0e08a2b44.png "image")](/assets/images/files/7e50a160-67d5-461a-935a-28bbbd28a5b5.png)<!--kg-card-end: html-->
 
 In this example, I’m overriding the docker image name (using the build number as the tag) and specifying “Build only” as false. That means the image will be built (using “docker build”) and a container will be spun up. Set this value to “true” if you just want to build the image without deploying a container. Here are all the settings:
 
@@ -235,11 +235,11 @@ In this example, I’m overriding the docker image name (using the build number 
 
 Once the build completes, you’ll be able to see the image in “docker images”.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/526249ff-7982-4e7b-b2a1-11c73998d929.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/32b552c5-89b2-4b6d-b7b7-f7e5a3db2aff.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/bc13b054-4caf-4ae8-8bc7-aad33bd00796.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0f4848a0-a301-4de8-bd0e-023e9838a242.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/526249ff-7982-4e7b-b2a1-11c73998d929.png "image")](/assets/images/files/32b552c5-89b2-4b6d-b7b7-f7e5a3db2aff.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](/assets/images/files/bc13b054-4caf-4ae8-8bc7-aad33bd00796.png "image")](/assets/images/files/0f4848a0-a301-4de8-bd0e-023e9838a242.png)<!--kg-card-end: html-->
 
 If you’ve set “build only” to false you’ll be able to access your application!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/84110c04-72de-42cc-8cc4-83d4e62395c9.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c79fbd39-cb2f-4837-9ca5-f84f9cc1db96.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/84110c04-72de-42cc-8cc4-83d4e62395c9.png "image")](/assets/images/files/c79fbd39-cb2f-4837-9ca5-f84f9cc1db96.png)<!--kg-card-end: html-->
 
 Happy publishing!
 

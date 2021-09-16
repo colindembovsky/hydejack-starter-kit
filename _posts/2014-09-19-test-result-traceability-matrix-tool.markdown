@@ -20,7 +20,7 @@ Given the assumption that the most recent test point result is the “result” 
 
 Here’s the output of a run:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0239fdda-4c98-4efc-a156-db27d9ca9646.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/54f8b5ce-b27c-44c6-8930-0e9f6b02ffee.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/0239fdda-4c98-4efc-a156-db27d9ca9646.png "image")](/assets/images/files/54f8b5ce-b27c-44c6-8930-0e9f6b02ffee.png)<!--kg-card-end: html-->
 
 The first 3 columns are:
 

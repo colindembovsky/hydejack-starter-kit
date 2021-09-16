@@ -9,7 +9,7 @@ tags:
 
 Recently I attended the MVP Summit in Redmond. This is an annual event where MVPs from around the world converge on Microsoft to meet with each other and various product teams. It’s a highlight of the year (and one of the best benefits of being an MVP).
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0fead412-36f9-4855-b0da-db677c5c1b58.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/bf5182e4-d1ac-4e2b-9ae5-0bfcc00f631c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/0fead412-36f9-4855-b0da-db677c5c1b58.png "image")](/assets/images/files/bf5182e4-d1ac-4e2b-9ae5-0bfcc00f631c.png)<!--kg-card-end: html-->
 
 The ALM MVPs have a tradition – we love to hear what other MVPs have been doing, so we have a pre-Summit session where we get 20 minute slots to share anything that’s interesting. This year I did a slide ware chat entitle _Docker DevOps_. It was just a collection of thoughts that I have on what Docker means for DevOps. I’d like to put some of those thoughts down in this post.
 

@@ -6,7 +6,7 @@ tags:
 - alm
 ---
 
-[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6cc8f12b-a071-44f9-be4d-b0ec63785175.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9ae10199-c15a-460c-860a-d617e8f4239f.png)<!--kg-card-end: html-->
+[![image](/assets/images/files/6cc8f12b-a071-44f9-be4d-b0ec63785175.png "image")](/assets/images/files/9ae10199-c15a-460c-860a-d617e8f4239f.png)<!--kg-card-end: html-->
 
 Recently I received some criticism from a customer. Sometimes I find it difficult to process criticism – I justify or argue or dismiss. Some of that is my personality – I like to be right! Part of that is the fact that I strive for excellence, so when I’m told I missed the mark, it can feel like I’m being told I’m a failure. You, dear reader, probably strive for perfection – but let’s face facts: we’re not perfect. If you’re like me and you have a difficult time receiving criticism, then this post is for you – hopefully you can learn something from how I process.
 

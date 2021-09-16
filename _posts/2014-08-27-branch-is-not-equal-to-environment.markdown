@@ -14,7 +14,7 @@ Over the last couple of months I’ve done several implementations and upgrades 
 In this case, a well-established branching model is Dev-Main-Live.
 
 ## Dev-Main-Live
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c1c98eb0-32c0-4f38-ba58-0c1f0c8aade8.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d69693b1-37e9-4174-8398-156cf40bd367.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/c1c98eb0-32c0-4f38-ba58-0c1f0c8aade8.png "image")](/assets/images/files/d69693b1-37e9-4174-8398-156cf40bd367.png)<!--kg-card-end: html-->
 
 Dev-Main-Live (or sometimes Dev-Integration-Prod or other variants) is a fairly common branching model – new development is performed on the Dev branch (with multiple developers coding simultaneously). When changes are to be tested, they are merged to Main. There code is tested in a test or UAT environment, and when testing is complete the changes are merged to Live before being deployed to production. This means that if there are production issues (what? we have bugs?!?) those can be fixed on the Live branch – thus they can be tested and deployed independently from the Dev code which may not be production ready.
 
@@ -27,7 +27,7 @@ There are some issues with this approach:
 This model _seems_ to work nicely since the branches “represent” the environments – what I have in Dev is in my dev environment, what’s on Main is in my Test environment and what’s in Live is in production, right? This “branch equals environment” mindset is actually hard to manage, so I’m starting to recommend a new approach.
 
 ## The Solution: Code-Prod with Builds
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/dadadd62-0806-4d08-ac1b-f7411074874c.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/461eec0f-dc9e-4e5b-afc3-f5040958df71.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/dadadd62-0806-4d08-ac1b-f7411074874c.png "image")](/assets/images/files/461eec0f-dc9e-4e5b-afc3-f5040958df71.png)<!--kg-card-end: html-->
 
 So how should you manage code separation as well as know what code is in which environment at any time? The answer is to simplify the branching model and make use of builds.
 
@@ -64,7 +64,7 @@ Let’s say we have a file in a web project called “Forecast.cs” that looks 
 
 We’ve got a PROD build (1.0.0.4) and the label for 1.0.0.4 shows this file to be on version 51.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/27816db5-0d10-4914-8a49-cdd85f993639.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0084ce46-7e76-48bf-9028-35997b93628b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/27816db5-0d10-4914-8a49-cdd85f993639.png "image")](/assets/images/files/0084ce46-7e76-48bf-9028-35997b93628b.png)<!--kg-card-end: html-->
 
 We now make a change and add a property called “CODEProperty” (line 15) on the CODE branch:
 
@@ -87,11 +87,11 @@ We now make a change and add a property called “CODEProperty” (line 15) on t
 
 We then check-in, merge to PROD and do another build (1.0.0.5). This version is then deployed out for testing in our UAT environment. Forecast.cs is now on version 53 in the 1.0.0.5 label, while all other files are on 51.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/863f6109-a563-4bf5-9b16-b7dd5075e30e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a10581e9-c553-4ce8-8e88-0fc7bc5a0a1b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/863f6109-a563-4bf5-9b16-b7dd5075e30e.png "image")](/assets/images/files/a10581e9-c553-4ce8-8e88-0fc7bc5a0a1b.png)<!--kg-card-end: html-->
 
 Suddenly, the proverbial paw-paw hits the fan and there’s an urgent business-stopping bug in our currently deployed production version (1.0.0.4). So we go to source control, search for the 1.0.0.4 label in the PROD branch that the build created and select “Get This Version” to get the 1.0.0.4 version locally.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e7589b8f-bcb9-422c-9b9e-d730412407ae.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6242b8a1-2b86-4389-9d3f-b8c29459ba8a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/e7589b8f-bcb9-422c-9b9e-d730412407ae.png "image")](/assets/images/files/6242b8a1-2b86-4389-9d3f-b8c29459ba8a.png)<!--kg-card-end: html-->
 
 We fix the bug (by adding a property called “HotfixProperty” – line 15 below). Note how there is no “CODEProperty” since this version of Forecast is before the CODEProperty checkin.
 
@@ -114,11 +114,11 @@ We fix the bug (by adding a property called “HotfixProperty” – line 15 bel
 
 Since we’re not on the latest version (we did a “Get-label”) we won’t be able to check in. So we shelve the change (calling the shelveset “1.0.0.4 Hotfix”). We then open the build template and edit the Get Version property and tell the build to get 1.0.0.4 too by specifying L followed by the label name – so the full “Get version” value is LPROD\_1.0.0.4:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ef8dd46d-ca85-4627-9f52-bf30daa455e4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b247201f-a7d1-4e6b-8f99-3e3b312c86be.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ef8dd46d-ca85-4627-9f52-bf30daa455e4.png "image")](/assets/images/files/b247201f-a7d1-4e6b-8f99-3e3b312c86be.png)<!--kg-card-end: html-->
 
 Next we queue the build, telling the build to apply the Shelveset too:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/bee670af-da10-4178-8c78-19073e35ead5.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b91d162a-7920-4289-96f6-2d77f9f76596.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/bee670af-da10-4178-8c78-19073e35ead5.png "image")](/assets/images/files/b91d162a-7920-4289-96f6-2d77f9f76596.png)<!--kg-card-end: html-->
 
 We won’t be able to “Check in changes after successful build” since the build won’t be building with the Latest version. We’ll have to do that ourselves later. The build completes – we now have build 1.0.0.6 which can be deployed straight to production to “handle” the business-stopping bug.
 
@@ -154,7 +154,7 @@ Here’s the 1.0.0.7 version of Forecast.cs (see lines 15 and 17):
 
 If we turn on Annotation, you’ll see that CODEProperty is changeset 52 (in green below), and HotfixProperty is changeset 54 (in red below):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5a65e063-be49-4938-81c8-5ec5b3f9b6df.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/417517e7-1f8f-42fa-ba21-ae63060ec5e7.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5a65e063-be49-4938-81c8-5ec5b3f9b6df.png "image")](/assets/images/files/417517e7-1f8f-42fa-ba21-ae63060ec5e7.png)<!--kg-card-end: html-->
 
 Yes, it’s a little convoluted, but it’ll work – the point is that this is possible without a 3rd branch in Source Control. Also, you should be aiming to shorten your test / release cycles so that this situation is very rare. If you hit this scenario often, you could introduce the 3rd branch (call it INTEGRATION or MAIN or something) that can be used to isolate bug-fixes in PROD from new development in CODE that isn’t ready to go out to production.
 

@@ -225,7 +225,7 @@ Notes:
 
 When you access the service, you'll see the secure padlock in the browser window and be able to see details for the valid cert:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a0c1e4b5-1a1c-4088-93a8-4c079e55f85b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ce3df455-3a45-4f06-90bc-c38e3b102abf.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a0c1e4b5-1a1c-4088-93a8-4c079e55f85b.png "image")](/assets/images/files/ce3df455-3a45-4f06-90bc-c38e3b102abf.png)<!--kg-card-end: html-->
 
 The best thing is I didn't have to generate the cert myself - Traefik did it all for me.
 

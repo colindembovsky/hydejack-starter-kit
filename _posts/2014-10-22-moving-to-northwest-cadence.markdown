@@ -6,7 +6,7 @@ tags:
 - news
 ---
 
-[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8bab2469-3cb3-4506-b820-9ab1a8060532.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/33627038-56b5-4b36-b78e-b436ab752571.png)<!--kg-card-end: html-->
+[![image](/assets/images/files/8bab2469-3cb3-4506-b820-9ab1a8060532.png "image")](/assets/images/files/33627038-56b5-4b36-b78e-b436ab752571.png)<!--kg-card-end: html-->
 
 That’s right – I’m moving from [Imaginet](http://www.imaginet.com) to [Northwest Cadence](http://www.nwcadence.com/) (NWC) at the end of this month. That’s the high-level version – read no further if you don’t need back-story! A huge thanks to all at Imaginet for an awesome 4 years. It was a pleasure working with all of you.
 

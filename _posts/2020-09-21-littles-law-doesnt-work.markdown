@@ -16,13 +16,13 @@ Daniel makes application of some of the math and statistics of agile metrics eas
 
 If you've ever seen any Lean talks or materials at all, you'll undoubtedly have come across [Little's Law](https://en.wikipedia.org/wiki/Little%27s_law). Little's Law originally is written as follows:
 
-<figure class="kg-card kg-image-card"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/9/211635_image.png" class="kg-image" alt loading="lazy"></figure>
+<figure class="kg-card kg-image-card"><img src="/assets/images/2020/9/211635_image.png" class="kg-image" alt loading="lazy"></figure>
 
 This is written in terms of _arrival rate_.
 
 In knowledge work, you will more commonly see it written as:
 
-<figure class="kg-card kg-image-card"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/9/211641_image.png" class="kg-image" alt loading="lazy"></figure>
+<figure class="kg-card kg-image-card"><img src="/assets/images/2020/9/211641_image.png" class="kg-image" alt loading="lazy"></figure>
 
 This is written in terms of throughput or _completion rate_. This was something I had never considered before and Vacanti goes into detail about why this is an important distinction. In short, there are a couple of assumptions that need to be made to make the law work - if you don't adhere to these assumptions, then the math breaks.
 

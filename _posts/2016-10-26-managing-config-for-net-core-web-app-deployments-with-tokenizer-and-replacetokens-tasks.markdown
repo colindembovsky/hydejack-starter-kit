@@ -74,7 +74,7 @@ After coding for a while on the plane (#RoadWarrior) I was able to create a task
 
 With my shiny new Tokenize task, I was ready to see if I could get the app built and deployed. Here’s what my build definition looks like:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7b982804-8515-4c8d-a458-aa844cc2f3e5.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/91122559-5470-46fa-b8f5-e9c464d5cb7f.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/7b982804-8515-4c8d-a458-aa844cc2f3e5.png "image")](/assets/images/files/91122559-5470-46fa-b8f5-e9c464d5cb7f.png)<!--kg-card-end: html-->
 
 The build tasks perform the following operations:
 
@@ -88,7 +88,7 @@ The build tasks perform the following operations:
 
 The Tokenize task is configured as follows:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5bfe206d-bff6-4adb-9dea-d89fb3c655e3.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a5a4f06d-e255-4521-ad9e-5a5b46666842.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5bfe206d-bff6-4adb-9dea-d89fb3c655e3.png "image")](/assets/images/files/a5a4f06d-e255-4521-ad9e-5a5b46666842.png)<!--kg-card-end: html-->
 
 Let’s look at the arguments:
 
@@ -107,11 +107,11 @@ I was expecting to have to unzip the zip file, replace the tokens in the appsett
 1. Unzip the zip file to a temp folder using an inline PowerShell script (why is there no complementary Unzip task from the Trackyon extension?)
 2. Run ReplaceTokens on the appsettings.json file in the temp folder
 3. Run AzureRM WebDeploy using the temp folder as the source folder
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/283a9350-102d-4f3f-b3ce-ea1c9a6722e9.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f39f1990-af9b-45c5-ac5c-30784ab19dab.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/283a9350-102d-4f3f-b3ce-ea1c9a6722e9.png "image")](/assets/images/files/f39f1990-af9b-45c5-ac5c-30784ab19dab.png)<!--kg-card-end: html-->
 
 Here’s how I configured the PowerShell task:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b241102d-fe0a-4e24-a4c6-3411e22cc4d4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4b94b9a1-f720-4169-b63f-7fa3fdbf3e86.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/b241102d-fe0a-4e24-a4c6-3411e22cc4d4.png "image")](/assets/images/files/4b94b9a1-f720-4169-b63f-7fa3fdbf3e86.png)<!--kg-card-end: html-->
 
 The script takes in the sourceFile (the zip file) as well as the target path (which I set to a temp folder in the drop folder):
 
@@ -123,15 +123,15 @@ The script takes in the sourceFile (the zip file) as well as the target path (wh
 
 My first attempt deployed the site – but the ReplaceTokens task didn’t replace any tokens. After digging a little I figured out why – the default regex pattern – \_\_(\w+)\_\_ – doesn’t work when the token name have periods in them. So I just updated the regex to \_\_(\w+[\.\w+]\*)\_\_ (which reads “find double underscore, followed by a word, followed by a period and word repeated 0 or more times, ending with double underscore”.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a17eccde-040d-422e-8254-5c21663d9785.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/961fd32e-87b7-4a81-9d49-590d1e5833d5.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a17eccde-040d-422e-8254-5c21663d9785.png "image")](/assets/images/files/961fd32e-87b7-4a81-9d49-590d1e5833d5.png)<!--kg-card-end: html-->
 
 That got me closer – one more change I had to make was replacing the period with underscore in the variable names on the environment:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1208a734-c236-472c-832c-6d2991e0f027.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/be93b375-e5e0-4cde-ace9-41b6520e62ee.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/1208a734-c236-472c-832c-6d2991e0f027.png "image")](/assets/images/files/be93b375-e5e0-4cde-ace9-41b6520e62ee.png)<!--kg-card-end: html-->
 
 Once the ReplaceTokens task was working, the Deploy task was child’s play:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a5505b40-51b5-4c22-82bb-fd5706e59728.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9a92ca4f-f091-49cb-bbe0-8419047cbecc.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a5505b40-51b5-4c22-82bb-fd5706e59728.png "image")](/assets/images/files/9a92ca4f-f091-49cb-bbe0-8419047cbecc.png)<!--kg-card-end: html-->
 
 I just made sure that the “Package or Folder” was set to the temp path where I unzipped the zip file in the first task. Of course at this point the appsettings.json now contains real environment-specific values instead of tokens, so WebDeploy can go and do its thing.
 

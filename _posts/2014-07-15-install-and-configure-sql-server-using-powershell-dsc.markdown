@@ -14,7 +14,7 @@ To install SQL Server via a script, there are two prerequisites: the SQL install
 
 Fortunately the SQL server installer takes care of the install command – you run the install wizard manually, specifying your installation options as you go. On the last page, just before clicking “Install”, you’ll see a path to the ini conifguration file. I saved the configuration file and cancelled the install. Then I opened the config file and tweaked it slightly (see [this post](http://msdn.microsoft.com/en-us/library/dd239405.aspx) and [this post](http://www.mssqltips.com/sqlservertip/2511/standardize-sql-server-installations-with-configuration-files/) on some tweaking ideas)– till I could run the installer from the command line (using the /configurationFile switch). That takes care of the install command itself.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8eb3ba64-e66c-496f-8cdc-56ff047923ed.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b2b82361-a674-42ca-a2c3-f221f092fe92.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/8eb3ba64-e66c-496f-8cdc-56ff047923ed.png "image")](/assets/images/files/b2b82361-a674-42ca-a2c3-f221f092fe92.png)<!--kg-card-end: html-->
 
 There are many ways to make the SQL installation sources available to the target node. I chose to copy the ISO to the node (using the File DSC resource) from a network share, and then use a Script resource to mount the iso. Once it’s mounted, I can run the setup command using the ini file.
 

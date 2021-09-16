@@ -48,21 +48,21 @@ Let’s walk through creating a simple build definition to build a vdproj.
 
 Here’s an example:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4ceb0068-6af9-4b28-947a-21de05cc1a69.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/34c056cc-67e1-43dd-99b7-3271105b883c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4ceb0068-6af9-4b28-947a-21de05cc1a69.png "image")](/assets/images/files/34c056cc-67e1-43dd-99b7-3271105b883c.png)<!--kg-card-end: html-->
 
 For reference, here’s how my source is structured:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4375ef99-63ed-4533-ad01-3bf743d77616.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fcd94210-91dd-43e5-8209-6237066cd7d6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4375ef99-63ed-4533-ad01-3bf743d77616.png "image")](/assets/images/files/fcd94210-91dd-43e5-8209-6237066cd7d6.png)<!--kg-card-end: html-->
 
 You can then publish the setup exe or msi if you need to. You can run tests or scripts or anything else during the build (for ease I delete the unit test task in the above example).
 
 I now have a successful build:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a35d538f-a743-487b-a9c4-aca62c8549f5.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d9f53d62-d230-442e-b917-7bd29dbf2e0b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a35d538f-a743-487b-a9c4-aca62c8549f5.png "image")](/assets/images/files/d9f53d62-d230-442e-b917-7bd29dbf2e0b.png)<!--kg-card-end: html-->
 
 And the msi is in my drop, ready to be deployed in Release Management:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2ad1710a-8b51-47ad-b25f-3f837c2177dc.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a1613f42-5c56-4643-8f8a-32bc4fdd3cde.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/2ad1710a-8b51-47ad-b25f-3f837c2177dc.png "image")](/assets/images/files/a1613f42-5c56-4643-8f8a-32bc4fdd3cde.png)<!--kg-card-end: html-->
 
 Happy setup building!
 

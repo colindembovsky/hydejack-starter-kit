@@ -13,7 +13,7 @@ The source code for this post is on [Github](https://github.com/colindembovsky/v
 
 Here’s a diagram of the components:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3d91a7fa-2c3e-4cdb-aa9c-54d9b6491fbd.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/25d0d00c-4ccc-4026-900b-f50755bb9b6c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/3d91a7fa-2c3e-4cdb-aa9c-54d9b6491fbd.png "image")](/assets/images/files/25d0d00c-4ccc-4026-900b-f50755bb9b6c.png)<!--kg-card-end: html-->
 ## The Tests
 
 To code the tests, I use Selenium WebDriver. When it comes to instantiating a driver instance, I use the RemoteWebDriver class and pass in the Selenium Grid hub URL as well as the capabilities that I need for the test (including which browser to use) – see line 3:
@@ -56,11 +56,11 @@ The build is really simple – in my case I just build the test project. Of cour
 
 Here’s what the properties for the file look like in VS:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/21e1beba-4284-457a-8a7b-ab3e696965d9.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/637a3469-5954-4028-a336-2af270dd3d08.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/21e1beba-4284-457a-8a7b-ab3e696965d9.png "image")](/assets/images/files/637a3469-5954-4028-a336-2af270dd3d08.png)<!--kg-card-end: html-->
 
 Here’s the build definition:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1bc5d71f-aa64-44ea-baa2-8782da1090d2.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c75aac1c-c4d9-4e97-8843-bbba84245a84.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/1bc5d71f-aa64-44ea-baa2-8782da1090d2.png "image")](/assets/images/files/c75aac1c-c4d9-4e97-8843-bbba84245a84.png)<!--kg-card-end: html-->
 ## The Docker Host
 
 If you don’t have a docker host, the fastest way to get one is to spin it up in Azure using the Azure CLI – especially since that will create the certificates to secure the docker connection for you! If you’ve got a docker host already, you can skip this section – but you will need to know where the certs are for your host for later steps.
@@ -78,15 +78,15 @@ Here are the steps you need to take to do that (I did this all in my Windows Bas
 
 Here’s the run from within my bash terminal:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e5770c4a-f7b1-4d40-aae0-b807fa449e23.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1307331b-df06-40fa-a28e-8861f282e19d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/e5770c4a-f7b1-4d40-aae0-b807fa449e23.png "image")](/assets/images/files/1307331b-df06-40fa-a28e-8861f282e19d.png)<!--kg-card-end: html-->
 
 Here’s the result in the Portal:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4a1bd38f-c704-45ae-b152-a7ddae0e32c8.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0c178c4b-f5d5-449e-a6e1-1e5636f5529f.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4a1bd38f-c704-45ae-b152-a7ddae0e32c8.png "image")](/assets/images/files/0c178c4b-f5d5-449e-a6e1-1e5636f5529f.png)<!--kg-card-end: html-->
 
 Once the docker host is created, you’ll be able to log in using the certs that were created. To test it, run the following command:
 
-<!--kg-card-begin: html--><font face="Courier New">docker -H $dockerhost --tls info</font><!--kg-card-end: html--><!--kg-card-begin: html-->[![SNAGHTML2b3ba0](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e426e1bb-4e15-4d3a-bfa9-3be04d47aa63.png "SNAGHTML2b3ba0")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/179e94fd-6868-4e0d-911c-5b6c39fd9e21.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--><font face="Courier New">docker -H $dockerhost --tls info</font><!--kg-card-end: html--><!--kg-card-begin: html-->[![SNAGHTML2b3ba0](/assets/images/files/e426e1bb-4e15-4d3a-bfa9-3be04d47aa63.png "SNAGHTML2b3ba0")](/assets/images/files/179e94fd-6868-4e0d-911c-5b6c39fd9e21.png)<!--kg-card-end: html-->
 
 I’ve included the commands in a [fish](https://fishshell.com/) script [here](https://github.com/colindembovsky/vsts-selenium-docker-tests/blob/master/scripts/createDockerHost.fish).
 
@@ -122,7 +122,7 @@ The release requires us to run docker commands to start a Selenium hub and then 
 
 In order to run commands against the docker host from within the release, we’ll need to configure a docker endpoint. Once you’ve installed the docker extension from the marketplace, navigate to your team project and click the gear icon and select Services. Then add a new Docker Host service, entering your certificates:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/faad0481-94e6-4ee8-9703-2bed37159ae6.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7c1234cf-a831-4827-96fc-fda2f3fd8246.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/faad0481-94e6-4ee8-9703-2bed37159ae6.png "image")](/assets/images/files/7c1234cf-a831-4827-96fc-fda2f3fd8246.png)<!--kg-card-end: html-->
 ### Docker VSTS Agent
 
 We’re almost ready to create the release – but you need an agent that has the docker client installed so that it can run docker commands! The easiest way to do this – is to run the vsts agent docker image on your docker host. Here’s the command:
@@ -135,7 +135,7 @@ I am connecting this agent to a queue called docker – so I had to create that 
 
 Create a new Release Definition and start from the empty template. Set the build to the build that contains your tests so that the tests become an artifact for the release. Conceptually, we want to spin up the Selenium containers for the test, run the tests and then (optionally) stop the containers. You also want to deploy your app, typically before you run your tests – I’ll skip the deployment steps for this post. You can do all three of these phases on a single agent – as long as the agent has docker (and docker-compose) installed and VS 2017 to run tests. Alternatively, you can do what I’m doing and create three separate phases – the docker commands run against a docker-enabled agent (the VSTS docker image that I we just got running) while the tests run off a Windows agent. Here’s what that looks like in a release:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e32df3b8-00b6-4a57-898e-8afe7d417363.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/43793dbc-bffe-48c5-ba75-c9ba2cb74725.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/e32df3b8-00b6-4a57-898e-8afe7d417363.png "image")](/assets/images/files/43793dbc-bffe-48c5-ba75-c9ba2cb74725.png)<!--kg-card-end: html-->
 
 Here are the steps to get the release configured:
 
@@ -143,23 +143,23 @@ Here are the steps to get the release configured:
 2. Rename “Environment 1” to “Test” or whatever you want to call the environment
 3. Add a “Run on agent” phase (click the dropdown next to the “Add Tasks” button)
 4. Set the queue for that phase to “docker” (or whatever queue you are using for your docker-enabled agents)
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9be0bed0-d4aa-49b5-8fa2-f85d988fcc6c.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/413ccf0a-5a6a-4477-a81d-d807c3b0fc4d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/9be0bed0-d4aa-49b5-8fa2-f85d988fcc6c.png "image")](/assets/images/files/413ccf0a-5a6a-4477-a81d-d807c3b0fc4d.png)<!--kg-card-end: html-->
 1. In this phase, add a “Docker-compose” task and configure it as follows:
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2e0114be-d110-474b-b8d6-b3bb55e47db6.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ee82ca0b-2d9a-480a-baef-e54639c71a77.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/2e0114be-d110-474b-b8d6-b3bb55e47db6.png "image")](/assets/images/files/ee82ca0b-2d9a-480a-baef-e54639c71a77.png)<!--kg-card-end: html-->
 1. Change the action to “Run service images” (this ends up calling docker-compose up)
 2. Uncheck Build Images and check Run in Background
 3. Set the Docker Host Connection
 4. In the next phase, add tasks to deploy your app (I’m skipping these tasks for this post)
 5. Add a VSTest task and configure it as follows:
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/154ff891-cb9e-4dc6-8fc3-01d85fa3cd61.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b37910bc-6cf2-42be-b0f3-a8f708432712.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/154ff891-cb9e-4dc6-8fc3-01d85fa3cd61.png "image")](/assets/images/files/b37910bc-6cf2-42be-b0f3-a8f708432712.png)<!--kg-card-end: html-->
 1. I’m using V2 of the Test Agent task
 2. I update the Test Assemblies filter to find any assembly with UITest in the name
 3. I point the Settings File to the runsettings file
 4. I override the values for the HubUrl and BaseUrl using environment variables
 5. Click the ellipses button on the Test environment and configure the variables, using the name of your docker host for the HubUrl (note also how the port is the port from the docker-compose.yml file):
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6f263221-b3b4-4233-b0a3-da3bab7f6bd5.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/85392ae0-41e8-46eb-ac18-aae5075780d6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/6f263221-b3b4-4233-b0a3-da3bab7f6bd5.png "image")](/assets/images/files/85392ae0-41e8-46eb-ac18-aae5075780d6.png)<!--kg-card-end: html-->
 1. In the third (optional) phase, I use another Docker Compose task to run docker-compose down to shut down the containers
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b81be1bd-09a0-42ed-84f8-a43b95d3f6d9.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/bf70ea38-90fa-4904-91dd-bd81b9663ab7.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/b81be1bd-09a0-42ed-84f8-a43b95d3f6d9.png "image")](/assets/images/files/bf70ea38-90fa-4904-91dd-bd81b9663ab7.png)<!--kg-card-end: html-->
 1. This time set the Action to “Run a Docker Compose command” and enter “down” for the Command
 2. Again use the docker host connection
 
@@ -167,7 +167,7 @@ We can now queue and run the release!
 
 My release is successful and I can see the tests in the Tests tab (don’t forget to change the Outcome filter to Passed – the grid defaults this to Failed):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/302c3c26-3251-4c25-8922-cb9866bc3866.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5ddee09a-106f-4bb6-8cf9-cef95d08a19f.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/302c3c26-3251-4c25-8922-cb9866bc3866.png "image")](/assets/images/files/5ddee09a-106f-4bb6-8cf9-cef95d08a19f.png)<!--kg-card-end: html-->
 ## Some Challenges
 
 ### Docker-compose SSL failures
@@ -178,7 +178,7 @@ I could not get the docker-compose task to work using the VSTS agent docker imag
 
 I did [log an issue](https://github.com/Microsoft/vsts-docker/issues/38) on the VSTS Docker Tasks repo, but I’m not sure if this is a bug in the extension or the VSTS docker agent. I was able to replicate this behavior locally by running docker-compose. What I found is that I can run docker-compose successfully if I explicitly pass in the ca.pem, cert.pem and key.pem files as command arguments – but if I specified them using environment variables, docker-compose failes with the SSL error. I was able to run docker commands successfully using the Docker tasks in the release – but that would mean running three commands (assuming I only want three containers) in the pre-test phase and another three in the post-test phase to stop each container. Here’s what that would look like:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c92d14c5-ff6c-46a3-af19-2d6ad0ade7e4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b55b6e90-9922-4986-b8bb-bbab1ae00767.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/c92d14c5-ff6c-46a3-af19-2d6ad0ade7e4.png "image")](/assets/images/files/b55b6e90-9922-4986-b8bb-bbab1ae00767.png)<!--kg-card-end: html-->
 
 You can use the following commands to run the containers and link them (manually doing what the docker-compose.yml file does):
 

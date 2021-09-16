@@ -37,11 +37,11 @@ Few developers actually make use of the browser console while developing – whi
 
 Line 8 is where I add the call to console.log. Here it is in IE’s console when I run the solution:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0325ab1e-3f02-409e-b9b2-049ae6853314.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/bde471f7-6b43-4667-beb3-e268b058e445.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/0325ab1e-3f02-409e-b9b2-049ae6853314.png "image")](/assets/images/files/bde471f7-6b43-4667-beb3-e268b058e445.png)<!--kg-card-end: html-->
 
 (To access the console in Chrome or in IE, press F12 to bring up “developer tools” – then just open the console tab). Here’s the same view in Chrome:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ff0a1081-0847-4f56-8918-de4dd90e43cc.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4c2d13a9-a1d7-4b06-b070-15b1ab78a389.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ff0a1081-0847-4f56-8918-de4dd90e43cc.png "image")](/assets/images/files/4c2d13a9-a1d7-4b06-b070-15b1ab78a389.png)<!--kg-card-end: html-->
 
 There are a couple of logging methods: log(), info(), warn(), error() and debug(). You can also group entries together and do [host of other useful debugging tricks](https://developer.mozilla.org/en-US/docs/Web/API/Console), like timing or logging stack traces.
 
@@ -49,7 +49,7 @@ There are a couple of logging methods: log(), info(), warn(), error() and debug(
 
 Beside simply logging a string message you can also log an object. I found this really useful to inspect objects I was working with – usually VS lets you inspect objects, but since I couldn’t access the object in VS, I did it in the console. Let’s change the “console.log” line to “console.log(“In constructor: %O”, this);” The “%O” argument tells the console to log a hyperlink to the object that you can then use to inspect it. Here is the same console output, this time with “%O” (Note: you have to have the console open for this link to actually expand – otherwise you’ll just see a log entry, but won’t be able to inspect the object properties):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6780660b-6a5c-42e8-95c5-3d9b89e0a879.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3265a898-218c-47f5-85a9-549b39c535d1.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/6780660b-6a5c-42e8-95c5-3d9b89e0a879.png "image")](/assets/images/files/3265a898-218c-47f5-85a9-549b39c535d1.png)<!--kg-card-end: html-->
 
 You can now expand the nodes in the object tree to see the properties and methods of the logged object.
 
@@ -87,7 +87,7 @@ Now we can change the app.ts file to create a logger specifically for the class 
 
 On line 5 I set up a logger for the class – which I then use in lines 10 and 13. Here’s the console output:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/54c286ee-544e-41f8-bdf4-8df04426652d.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/bac13628-73c8-4136-a409-5369b3fef335.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/54c286ee-544e-41f8-bdf4-8df04426652d.png "image")](/assets/images/files/bac13628-73c8-4136-a409-5369b3fef335.png)<!--kg-card-end: html-->
 
 You can see how the “info” and the “debug” are colored differently (and info has a little info icon in the left gutter) and both entries are prepended with “[App]” – this makes wading through the logs a little bit easier. Also, when I want to switch the log level, I just set it down to LogManager.levels.error and no more info or debug messages will appear in the console – no need to remove them from the code.
 
@@ -95,7 +95,7 @@ You can see how the “info” and the “debug” are colored differently (and 
 
 Back to our original problem: debugging Aurelia in Visual Studio. Here’s what happens when you set a breakpoint using the skeleton app:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1b8a2aac-c262-4a71-8665-5e63e70ae9e1.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8e75e9b7-74fc-4f8f-ab73-2dcc956e5013.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/1b8a2aac-c262-4a71-8665-5e63e70ae9e1.png "image")](/assets/images/files/8e75e9b7-74fc-4f8f-ab73-2dcc956e5013.png)<!--kg-card-end: html-->
 
 Visual Studio says that “No symbols have been loaded for this document”. What gives?
 
@@ -165,7 +165,7 @@ Now instead of loading system.js, you need to load core.js and require.js. Then 
 
 Now that you’re loading Aurelia using requirejs, you can set breakpoints in your ts file (assuming that you’re generating symbols through VS or [through Gulp](https://github.com/colindembovsky/aurelia-appInsights/blob/master/Aurelia-AppInsights/build/tasks/build.js)/Grunt):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6c81a550-05d3-44ab-887c-3e531eebd888.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7ae8ed76-6aeb-4bd1-8e97-fd9cbf4fc0e8.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/6c81a550-05d3-44ab-887c-3e531eebd888.png "image")](/assets/images/files/7ae8ed76-6aeb-4bd1-8e97-fd9cbf4fc0e8.png)<!--kg-card-end: html-->
 
 Voila – you can now debug Aurelia using VS!
 

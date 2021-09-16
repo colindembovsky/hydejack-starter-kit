@@ -12,7 +12,7 @@ I've done a fair amount of [ARM template](https://docs.microsoft.com/en-us/azure
 
 When we create Terraform projects, we divide them into "stacks". These are somewhat independent, loosely-coupled components of the full infrastructure we're deploying. Let's take the example of an Azure App Service with deployment slots that connects to an Azure SQL database and has Application Insights configured. In this scenario, we have three "stacks": SQL, WebApp and AppInsights. We then have an additional "stack" for the Terraform remote state (an Azure blob) and finally a folder for scripts. Here's what our final folder structure looks like:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/52a5a94e-38fd-4f9d-a219-f229830bc1a9.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a7b67174-34d0-4fd8-82cc-278ace77a965.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/52a5a94e-38fd-4f9d-a219-f229830bc1a9.png "image")](/assets/images/files/a7b67174-34d0-4fd8-82cc-278ace77a965.png)<!--kg-card-end: html-->
 
 Follow the instructions in the README.md file for initializing the backend using the state folder. Note that backend.tfvars and secrets.tfvars are ignored by the .gitignore file so should not be committed to the repo.
 
@@ -75,7 +75,7 @@ For the release to work, it needs access to the terraform templates. I create a 
 
 In the release, I define a number of variables:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a541f404-0800-4406-9ad0-0c07c6fd8eef.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6260f976-0208-4c25-992f-016a8d4b1a0b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a541f404-0800-4406-9ad0-0c07c6fd8eef.png "image")](/assets/images/files/6260f976-0208-4c25-992f-016a8d4b1a0b.png)<!--kg-card-end: html-->
 
 I tried to use the environment variable format for ARM\_ACCESS\_KEY, ARM\_CLIENT\_ID etc. but found I had to supply these explicitly - which I do via the release.tfvars file. The release.tfvars file has tokens that are replaces with the environment values at deploy time. If you add more environment-specific variables, then you need to add their tokens in the tfvars file and add the variable into the variables section of the release. One last note: I use $(Release.EnvironmentName) as the value for the Environment variable - but this needs a different value for the "destroy" environment (each environment I have in the pipeline has a corresponding "destroy" environment for destroying the resources). You can see how I specify "dev" as the Environment name for the "destroy dev" environment.
 
@@ -126,13 +126,13 @@ Destroying a stack is almost the same as applying one - the script (run-terrafor
 
 Now we can see what these blocks look like in the pipeline. Here's a pipeline with a dev and a "destroy dev" environment:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/22aa154b-6cbf-4016-b8a9-dc4ae8af1c39.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/61839421-84e8-48fe-89d4-fa625c0bd91b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/22aa154b-6cbf-4016-b8a9-dc4ae8af1c39.png "image")](/assets/images/files/61839421-84e8-48fe-89d4-fa625c0bd91b.png)<!--kg-card-end: html-->
 
 The dev environment triggers immediately after the release is created, while the "destroy dev" environment is a manual-only trigger.
 
 Let's see what's in the dev environment:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fa3010fe-4573-4a5f-8a6a-65ff9796f81e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/206156c7-baaf-45b5-87f7-64b296e8ffa2.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/fa3010fe-4573-4a5f-8a6a-65ff9796f81e.png "image")](/assets/images/files/206156c7-baaf-45b5-87f7-64b296e8ffa2.png)<!--kg-card-end: html-->
 
 There you can see 5 tasks: replace variables, download Terraform and then an apply for each stack (in this case we have 3 stacks). The order here is important only because the WebApp stack reads output variables from the state data of the SQL and AppInsights deployments (to get the AppInsights key and SQL connection strings). Let's take a closer look at each task:
 
@@ -140,19 +140,19 @@ There you can see 5 tasks: replace variables, download Terraform and then an app
 
 For this I use my trusty ReplaceTokens task from my [build and release extension pack](http://bit.ly/cacbuildtasks). Specify the folder (the root) that contains the release.tfvars file and the file search format, which is just release.tfvars:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f2bb76d7-11b5-4349-b438-6ec1197132b4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7185ec85-8478-4061-8635-ce6f8164b4bd.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f2bb76d7-11b5-4349-b438-6ec1197132b4.png "image")](/assets/images/files/7185ec85-8478-4061-8635-ce6f8164b4bd.png)<!--kg-card-end: html-->
 
 Next we use a Shell task to run the download Terraform script, which expects the path to install to as well as the URL for the Terraform binary to download:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6030a6c6-ff43-43ce-9886-4077de7bec0e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5ac6f588-deed-473b-a467-21dcb76cce28.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/6030a6c6-ff43-43ce-9886-4077de7bec0e.png "image")](/assets/images/files/5ac6f588-deed-473b-a467-21dcb76cce28.png)<!--kg-card-end: html-->
 
 Finally we use a Shell task for each stack - the only change is the working folder (under Advanced) needs to be the stack folder - otherwise everything else stays the same:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/60974a3f-a4a1-44a5-bb97-420472670fec.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/32e3266c-bafa-4e0d-8d49-707a0e3ba377.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/60974a3f-a4a1-44a5-bb97-420472670fec.png "image")](/assets/images/files/32e3266c-bafa-4e0d-8d49-707a0e3ba377.png)<!--kg-card-end: html-->
 
 Success! Here you can see a run where nothing was changed except the release tag - the templates are idempotent, so we let Terraform figure out what changes (if any) are necessary.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/047a7b47-438d-441c-b646-a62ffff7a91a.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/045d196f-8243-46d9-b5e4-a6d427e73895.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/047a7b47-438d-441c-b646-a62ffff7a91a.png "image")](/assets/images/files/045d196f-8243-46d9-b5e4-a6d427e73895.png)<!--kg-card-end: html-->
 ## Conclusion
 
 Terraform feels to me to be a more "enterprise" method of creating infrastructure as code than using pure ARM templates. It's almost like what TypeScript is to JavaScript - Terraform has better sharing and state awareness and allows for more maintainable and better structured code. Once I had iterated a bit on how to execute the Terraform templates in a release, I got it down to a couple really simple scripts. These could even be wrapped into custom tasks.

@@ -179,7 +179,7 @@ Now we can simply run
 
 to run the cluster!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/70a176b1-99a8-45d5-8946-ead54c69b254.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/dc796082-cfca-4a0a-95ed-956160f52b5b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/70a176b1-99a8-45d5-8946-ead54c69b254.png "image")](/assets/images/files/dc796082-cfca-4a0a-95ed-956160f52b5b.png)<!--kg-card-end: html-->
 
 You can see how docker-compose pulls the logs into a single stream and even color-codes them!
 
@@ -199,11 +199,11 @@ to create the app image and then just using the image in the docker-compose file
 
 Let’s hit the index page and then refresh a couple times:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7b82771f-1ffd-474d-9d28-b4e9f3a6fef3.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b9385ace-8038-4e6c-88e1-de26aa9a939a.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c8494cea-7c5b-4589-b7f9-b80981e095f8.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2566950d-3709-4fcf-a654-41fceda99e2e.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d2128d96-b76c-4634-9cbc-4447fb7b749b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d55d4238-0095-4c19-b213-70c60b4a1a12.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/7b82771f-1ffd-474d-9d28-b4e9f3a6fef3.png "image")](/assets/images/files/b9385ace-8038-4e6c-88e1-de26aa9a939a.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](/assets/images/files/c8494cea-7c5b-4589-b7f9-b80981e095f8.png "image")](/assets/images/files/2566950d-3709-4fcf-a654-41fceda99e2e.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](/assets/images/files/d2128d96-b76c-4634-9cbc-4447fb7b749b.png "image")](/assets/images/files/d55d4238-0095-4c19-b213-70c60b4a1a12.png)<!--kg-card-end: html-->
 
 You can see in the site (the hostname) as well as in the logs how the containers are round-robining:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/454927e0-2492-4a6f-a21f-fce3580dac99.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/785447ca-9765-44d4-a299-f7d1932ecb87.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/454927e0-2492-4a6f-a21f-fce3580dac99.png "image")](/assets/images/files/785447ca-9765-44d4-a299-f7d1932ecb87.png)<!--kg-card-end: html-->
 ## Conclusion
 
 Load balancing containers with nginx is fairly easy to accomplish. Of course the app servers don’t need to be running .NET apps – nginx doesn’t really care, since it’s just directing traffic. However, I was pleased that I could get this working so painlessly.

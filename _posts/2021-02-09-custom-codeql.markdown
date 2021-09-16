@@ -109,7 +109,7 @@ To develop queries locally, you should install [VSCode](https://code.visualstudi
 
 The trick is to clone the CodeQL core libraries _to your VSCode workspace_. Clone your repo locally and open it in VSCode. Then clone the [CodeQL repo](https://github.com/github/codeql) to a location on your machine (not inside your repo). Finally, use `File->Add Folder to Workspace` to add the codeQL folder to your VSCode workspace. Your Workspace explorer should look something like this:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2021/2/91547_image.png" class="kg-image" alt loading="lazy"><figcaption>Workspace Explorer after importing CodeQL libraries</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images/2021/2/91547_image.png" class="kg-image" alt loading="lazy"><figcaption>Workspace Explorer after importing CodeQL libraries</figcaption></figure>
 
 Now you need to create a code database. In a console, `cd` to your repo directory and run the following command:
 
@@ -119,7 +119,7 @@ Of course you'll have to update the `--language` setting to the appropriate lang
 
 Now you can open your code database in the CodeQL extension. Click on the `CodeQL` icon in the extension pane. In the `DATABASES` section, click `Add from folder` and browse to the folder above - in my case, `codeqldb`. It should import the database and show a check-mark:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2021/2/91552_image.png" class="kg-image" alt loading="lazy"><figcaption>Importing the code database</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images/2021/2/91552_image.png" class="kg-image" alt loading="lazy"><figcaption>Importing the code database</figcaption></figure>
 
 Now you can run queries that you write against the code database.
 
@@ -177,11 +177,11 @@ In VSCode, we write this query in a `.ql` file. This file can reside anywhere, b
 
 We can test this against our code by right-clicking the file and selecting `CodeQL: Run Query`:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2021/2/91643_image.png" class="kg-image" alt loading="lazy"><figcaption>Running a query</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images/2021/2/91643_image.png" class="kg-image" alt loading="lazy"><figcaption>Running a query</figcaption></figure>
 
 Assuming everything works, we should see results:
 
-<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2021/2/91645_image.png" class="kg-image" alt loading="lazy"><figcaption>Local VSCode CodeQL results</figcaption></figure>
+<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="/assets/images/2021/2/91645_image.png" class="kg-image" alt loading="lazy"><figcaption>Local VSCode CodeQL results</figcaption></figure>
 
 In the results pane on the right, we can see the message text as well as a link (this is generates from the object we selected). Clicking on the link will navigate us to the location of that object in the code.
 
@@ -189,7 +189,7 @@ In the results pane on the right, we can see the message text as well as a link 
 
 When this is run against a codebase that contains calls to `shutil.rmtree`, we'll see alerts like this in the CodeQL scanning alerts section of the Security tab in the repo:
 
-<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2021/2/91640_image.png" class="kg-image" alt loading="lazy"><figcaption>Results of matches to CodeQL queries</figcaption></figure>
+<figure class="kg-card kg-image-card kg-width-wide kg-card-hascaption"><img src="/assets/images/2021/2/91640_image.png" class="kg-image" alt loading="lazy"><figcaption>Results of matches to CodeQL queries</figcaption></figure>
 ## Custom Queries in Your Action
 
 Now that we have a query, we need to customize the CodeQL config to tell the engine to include our query when performing a scan.

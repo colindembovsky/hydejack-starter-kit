@@ -63,7 +63,7 @@ Here’s a script that you can modify to set “RebootNodeIfNeeded” on any nod
 
 Just replace “fabfiberserver” with your node name and .\ the script. The last line of the script reads back the LocalConfigurationManager settings on the remote node, so you should see the RebootNodeIfNeeded setting is true.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f7e44cac-1732-4bbc-ac1c-8405fa8a1d06.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/be427703-7d74-4ad9-9ccf-949db8db04fd.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f7e44cac-1732-4bbc-ac1c-8405fa8a1d06.png "image")](/assets/images/files/be427703-7d74-4ad9-9ccf-949db8db04fd.png)<!--kg-card-end: html-->
 
 Happy configuring!
 

@@ -78,7 +78,7 @@ To work around this, we entered data to create a new `StateCategories` table wit
 
 The final model looks like this:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/5/11225_image.png" class="kg-image" alt loading="lazy"><figcaption>The final data Model in PowerBI</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images/2020/5/11225_image.png" class="kg-image" alt loading="lazy"><figcaption>The final data Model in PowerBI</figcaption></figure>
 ## Calculated Columns
 
 We then added the following calculated columns on the `Stories` table:
@@ -161,21 +161,21 @@ We now have all the data we need for some visualizations!
 
 We first added some slicers: `Area`, `Iteration`, `Epic State` and `Feature State` and map these to `Areas:AreaPath`, `Iterations:IterationPath`, `Epics:StateCategory` and `Features:StateCategory` respectively.
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/5/112238_image.png" class="kg-image" alt loading="lazy"><figcaption>Slicers</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images/2020/5/112238_image.png" class="kg-image" alt loading="lazy"><figcaption>Slicers</figcaption></figure>
 
 We then added a Donut chart to show the total count of `Stories`: we set the Legend to `State Category` and the Values to `Count of WorkItemId`.
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/5/112239_image.png" class="kg-image" alt loading="lazy"><figcaption>Configuring the Stories Count Donut</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images/2020/5/112239_image.png" class="kg-image" alt loading="lazy"><figcaption>Configuring the Stories Count Donut</figcaption></figure>
 
 We also added a Stacked Bar Chart of Stories, using `AssignedTo` as the Axis, `State Category` as the Legend and `Count of WorkItemId` as the Value.
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/5/112242_image.png" class="kg-image" alt loading="lazy"><figcaption>Configuring the Stories by Assigned to and State Category Bar Chart</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images/2020/5/112242_image.png" class="kg-image" alt loading="lazy"><figcaption>Configuring the Stories by Assigned to and State Category Bar Chart</figcaption></figure>
 
 We also configured the colors to be Blue, Yellow, Green for `Proposed`, `In Progress` and `Completed` respectively on both charts.
 
 The final chart we configured is a timeline - we're actually using the [Gannt Chart](https://appsource.microsoft.com/en-us/product/power-bi-visuals/WA104380765) custom visual from the PowerBI gallery to render this:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/5/112251_image.png" class="kg-image" alt loading="lazy"><figcaption>Configuring the Timeline Visual</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images/2020/5/112251_image.png" class="kg-image" alt loading="lazy"><figcaption>Configuring the Timeline Visual</figcaption></figure>
 
 Here's how we mapped the fields:
 

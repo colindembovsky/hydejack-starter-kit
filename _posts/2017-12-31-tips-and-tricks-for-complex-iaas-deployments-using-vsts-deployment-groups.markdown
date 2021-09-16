@@ -17,7 +17,7 @@ This was my first time working with a larger scale provisioning and configuratio
 
 Before we jump into the tips, I need to get some definitions out of the way. In VSTS, a Release Definition is made up of multiple Environments. Typically you see DEV, STAGE and PROD but you can have multiple "environments" that target the same set of machines.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/56561a03-700d-476e-9c63-7a6e90c7fa83.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d7bd08ff-5b27-47b4-b0f8-4aeb94295793.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/56561a03-700d-476e-9c63-7a6e90c7fa83.png "image")](/assets/images/files/d7bd08ff-5b27-47b4-b0f8-4aeb94295793.png)<!--kg-card-end: html-->
 
 The above VSTS release has three "environments":
 
@@ -32,7 +32,7 @@ This separation also allows you to run the "Infrastructure Provision" environmen
 
 Within an Environment, you can have 1.._n_ phases. You specify tasks inside a phase - these are the smallest unit of work in the release.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/50b0fd52-f99c-4a97-bbbf-2306512d0f68.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2aa9823e-f332-4cbe-be09-427257de1fb8.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/50b0fd52-f99c-4a97-bbbf-2306512d0f68.png "image")](/assets/images/files/2aa9823e-f332-4cbe-be09-427257de1fb8.png)<!--kg-card-end: html-->
 
 In the above image, there are several phases within the "Infrastructure Config" environment. Each phase (in this case) is running a single task, but you can run as many tasks as you need for that particular phase.
 
@@ -155,11 +155,11 @@ There are some useful extensions and patterns for configuring VMs such as [Custo
 
 Tags are really important for Deployment Groups. They let you identify machines or groups of machines within a Deployment Group. Let's say you have a load balanced application with two webservers and a SQL server. You'd probably want identical configuration for the webservers and a completely different configuration for the SQL server. In this case, tag two machines with WEBSERVER and the other machine with SQL. Then you'll define the tasks in the phase &nbsp;- when the phase runs, it executes all the tasks on all the machines that match the filter - for example, you can target all WEBSERVER machines with a script to configure IIS. These will execute in parallel (you can configure it to work serially if you want to) and so you'll only specify the tasks a single time in the definition and you'll speed up the deployment.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5d918fca-64d5-4b20-a027-6afcb74dca7e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2d415fda-4852-4327-adcd-07bd80234a0e.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5d918fca-64d5-4b20-a027-6afcb74dca7e.png "image")](/assets/images/files/2d415fda-4852-4327-adcd-07bd80234a0e.png)<!--kg-card-end: html-->
 
 Be careful though: multiple tags use AND (not OR) logic. This means if you want to do something like join a domain on machines with WEBSERVER and SQL, you would think you could specify WEBSERVER, SQL as the tag filter in the phase tag filter. But since the tags are joined with an AND, you'll see the phase won't match any machines. So you'd have to add a NODE tag (or something similar) and apply it to both webservers and SQL machine and then target NODE for things you want to do on all the machines.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0858d323-3c20-4bf1-9211-1d90279e32df.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d5c254eb-a976-47a4-a9eb-7b375a8d080c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/0858d323-3c20-4bf1-9211-1d90279e32df.png "image")](/assets/images/files/d5c254eb-a976-47a4-a9eb-7b375a8d080c.png)<!--kg-card-end: html-->
 
 The above image shows the tag filtering on the Phase settings. Note too the parallelization settings.
 
@@ -378,11 +378,11 @@ You can easily reboot a machine by running this (plain) PowerShell:
 
 . This is so simple that you can do it as an inline PowerShell task:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a2dd904d-386d-4f9a-8a47-a200a8aba5e7.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c7a4e385-8587-4347-a7a5-77aff6f7bb7b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a2dd904d-386d-4f9a-8a47-a200a8aba5e7.png "image")](/assets/images/files/c7a4e385-8587-4347-a7a5-77aff6f7bb7b.png)<!--kg-card-end: html-->
 
 Rebooting the machine is easy: it's waiting for it to start up again that's more challenging. If you have a task right after the reboot task, the deployment fails since the agent goes offline. So you have to build in a wait. The simplest method is to add an agentless phase and add a Delay task:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/be0c7bbe-79ed-4cb1-85e6-ed9b61d7ca42.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/92f15bf4-6607-4aff-85d7-a1d1a102cec2.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/be0c7bbe-79ed-4cb1-85e6-ed9b61d7ca42.png "image")](/assets/images/files/92f15bf4-6607-4aff-85d7-a1d1a102cec2.png)<!--kg-card-end: html-->
 
 However, you can be slightly more intelligent if you poll the machine states using some Azure PowerShell:
 

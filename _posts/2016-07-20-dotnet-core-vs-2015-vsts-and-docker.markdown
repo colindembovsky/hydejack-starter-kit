@@ -106,21 +106,21 @@ commands.
 
 Now at least the build operation was working, and I could see VS creating an image in my local Docker for Windows:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b9037ccd-9949-4237-beda-39336a504480.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7a9f2047-bc76-4e56-80fc-b950129146fb.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/b9037ccd-9949-4237-beda-39336a504480.png "image")](/assets/images/files/7a9f2047-bc76-4e56-80fc-b950129146fb.png)<!--kg-card-end: html-->
 
 Next I tried debugging an app in the container. No dice. The issue seemed to be that the container couldn’t start on port 80. Looking at the Dockerfile and the DockerTask.ps1 files, I saw that the port is hard-coded to 80. So I changed the port to 5000 (making it a variable in the ps1 script and an ARG in my Dockerfile). Just remember that you have a Dockerfile.debug as well – and that the ports are hard-coded in the docker-compose.yml and docker-compose.debug.yml files too. The image name is also hardcoded all over the place to “username/appname”. I tried to change it, but ended up reverting back. This only affects local dev, so I don’t really care that much.
 
 At this point I could get the container to run in Release, so I knew Docker was happy. However, I couldn’t debug. I was getting this error:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d3f7c0dd-ee31-4ff5-a8cb-04d4be906a74.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ca2ef53b-d1e3-4f0f-96ca-89142aec60da.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/d3f7c0dd-ee31-4ff5-a8cb-04d4be906a74.png "image")](/assets/images/files/ca2ef53b-d1e3-4f0f-96ca-89142aec60da.png)<!--kg-card-end: html-->
 
 Again a bit of googling led me to enable volume sharing in Docker for Windows (which is disabled by default). I clicked the moby in my task bar, opened the Docker settings and enabled volume sharing on my c drive:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c9a2fc1a-24ba-4693-807b-8ea518ee9493.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4fefa60a-529b-41ab-8aa7-0fbd31c0653c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/c9a2fc1a-24ba-4693-807b-8ea518ee9493.png "image")](/assets/images/files/4fefa60a-529b-41ab-8aa7-0fbd31c0653c.png)<!--kg-card-end: html-->
 
 Debugging then actually worked – the script starts up a container (based on the image that gets created when you build) and attaches the remote debugger. Pretty sweet now that it’s working!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/01a81113-2323-4fcb-84b8-20debbcc013b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4549a874-8f7f-4252-90dc-65e39fb276a7.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/01a81113-2323-4fcb-84b8-20debbcc013b.png "image")](/assets/images/files/4549a874-8f7f-4252-90dc-65e39fb276a7.png)<!--kg-card-end: html-->
 
 In the above image you can see how I’m navigating to the About page (the url is [http://docker:5000](http://docker:5000)) and VS is spewing logging into the console showing the server (in the container) responding to the request).
 
@@ -154,53 +154,53 @@ The cool thing about publishing to the repo is that you can have any number of h
 
 Now I had the endpoints ready for build/deploy. I then added my solution to a Git repo and pushed to VSTS. Here’s the project structure:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fe544ab7-0646-48eb-9642-590afa3459ef.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3f4f20cf-afdb-43d0-895d-8c573f15f77e.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/fe544ab7-0646-48eb-9642-590afa3459ef.png "image")](/assets/images/files/3f4f20cf-afdb-43d0-895d-8c573f15f77e.png)<!--kg-card-end: html-->
 
 I then set up a build. In the VSTS Docker article, they suggest just two Docker tasks: the first with a “Build” action and the second with a “Push” action. However, I think this is meant to copy the source to the image and have the image do a dotnet restore – else how it work? However, I wanted the build to do the dotnet restore and publish (and test) and then just have the output bundled into the Docker image (as well as uploaded as a build drop). So I had to include two “run command” tasks and a publish build artifacts task. Here’s what my build definition ended up looking like:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4d3f9889-2874-4c15-aa0a-8de512c5ceaa.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3b91b44a-4f22-4594-ac36-96e8c8963d54.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4d3f9889-2874-4c15-aa0a-8de512c5ceaa.png "image")](/assets/images/files/3b91b44a-4f22-4594-ac36-96e8c8963d54.png)<!--kg-card-end: html-->
 
 The first two commands are fairly easy – the trick is setting the working directory (to the folder containing the project) and the correct framework and runtimes for running inside a Docker container:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2b404122-44da-4d58-838b-b59938581305.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4ae5f3d0-68a0-42fc-8ac4-a63dbc816412.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/52c53f1d-00dd-4f87-a719-c38ab50b65a1.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5690ee90-5e37-44b0-87fb-6248b332b210.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/2b404122-44da-4d58-838b-b59938581305.png "image")](/assets/images/files/4ae5f3d0-68a0-42fc-8ac4-a63dbc816412.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](/assets/images/files/52c53f1d-00dd-4f87-a719-c38ab50b65a1.png "image")](/assets/images/files/5690ee90-5e37-44b0-87fb-6248b332b210.png)<!--kg-card-end: html-->
 
 You’ll see that I output the published site to $(Build.ArtifactStagingDirectory)/site/app which is important for the later Docker commands.
 
 I also created two variables (the values of which I got from the DockerTask.ps1 script) for this step:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/94c84c32-3cdf-4f95-bbc8-3f8a5464a9d2.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3884730f-a3d2-44d7-a4fc-467febfb7b58.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/94c84c32-3cdf-4f95-bbc8-3f8a5464a9d2.png "image")](/assets/images/files/3884730f-a3d2-44d7-a4fc-467febfb7b58.png)<!--kg-card-end: html-->
 
 For building the Docker image, I specified the following arguments:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3486bd1a-2f63-4e47-8620-ab0f95d452e3.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a778a8b0-b634-4140-88db-469fc9698c75.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/3486bd1a-2f63-4e47-8620-ab0f95d452e3.png "image")](/assets/images/files/a778a8b0-b634-4140-88db-469fc9698c75.png)<!--kg-card-end: html-->
 
 I use the two service endpoints I created earlier and set the action to “Build an Image”. I then specify the path to the Dockerfile – initially I browsed to the location in the src folder, but I want the published app so I changed this to the path in the artifact staging directory (otherwise Docker complains that the Dockerfile isn’t within the context). I then specify a repo/tag name for the Image Name, and use the build number for the version. Finally, the context is the folder which contains the “app” folder – the Dockerfile needs to be in this location. This location is used as the root for any Dockerfile COPY commands.
 
 Next step is publishing the image – I use the same endpoints, change the action to “Push an image” and specify the same repo/tag name:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5893c11a-ac07-4039-9250-03a8f9afa81a.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c54f436a-20b1-4b8a-979f-aeeed9655aa4.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5893c11a-ac07-4039-9250-03a8f9afa81a.png "image")](/assets/images/files/c54f436a-20b1-4b8a-979f-aeeed9655aa4.png)<!--kg-card-end: html-->
 
 Now after running the build, I can see the image in my DockerHub repo (you can see how the build number and tag match):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1750db0b-b7ce-440d-a034-09b9906b209a.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ef6d06b7-8eb7-45f6-aa57-b6208b108a87.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/1750db0b-b7ce-440d-a034-09b9906b209a.png "image")](/assets/images/files/ef6d06b7-8eb7-45f6-aa57-b6208b108a87.png)<!--kg-card-end: html-->
 
 Now I could turn to the release. I have a single environment release with a single task:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/29c2096c-8c60-45cc-b1e1-bee3d3f7d1c6.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/02067b7f-4fdb-4c6e-a4c0-3a19ad4a5109.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/29c2096c-8c60-45cc-b1e1-bee3d3f7d1c6.png "image")](/assets/images/files/02067b7f-4fdb-4c6e-a4c0-3a19ad4a5109.png)<!--kg-card-end: html-->
 
 I named the ARG for the port in my Dockerfile APP\_PORT, so I make sure it’s set to 5000 in the “Environment Variables” section. The example I followed had the HOST\_PORT specified as well – I left that in, though I don’t know if it’s necessary. I linked the release to the build, so I can use the $(Build.BuildNumber) to specify which version (tag) of the container this release needs to pull.
 
 Initially the release failed while attempting to download the drops. I wanted the drops to enable deployment of the build somewhere else (like Azure webapps or IIS), so this release doesn’t need them. I configured this environment to “Skip artifact download”:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/49e4d289-173f-4f9c-9f9c-9945812d8b72.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/13c12ad6-107b-4177-956e-df520a3ee6be.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/49e4d289-173f-4f9c-9f9c-9945812d8b72.png "image")](/assets/images/files/13c12ad6-107b-4177-956e-df520a3ee6be.png)<!--kg-card-end: html-->
 
 Lo and behold, the release worked after that! Unfortunately, I couldn’t browse to the site (connection refused). After a few moments of thinking, I realized that the Azure VM probably didn’t allow traffic on port 5000 – so I headed over to the portal and added an new endpoint (blegh – ARM network security groups are so much better):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4de8a84d-045c-44f0-92ca-dbbcfb3d6804.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6a397149-51c5-4786-96a4-72f8b5f44bef.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4de8a84d-045c-44f0-92ca-dbbcfb3d6804.png "image")](/assets/images/files/6a397149-51c5-4786-96a4-72f8b5f44bef.png)<!--kg-card-end: html-->
 
 After that, I could browse to the ASP.NET Core 1.0 App that I developed in VS, debugged in Docker for Windows, source controlled in Git in VSTS, built and pushed in VSTS build and released in VSTS Release Management. Pretty sweet!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/631f958a-f1ca-4355-86fb-8695dd8c558f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/927248b9-c84a-4dde-9dad-4e16b100c4d1.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/631f958a-f1ca-4355-86fb-8695dd8c558f.png "image")](/assets/images/files/927248b9-c84a-4dde-9dad-4e16b100c4d1.png)<!--kg-card-end: html-->
 ### Conclusion
 
 The Docker workflow is compelling, and having it work (nearly) out the box for .NET Core is great. I think teams should consider investing into this workflow as soon as possible. I’ve said it before, and I’ll say it again – containers are the way of the future! Don’t get left behind – start learning Docker today and skill up for the next DevOps wave – especially if you’re embarking on .NET Core dev!

@@ -64,7 +64,7 @@ Notes:
 
 If you open a browser and navigate to the Azure portal and then open your resource group, you'll see how much stuff got created by the few preceding simple commands:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c6e7cdb2-8377-476e-b9cf-581ff29b0ddf.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6bad8157-6f0f-4769-ad87-dba0559fd431.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/c6e7cdb2-8377-476e-b9cf-581ff29b0ddf.png "image")](/assets/images/files/6bad8157-6f0f-4769-ad87-dba0559fd431.png)<!--kg-card-end: html-->
 
 Don't worry - you'll not need to manage these resources yourself. Azure and the k8s cluster manage them for you!
 
@@ -118,15 +118,15 @@ We now have the k8s cluster and container registry configured. Let's add these e
 
 Open VSTS and navigate to a Team Project (or just create a new one). Go to the team project and click the gear icon to navigate to the settings hub for that Team Project. Then click Services. Click "+ New Services" and create a new Docker Registry endpoint. Use the same credentials you used to create the registry secret in k8s using kubectl:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a7511c54-2694-49d4-b38f-f0a71871ff39.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b5f00719-4e56-4306-ba72-100952c2c478.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a7511c54-2694-49d4-b38f-f0a71871ff39.png "image")](/assets/images/files/b5f00719-4e56-4306-ba72-100952c2c478.png)<!--kg-card-end: html-->
 
 Next create a k8s endpoint. For the url, it will be https://$ClusterName.$location.cloudapp.azure.com (where clustername and location are the variables we used earlier to create the cluster). You'll need to copy the entire contents of the ~/cdk8s/kubeconfig file (or whatever you called it) that was output when you ran the az acs kubernetes get-credential command into the credentials textbox:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4b2980ec-f363-45a0-8146-a9d4f735ddb4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f34492c8-3acb-4069-af9c-5732a04293d5.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4b2980ec-f363-45a0-8146-a9d4f735ddb4.png "image")](/assets/images/files/f34492c8-3acb-4069-af9c-5732a04293d5.png)<!--kg-card-end: html-->
 
 We now have two endpoints that we can use in the build/release definitions:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f0a853d8-05dc-4a74-83f4-5a4a21a17264.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6672b99f-4f86-460e-9ed9-1ed5052a1125.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f0a853d8-05dc-4a74-83f4-5a4a21a17264.png "image")](/assets/images/files/6672b99f-4f86-460e-9ed9-1ed5052a1125.png)<!--kg-card-end: html-->
 ## The Build
 
 We can now create a build that compiles/tests our code, creates docker images and pushes the images to the Container Registry, tagging them appropriately. Click on Build & Release and then click on Builds to open the build hub. Create a new build definition. Select the ASP.NET Core template and click apply. Here are the settings we'll need:
@@ -149,15 +149,15 @@ We can now create a build that compiles/tests our code, creates docker images an
 
 The final list of tasks looks something like this:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3fd6a327-e654-4f27-8a96-85018b35995a.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b87cebd8-96ec-441d-9982-fbf88fa41643.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/3fd6a327-e654-4f27-8a96-85018b35995a.png "image")](/assets/images/files/b87cebd8-96ec-441d-9982-fbf88fa41643.png)<!--kg-card-end: html-->
 
 You can now Save and Queue the build. When the build is complete, you'll see the test/coverage information in the summary.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/eb80b904-b95d-418a-8fd9-c6ba74a1e81d.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a89cefb0-072e-4e9b-bc64-71db8a8c1f99.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/eb80b904-b95d-418a-8fd9-c6ba74a1e81d.png "image")](/assets/images/files/a89cefb0-072e-4e9b-bc64-71db8a8c1f99.png)<!--kg-card-end: html-->
 
 You can also take a look at your container registry to see the newly pushed service images, tagged with the build number.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/df2dc709-8e56-4590-bde2-a3a801c785d9.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0616d7c0-9c85-427b-a667-1fd8e1d69ee8.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/df2dc709-8e56-4590-bde2-a3a801c785d9.png "image")](/assets/images/files/0616d7c0-9c85-427b-a667-1fd8e1d69ee8.png)<!--kg-card-end: html-->
 ## The Release
 
 We can now configure a release that will create/update the services we need. For that we're going to need to manage configuration. Now we could just hard-code the configuration, but that could mean sensitive data (like passwords) would end up in source control. I prefer to tokenize any configuration and have Release Management keep the sensitive data outside of source control. VSTS Release Management allows you to create secrets for individual environments or releases or you can create them in reusable Variable Groups. You can also now easily [integrate with Azure Key Vault](https://www.visualstudio.com/en-us/docs/build/concepts/library/variable-groups#link-secrets-from-an-azure-key-vault-as-variables).
@@ -173,17 +173,17 @@ Rename the definition to "k8s" or something descriptive. On the "General" tab ch
 - Target File Pattern: "\*-release.yml". This performs token replacement on any yml file with a name that ends in "-release." There's 3: back- and frontend service/deployment files and the frontend config file. This task finds the tokens in the file (with pre- and postfix \_\_) and looks for variables with the same name. Each variable is replaced with its corresponding value. We'll create the variables shortly.
 - Kubernetes Task 1 (apply frontend config)
 - Set the k8s connection to the endpoint you created earlier. Also set the connection details for the Azure Container Registry. This applies to all the Kubernetes tasks. Set the Command to "apply", check the "Use Configuration Files" option and set the file to the k8s/app-demo-frontend-config-release.yml file using the file picker. Add "--namespace $(namespace)" to the arguments textbox.
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d6391629-5031-4dfa-b749-b8f276bbf890.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/559e2dc0-4108-44fd-a864-5fc66e23206b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/d6391629-5031-4dfa-b749-b8f276bbf890.png "image")](/assets/images/files/559e2dc0-4108-44fd-a864-5fc66e23206b.png)<!--kg-card-end: html-->
 - Kubernetes Task 2 (apply backend service/deployment definition)
 - Set the same connection details for the k8s service and Azure Container Registry. This time, set "Secret Name" to "regsecret" (this is the name of the secret we created when setting up the k8s cluster, and is also the name we refer to for the imagePullSecret in the Deployment definitions). Check the "Force update secret" setting. This ensures that the secret value in k8s matches the key from Azure. You could also skip this option since we created the key manually.
 - Set the Command to "apply", check the "Use Configuration Files" option and set the file to the k8s/app-demo-backend-release.yml file using the file picker. Add "--namespace $(namespace)" to the arguments textbox.
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/45cf619c-0939-4999-9169-220e6c2b18d4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e7c5135d-5e5e-428f-8242-23bec4121a36.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/45cf619c-0939-4999-9169-220e6c2b18d4.png "image")](/assets/images/files/e7c5135d-5e5e-428f-8242-23bec4121a36.png)<!--kg-card-end: html-->
 - Kubernetes Task 3 (apply frontend service/deployment definition)
 - This is the same as the previous task except that the filename is k8s/app-demo-frontend-release.yml.
 - Kubernetes Task 4 (update backend image)
 - Set the same connection details for the k8s service and Azure Container Registry. No secret required here. Set the Command to "set" and specify Arguments as "image deployment/demo-backend-deployment backend=$(ContainerRegistry)/api:$(Build.BuildNumber) --record --namespace=$(namespace)".
 - This updates the version (tag) of the container image to use. K8s will do a rolling update that brings new containers online and takes the old containers offline in such a manner that the service is still up throughout the bleed over.
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/eb169cb5-c6b0-4f08-9573-8a154442eda0.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/48c2502e-771c-4b66-a09b-e897957ae39d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/eb169cb5-c6b0-4f08-9573-8a154442eda0.png "image")](/assets/images/files/48c2502e-771c-4b66-a09b-e897957ae39d.png)<!--kg-card-end: html-->
 - Kubernetes Task 5 (update the frontend image)
 - Same as the previous task except the Arguments are "image deployment/demo-frontend-deployment frontend=$(ContainerRegistry)/frontend:$(Build.BuildNumber) --record --namespace=$(namespace)"
 - Click on the "…" button on the "dev" card and click Configure Variables. Set the following values:
@@ -194,7 +194,7 @@ Rename the definition to "k8s" or something descriptive. On the "General" tab ch
 - AspNetCoreEnvironment: development
 - baseUri: http://$(BackendServiceIP)/api
 - BackendServiceIP: 10.0.0.1
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5e2102f5-fb21-4442-a70a-d4f793a2f48b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f3bcd024-b1bc-4850-bd39-d6a0fd066361.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5e2102f5-fb21-4442-a70a-d4f793a2f48b.png "image")](/assets/images/files/f3bcd024-b1bc-4850-bd39-d6a0fd066361.png)<!--kg-card-end: html-->
 
 This sets environment-specific values for all the variables in the yml files. The Replace Tokens task takes care of injecting into the files for us. Let's take a quick look at one of the tokenized files (tokenized lines are highlighted):
 
@@ -251,7 +251,7 @@ If the service/deployment and config don't change, then the first 3 k8s tasks ar
 
 Save the definition. Click "+ Release" to create a new release. Click on the release number (it will be something like 1.0.0.1-1) to open the release. Click on logs to see the logs.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b60dce3f-cb90-4fda-8b40-0878e1cddb2b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/085adf52-57c4-4402-ac69-73568d4d69d3.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/b60dce3f-cb90-4fda-8b40-0878e1cddb2b.png "image")](/assets/images/files/085adf52-57c4-4402-ac69-73568d4d69d3.png)<!--kg-card-end: html-->
 
 Once the release has completed, you can see the deployment in the Kubernetes dashboard. To open the dashboard, execute the following command:
 
@@ -263,24 +263,24 @@ Once the release has completed, you can see the deployment in the Kubernetes das
 
 The last argument is the path to the SSH key file that got generated when we created the cluster - adjust your path accordingly. You can now open a browser to [http://localhost:8001/ui](http://localhost:8001/ui). Change the namespace dropdown to "dev" and click on Deployments. You should see 2 successful deployments - each showing 2 healthy pods. You can also see the images that are running in the deployments - note the build number as the tag!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2dc79a1f-343b-4604-a6e3-48d2101ac5d2.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5b95aaac-6630-484d-839d-91f72a5ac868.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/2dc79a1f-343b-4604-a6e3-48d2101ac5d2.png "image")](/assets/images/files/5b95aaac-6630-484d-839d-91f72a5ac868.png)<!--kg-card-end: html-->
 
 To see the services, click on Services.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6af595c5-dba2-4307-b362-9a1ad17593e7.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8c6ad693-0c98-4913-84a2-943de4f9666c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/6af595c5-dba2-4307-b362-9a1ad17593e7.png "image")](/assets/images/files/8c6ad693-0c98-4913-84a2-943de4f9666c.png)<!--kg-card-end: html-->
 
 Now we have the IP address of the backend service, so we can update the variable in the release. We can then queue a new release - this time, the frontend configuration is updated with the correct IP address for the backend service (in this case 23.99.58.48). We can then browse to the frontend service IP address and see our service is now running!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/201d8dd0-1864-456e-8579-502f9fbe8c44.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/251a6544-7bf1-4a88-9ea2-c60ba870e832.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/201d8dd0-1864-456e-8579-502f9fbe8c44.png "image")](/assets/images/files/251a6544-7bf1-4a88-9ea2-c60ba870e832.png)<!--kg-card-end: html-->
 ### Creating Prod
 
 Now that we are sure that the dev environment is working, we can go back to the release and clone "dev" to "prod". Make sure you specify a post-approval on dev (or a pre-approval on prod) so that there's a checkpoint between the two environments.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e0f19be7-9584-4995-8438-d98e50172b76.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a0f5d264-eca5-4357-a140-82df86770e6f.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/e0f19be7-9584-4995-8438-d98e50172b76.png "image")](/assets/images/files/a0f5d264-eca5-4357-a140-82df86770e6f.png)<!--kg-card-end: html-->
 
 We can then just change the node ports, AspNetCoreEnvironment and BackendServiceIP variables and we're good to go! Of course we need to deploy once to the prod namespace before we see the k8s/Azure assigned IP address for the prod backend and then re-run the release to update the config.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/90eeb703-a23f-472a-99f1-c38fa433e989.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b5073661-75db-4c19-8c48-079a1310e1a0.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/90eeb703-a23f-472a-99f1-c38fa433e989.png "image")](/assets/images/files/b5073661-75db-4c19-8c48-079a1310e1a0.png)<!--kg-card-end: html-->
 
 We could also remove the nodePort from the definitions altogether and let k8s decide on a node port - but if it's explicit then we know what port the service is going to run on within the cluster (not externally).
 
@@ -290,7 +290,7 @@ I did get irritated having to specify "--namespace" for each command - so irrita
 
 Now that we have the dev and prod environments set up in a CI/CD pipeline, we can make a change to the code. I'll change the text below the version to "K8s demo" and commit the change. This triggers the build, creating a newer container image and running tests, which in turn triggers the release to dev. Now I can see the change in dev (which is on 1.0.0.3 or some newer version than 1.0.0.1), while prod is still on version 1.0.0.1.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ab172b16-ae83-44f1-825c-e901a4fa9438.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/08b983cf-05d9-40fc-aadb-b0b6ceb823cb.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ab172b16-ae83-44f1-825c-e901a4fa9438.png "image")](/assets/images/files/08b983cf-05d9-40fc-aadb-b0b6ceb823cb.png)<!--kg-card-end: html-->
 
 Approve dev in Release Management and prod kicks off - and a few seconds later prod is now also on 1.0.0.3.
 
