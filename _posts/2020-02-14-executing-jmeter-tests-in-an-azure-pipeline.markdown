@@ -2,6 +2,8 @@
 layout: post
 title: Executing JMeter Tests in an Azure Pipeline
 date: '2020-02-14 13:20:31'
+description: >
+  Visual Studio Load Testing tools have been deprecated, along with Cloud Load Testing. In this post I investigate how to use JMeter as a load testing alternative.
 tags:
 - testing
 - build

@@ -2,6 +2,8 @@
 layout: post
 title: Little's Law Doesn't Work
 date: '2020-09-21 21:09:53'
+description: >
+  Little's Law is well known, but not well understood. Daniel Vacanti has some deep insights into the assumptions that need to be made to make Little's law "work" for you.
 tags:
 - devops
 ---

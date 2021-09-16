@@ -2,6 +2,8 @@
 layout: post
 title: Azure Pipeline Parameters
 date: '2020-02-27 07:35:44'
+description: >
+  In this post I continue to dive into parameters for Azure Pipelines.
 tags:
 - build
 ---

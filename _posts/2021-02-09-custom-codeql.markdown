@@ -2,6 +2,8 @@
 layout: post
 title: Custom CodeQL
 date: '2021-02-09 17:17:58'
+description: >
+  CodeQL is a powerful code scanning tool that can be integrated into your pipelines. In this post I show you some basics, as well as how to develop and integrate custom queries into your pipelines.
 tags:
 - security
 - github

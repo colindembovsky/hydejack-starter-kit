@@ -2,6 +2,8 @@
 layout: post
 title: Azure Pipeline Variables
 date: '2020-02-12 03:35:28'
+description: >
+  In this post I take a deep dive into Azure Pipeline variables.
 tags:
 - build
 ---

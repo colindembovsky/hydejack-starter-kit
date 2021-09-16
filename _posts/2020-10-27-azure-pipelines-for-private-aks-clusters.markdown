@@ -2,6 +2,10 @@
 layout: post
 title: Azure Pipelines for Private AKS Clusters
 date: '2020-10-27 19:25:25'
+description: >
+  Creating private AKS clusters is a good step in hardening your Azure Kubernetes clusters. In this post I walk through the steps you'll need to follow to enable deployment to private AKS clusters.
+tags:
+- build
 ---
 
 [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/) (AKS) Clusters are amazing - all the power of Kubernetes (K8s) without the hassle of a full tin-based installation. However, by default the management plane, or k8s API, is public. If you want to harden your cluster, one sensible step would be to prevent public access to the management API by making your cluster _[private](https://docs.microsoft.com/en-us/azure/aks/private-clusters)_.

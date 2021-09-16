@@ -2,6 +2,8 @@
 layout: post
 title: ChatOps with GitHub Actions and Azure Web Apps
 date: '2020-03-31 06:15:38'
+description: >
+  In this video, I show you how to use GitHub Actions to implement ChatOps with Azure Web Apps.
 tags:
 - github
 ---
