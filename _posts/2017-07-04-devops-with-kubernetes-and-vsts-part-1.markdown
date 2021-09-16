@@ -65,7 +65,7 @@ If everything is working, then you should get a neat response to "kubectl get no
 
 To open the Kubernetes UI, just enter "minikube dashboard" and a browser will launch:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/faed94b9-b164-4ea8-9648-b9e17ee67156.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a400f7c7-224c-4cd5-ae2c-477c0f6f379c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/faed94b9-b164-4ea8-9648-b9e17ee67156.png "image")](/assets/images/files/a400f7c7-224c-4cd5-ae2c-477c0f6f379c.png)<!--kg-card-end: html-->
 
 Finally, to "re-use" the minikube docker context, run the following command:
 
@@ -124,7 +124,7 @@ The easiest way to get the images built is to use Visual Studio, set the docker-
 
 Now if you run "docker images" you'll see the minikube containers as well as images for the frontend and the api:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f93d81df-0b0d-4339-873b-d69e1ba27d9f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d449fcd1-3984-4a65-b06c-6f8493a266b9.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f93d81df-0b0d-4339-873b-d69e1ba27d9f.png "image")](/assets/images/files/d449fcd1-3984-4a65-b06c-6f8493a266b9.png)<!--kg-card-end: html-->
 ## Declaring the Services - Configuration as Code
 
 We can now define the services that we want to run in the cluster. One of the things I love about Kubernetes is that it pushes you to declare the environment you want rather than running a script. This declarative model is far better than an imperative model, and we can see that with the rise of Chef, Puppet and PowerShell DSC. Kubernetes allows us to specify the services we want exposed as well as how to deploy them. We can define various Kubernetes objects using a simple yaml file. We're going to declare two services: an api service and a frontend service. Usually, the backend services won't be exposed outside the cluster, but since the demo code we're deploying is a single page app (SPA), we need to expose the api outside the cluster.
@@ -263,11 +263,11 @@ To run the services we just created in minikube, we can just use kubectl to appl
 
 And now we have some services! You can open the minikube dashboard by running "minikube dashboard" and check that the services are green:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5c5fb236-bf39-43f3-bac5-bf7912bf66f3.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/116cd97a-ac84-400c-893a-157e9d1f503d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5c5fb236-bf39-43f3-bac5-bf7912bf66f3.png "image")](/assets/images/files/116cd97a-ac84-400c-893a-157e9d1f503d.png)<!--kg-card-end: html-->
 
 And you can browse to the frontend service by navigating to [http://kubernetes:30080](http://kubernetes:30080):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/05a3d6ef-c5fd-4b57-936b-c6c25129a49e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9ab0a69f-c383-44e4-95d3-cb12152728cf.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/05a3d6ef-c5fd-4b57-936b-c6c25129a49e.png "image")](/assets/images/files/9ab0a69f-c383-44e4-95d3-cb12152728cf.png)<!--kg-card-end: html-->
 
 The list (value1 and value2) are values coming back from the API service - so the frontend is able to reach the backend service in minikube successfully!
 

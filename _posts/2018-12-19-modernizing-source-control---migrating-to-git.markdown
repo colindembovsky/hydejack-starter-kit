@@ -107,7 +107,7 @@ Most teams I work with wish they could reorganize their source control structure
 
 If you're on TFVC and you're in Azure DevOps (aka VSTS) then you have the option of a simple single-branch import. Just click on "Import repository" from the Azure Repos top level drop-down menu to pop open the dialog. Then enter the path to the branch you're migrating (yes, you can only choose one branch) and if you want history or not (up to 180 days). Then add in a name for the repo and let 'er rip!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9075c016-4d17-48a6-8e18-0647ce7ea74d.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ed7246a1-1969-4b93-93d2-46c343d7d59e.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/9075c016-4d17-48a6-8e18-0647ce7ea74d.png "image")](/assets/images/files/ed7246a1-1969-4b93-93d2-46c343d7d59e.png)<!--kg-card-end: html-->
 
 There are some limitation here: a single branch and only 180 days of history. However, if you only care about one branch and you're already in Azure DevOps, then this is a no-brainer migration method.
 

@@ -91,7 +91,7 @@ Note that the quotes around the parameters \_\_TargetPath\_\_ and \_\_TFArgs\_\_
 
 Finally, click “Add” on the Resources section and add all the tf files – don’t forget the tf.ps1 file!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7111413d-0c74-4c8c-a08c-a13cd6d3cbe8.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6f0e72f1-be2f-4569-a5d3-f3b2c069b3df.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/7111413d-0c74-4c8c-a08c-a13cd6d3cbe8.png "image")](/assets/images/files/6f0e72f1-be2f-4569-a5d3-f3b2c069b3df.png)<!--kg-card-end: html-->
 ## Creating TF Actions
 
 Once you have the tf.exe tool, you can then create TF.exe actions – like “Create Workspace” and “Get Files”. Let’s do “Create Workspace”:
@@ -112,7 +112,7 @@ The parameters are as follows:
 
 Now that you have the action, you can use it in a release template:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/148962db-f550-4af0-8c16-87f080600911.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/95bf9577-cdf4-4095-8428-a0e5f787cb19.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/148962db-f550-4af0-8c16-87f080600911.png "image")](/assets/images/files/95bf9577-cdf4-4095-8428-a0e5f787cb19.png)<!--kg-card-end: html-->
 
 Here you can see that I’ve create some other actions (Delete Workspace and TF Get) to perform other TF.exe commands. This workflow deletes the workspace called “Test”, then creates a new Workspace in the “c:\files” folder, and then gets a folder from source control. From there, I can copy or run or do whatever I need to with the files I got from TFS.
 

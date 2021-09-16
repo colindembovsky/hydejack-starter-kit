@@ -43,7 +43,7 @@ to get a list of themes. One last thing to do - set the background color of your
 
 Now if you cd to a git repo, you'll get a Powerline status. Sweet!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f829659d-0185-4c9f-bfb0-8c663b615448.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a1a635c3-cc83-461d-a821-fcbb04a06ec0.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/f829659d-0185-4c9f-bfb0-8c663b615448.png "image")](/assets/images/files/a1a635c3-cc83-461d-a821-fcbb04a06ec0.png)<!--kg-card-end: html-->
 ## Bash
 
 You can do the same thing for your Bash console. I like to use [fish shell](https://github.com/fish-shell/fish-shell) so you'll have to install that first. Once you have fish installed, you can install [oh-my-fish](https://github.com/oh-my-fish/oh-my-fish) - a visual package manager for fish (and yes, oh-my-posh is a PowerShell version of oh-my-fish). Once oh-my-fish is installed, use it to install themes. You can install agnoster by running
@@ -56,7 +56,7 @@ You can do the same thing for your Bash console. I like to use [fish shell](http
 
 . Now my bash console is pimped too!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1b0ceee7-2ab0-4dfb-a12d-2ba8bcfcd985.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/413ad7e5-a037-4fad-9691-41fb8798fef6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/1b0ceee7-2ab0-4dfb-a12d-2ba8bcfcd985.png "image")](/assets/images/files/413ad7e5-a037-4fad-9691-41fb8798fef6.png)<!--kg-card-end: html-->
 ## Solarized Theme
 
 One more change you may want to make: update your console colors to the Solarized theme. To do that, follow the instructions from [this repo](https://github.com/neilpa/cmd-colors-solarized).

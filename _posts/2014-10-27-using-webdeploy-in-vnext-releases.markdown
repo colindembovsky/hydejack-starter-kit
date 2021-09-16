@@ -30,7 +30,7 @@ Good deployment always beings with good packages. To get a good package, you’l
 
 Besides the package, you’ll want to source control your DSC scripts. This way you can track changes that you make to your scripts over time. Also, having the scripts “travel” with your binaries means you only have to look in one location to find both deployment packages (or binaries) and the scripts you need to deploy them. Here’s how I organized my website and scripts in TF Version Control:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b5ea780d-7a2d-4000-bc0a-6a20c0e0e33b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6ae1308a-fe3e-4a9f-90ab-373adc8088f9.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/b5ea780d-7a2d-4000-bc0a-6a20c0e0e33b.png "image")](/assets/images/files/6ae1308a-fe3e-4a9f-90ab-373adc8088f9.png)<!--kg-card-end: html-->
 
 The actual solution (with my websites, libraries and database schema project) is in the FabrikamFiber.CallCenter folder. I have some 3rd party libraries that are checked into the lib folder. The build folder has some utilities for running the build (like the xunit test adapter). And you can also see the DscScripts folder where I keep the scripts for deploying this application.
 
@@ -67,14 +67,14 @@ By default on a team build, only compiled output is placed into the drop folder 
 
 Calling the script with $pathToCopy set to DscScripts will result in my DSC scripts being copied to the drop folder along with my build binaries. Using the TFVC 2013 default template, here’s what my advanced build parameters look like:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/48ac1d7f-c1eb-4fec-8302-b123c8c50bed.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/394bb737-3143-4f8e-a417-415513160dcd.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/48ac1d7f-c1eb-4fec-8302-b123c8c50bed.png "image")](/assets/images/files/394bb737-3143-4f8e-a417-415513160dcd.png)<!--kg-card-end: html-->
 - The MSBuild arguments build a Webdeploy package for me. The profile (specified when you right-click the project and select “Publish”) also inserts RM placeholders into environment specific settings (like connection strings, for example). I don’t hard-code the values since this same package can be deployed to multiple environments. Later we’ll see how the actual values replace the tokens at deploy time.
 - The post-build script is the script above, and I pass “-pathToCopy DscScripts” to the script in order to copy the scripts to the bin (and ultimately the drop) folder.
 - I also use a pre-build script to version my assemblies so that I can match the [binary file versions with the build]( __GHOST_URL__ /post/matching-binary-version-to-build-number-version-in-tfs-2013-builds).
 
 Here’s what my build output folders look like:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/158e72c7-51d9-472f-b29b-6d29cbbe9fa6.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/63d1eacf-5a3d-449a-a373-ada38cc3789c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/158e72c7-51d9-472f-b29b-6d29cbbe9fa6.png "image")](/assets/images/files/63d1eacf-5a3d-449a-a373-ada38cc3789c.png)<!--kg-card-end: html-->
 
 There are 3 “bits” that I really care about here:
 
@@ -389,7 +389,7 @@ You’ll see some similarities to the database DSC script – getting nodes by r
 
 In order to run vNext (a.k.a. agent-less a.k.a DSC) deployments, you need to import your target nodes. Since vNext servers are agent-less, you don’t need to install anything on the target node. You just need to make sure you can run remote PowerShell commands against the node and have the username/password for doing so. When adding a new server, just type in the name of the machine and specify the remote port, which is 5985 by default. This adds the server into RM as a “Standard” server. These servers always show their status as “Ready”, but this can be misleading since there is no agent. You can then compose your servers into “Standard Environments”. Next you’ll want to create a vNext Release Path (which specifies the environments you’re deploying to as well as who is responsible for approvals).
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6bddda2e-8136-4ba1-8a15-03989bb30af9.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/19e05d8e-b16c-41ac-ac41-e4dc6d5b2c4f.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3422cd7a-b93d-4e8a-a0cf-cd28bb087d81.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/db1b526e-b3f7-4bdc-8fa7-e195118e41cf.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/6bddda2e-8136-4ba1-8a15-03989bb30af9.png "image")](/assets/images/files/19e05d8e-b16c-41ac-ac41-e4dc6d5b2c4f.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](/assets/images/files/3422cd7a-b93d-4e8a-a0cf-cd28bb087d81.png "image")](/assets/images/files/db1b526e-b3f7-4bdc-8fa7-e195118e41cf.png)<!--kg-card-end: html-->
 
 You can specify other [configuration variables and defaults in RM Update 4 RC]( __GHOST_URL__ /post/new-vnext-config-variable-options-in-rm-update-4-rc).
 
@@ -397,7 +397,7 @@ You can specify other [configuration variables and defaults in RM Update 4 RC]( 
 
 In order to use the binaries and scripts we’ve created, we need to specify a vNext component in RM. Here’s how I specify the component:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/06d1a702-41cd-479d-9eec-300ecfb0ecbd.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/560818af-d355-4e20-a6bf-b34bb0848b5a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/06d1a702-41cd-479d-9eec-300ecfb0ecbd.png "image")](/assets/images/files/560818af-d355-4e20-a6bf-b34bb0848b5a.png)<!--kg-card-end: html-->
 
 All this is really doing is setting the value of the $packagePath (which I set to the root of the drop folder here). Also note how I only need a single component even though I have several scripts to invoke (as we’ll see next).
 
@@ -405,11 +405,11 @@ All this is really doing is setting the value of the $packagePath (which I set t
 
 I create a new vNext template. I select a vNext release path. I right-click the “Components” node in the toolbox and add in the vNext component I just created. Since I am deploying to (at least) 2 machines, I drag a “Parallel” activity onto the design surface. On the left of the parallel, I want scripts for my SQL servers. On the right, I want scripts for my webservers. Since I’ve already installed SQL on my SQL server, I am not going to use that script – I’ll just deploy my database model. On the webserver, I want to run the prerequisites script (to make sure IIS, Webdeploy, MVC runtime and the MMA agent are all installed and correctly configured. Then I want to deploy my website using Webdeploy. So I drag on 3 “Deploy using PS/DSC” activities. I select the appropriate server and component from the “Server” and “Component” drop-downs respectively. I set the username/password for the identity that RM will use to remote onto the target nodes. Then I set the path to the scripts (relative to the root of the drop folder, which is the “Path to Package” in the component I sepcified (which becomes $applicationPath inside the DSC script). I also set the path to the PsConifgurationPath to my configData.psd1 script. Finally I set UseCredSSP and UseHTTPS both to false and SkipCaCheck to true (you can vary these according to your environment).
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/31dbb82e-70e4-4738-a035-d9585801d034.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d9dd1e64-6503-4033-ae69-8822fd4f9c45.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/31dbb82e-70e4-4738-a035-d9585801d034.png "image")](/assets/images/files/d9dd1e64-6503-4033-ae69-8822fd4f9c45.png)<!--kg-card-end: html-->
 
 Now I can trigger the release (either through the build or manually). Here’s what a successful run looks like and a snippet of one of the logs:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4572c2dc-1135-4784-be02-c4be8eeec65c.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7011f11c-27f2-4808-865f-06388d205e29.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4572c2dc-1135-4784-be02-c4be8eeec65c.png "image")](/assets/images/files/7011f11c-27f2-4808-865f-06388d205e29.png)<!--kg-card-end: html-->
 ## To Agent or Not To Agent?
 
 Looking at the features and improvements to Release Management Update 3 and Update 4, it seems that the TFS product team are not really investing in agent-based deployments and templates any more. If you’re using agent-based deployments, it’s a good idea to start investing in DSC (or at the very least just plain ol’ PowerShell) so that you can use agent-less (vNext) deployments. As soon as I saw DSC capabilities in Update 3, I guessed this was the direction the product team would pursue, and Update 4 seems to confirm that guess. While there is a bit of a learning curve, this technology is very powerful and will ultimately lead to better deployments – which means better quality for your business and customers.

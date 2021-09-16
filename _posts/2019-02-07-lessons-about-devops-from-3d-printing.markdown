@@ -8,13 +8,13 @@ tags:
 
 It's no surprise that I'm passionate about DevOps. I think that has to do with my personality - my top five [StrengthsFinder](https://www.gallupstrengthscenter.com/home/en-us/strengthsfinder) strengths are Strategic, Ideation, Learner, Activator, Achiever. I love the combination of people and tools that DevOps brings together. Being deeply technical and also fascinated by how people interact means I'm built for DevOps consulting. Add to that my love of learning, and I'm in my perfect job, since if there's one thing I've learned about DevOps - it's that I'll never learn everything there is to learn about it!
 
-<!--kg-card-begin: html--> [![IMG_20190120_001801](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c6ecad64-eefb-40d6-819e-327fc336a254.jpg "IMG\_20190120\_001801")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8feab4fd-e6bb-48e4-a8c6-ea80d50779ba.jpg)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![IMG_20190120_001801](/assets/images/files/c6ecad64-eefb-40d6-819e-327fc336a254.jpg "IMG\_20190120\_001801")](/assets/images/files/8feab4fd-e6bb-48e4-a8c6-ea80d50779ba.jpg)<!--kg-card-end: html-->
 
 I recently got a 3D printer (an [Ender3](https://www.youtube.com/watch?v=odDZMYr1di8)) for my birthday - I was actually looking for some Raspberry Pi projects to do with my kids when I saw a post about a guy who created some programmable LED Christmas lights. He'd printed himself a case for his Raspberry Pi and I wondered, "How much does a 3D printer go for nowadays?" I was pleasantly surprised to learn that you can get a pretty decent printer for around $200. So I got one for my birthday - and it's been a ton of fun learning how to model, then slice models, then tweak the printer to make it bend to my will. But watching an abstract model turn into physical reality before your eyes is fantastic!
 
 While I was learning how to 3D print, I realized there are a lot of parallels between 3D printing and DevOps. Some may accuse me of "when you have a hammer, everything looks like a nail" and I suspect they're partly right. But that doesn't mean you can't learn about one discipline from studying another! Remember, Lean and Agile have roots in auto manufacturing!
 
-<!--kg-card-begin: html--> [![IMG_20190203_205203_Bokeh](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b6a00ae0-e341-41d4-b811-b91a25fbec20.jpg "IMG\_20190203\_205203\_Bokeh")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0e51842d-b2b4-42b6-9274-0fa0b369361f.jpg)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![IMG_20190203_205203_Bokeh](/assets/images/files/b6a00ae0-e341-41d4-b811-b91a25fbec20.jpg "IMG\_20190203\_205203\_Bokeh")](/assets/images/files/0e51842d-b2b4-42b6-9274-0fa0b369361f.jpg)<!--kg-card-end: html-->
 
 So here are some thoughts about DevOps that I got from 3D Printing.
 
@@ -41,7 +41,7 @@ One of the challenges with printing is extrusion - the amount of plastic that is
 In DevOps, you never "arrive". DevOps is a journey, and things can sometimes just blow up when you least expect. Remember that DevOps is more than just tooling and automation - people are a critical component of DevOps. And people change, new people come in or leave - and these changes can affect your culture - and therefore your DevOps. Keeping your eyes open, ensuring that you're following the vision and making sure everyone is still with you is key to success.
 
 ### Fast Feedback Is Critical
-<!--kg-card-begin: html-->[![IMG_20190123_233331](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1201059e-78b5-4ecd-8c5a-172c21c2a3cc.jpg "IMG\_20190123\_233331")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/879660a1-da7c-42e5-b2d3-42085ba893a9.jpg)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![IMG_20190123_233331](/assets/images/files/1201059e-78b5-4ecd-8c5a-172c21c2a3cc.jpg "IMG\_20190123\_233331")](/assets/images/files/879660a1-da7c-42e5-b2d3-42085ba893a9.jpg)<!--kg-card-end: html-->
 
 Some prints can take a while - the Yoda print I made for my son took just over 7 hours. I watched closely (especially in the beginning) to make sure the first couple layers worked correctly - fortunately I got a good couple layers early on and the print turned out great. I have also done some other prints where the first couple layers didn't bond to the build surface correctly, and I aborted before wasting time (and filament). Getting feedback quickly was critical - fortunately I got to see the layers as they ran, so I got immediate feedback.
 

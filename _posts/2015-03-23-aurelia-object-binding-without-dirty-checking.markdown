@@ -84,7 +84,7 @@ However, if you’re not using a primitive, then Aurelia has to fall-back on “
 
 Here’s what the console looks like when you browse (the console just keeps logging forever and ever):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ac40cfab-c6ba-443d-a71b-c3f352680c44.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8acee728-be52-4af3-b44d-1d1a26a9fdd3.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ac40cfab-c6ba-443d-a71b-c3f352680c44.png "image")](/assets/images/files/8acee728-be52-4af3-b44d-1d1a26a9fdd3.png)<!--kg-card-end: html-->
 
 Unfortunately there simply isn’t an easy way around this problem.
 
@@ -144,7 +144,7 @@ The highlighted lines are the lines I added in. Line 24 is the important line �
 
 Here’s the console output now:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/64c1c8eb-ed5d-42b2-b9ca-98da6ea7c8f2.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/79850200-d5b2-41d3-961e-16eee681f751.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/64c1c8eb-ed5d-42b2-b9ca-98da6ea7c8f2.png "image")](/assets/images/files/79850200-d5b2-41d3-961e-16eee681f751.png)<!--kg-card-end: html-->
 
 We can see that the fullName getter is called 4 times. This is a lot better than polling the value every 120ms. (I’m not sure why it’s called 4 times – probably to do with how the binding is initially set up. Both firstName and lastName change when the page loads and they are instantiated to “John” and “Doe” so I would expect to see a couple firings of the getter function at least).
 
@@ -368,7 +368,7 @@ We register the function to execute when the value of the property on the object
 
 Here’s the console after logging in:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8e3cd17e-5009-4696-a620-22534f09ba62.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a26b14ee-c3c9-4c15-8178-b751902c6100.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/8e3cd17e-5009-4696-a620-22534f09ba62.png "image")](/assets/images/files/a26b14ee-c3c9-4c15-8178-b751902c6100.png)<!--kg-card-end: html-->
 
 There’s no polling – the view-model is bound to the userName primitive on the view-model. But whenever the value of userName on the global state object changes, we get to update the value. We’ve successfully avoided the dirty checking!
 

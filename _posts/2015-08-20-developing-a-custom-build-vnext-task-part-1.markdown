@@ -26,7 +26,7 @@ In order to create a new task, you need to supply a few things: a (JSON) manifes
 
 Once tfx-cli is installed, you should be able to run “tfx” and see the help screen.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2f3fdd02-3569-4e91-9998-ee9713ea7f62.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/cb66c0a6-0d32-44bc-a6eb-0c3ab4062575.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/2f3fdd02-3569-4e91-9998-ee9713ea7f62.png "image")](/assets/images/files/cb66c0a6-0d32-44bc-a6eb-0c3ab4062575.png)<!--kg-card-end: html-->
 
 You could authenticate each time you want to perform a command, but it will soon get tedious. It’s far better to cache your credentials.
 
@@ -37,12 +37,12 @@ For TFS 2015, it’s a little more complicated. You need to first enable basic a
 Here are the steps to enable basic auth on IIS:
 
 - Open Server Manager and make sure that the Basic Auth feature is installed (under the Security node)
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5040651a-b718-4667-a034-1d84de081578.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d00021c9-e383-412f-bbdd-43381afd22dd.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5040651a-b718-4667-a034-1d84de081578.png "image")](/assets/images/files/d00021c9-e383-412f-bbdd-43381afd22dd.png)<!--kg-card-end: html-->
 - If you have to install it, then you must reboot the machine before continuing
 - Open IIS and find the “Team Foundation Server” site and expand the node. Then click on the “tfs” app in the tree and double-click the “Authentication” icon in the “Features” view to open the authentication settings for the app.
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/bc0788ca-d4f0-4d51-b417-1d3db46adffd.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3f44a372-c022-49f8-b340-7178e4537de6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/bc0788ca-d4f0-4d51-b417-1d3db46adffd.png "image")](/assets/images/files/3f44a372-c022-49f8-b340-7178e4537de6.png)<!--kg-card-end: html-->
 - Enable “Basic Authentication” (note the warning!)
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5b850d6c-7dc6-4b74-8cfb-146f47f3698d.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fdd59941-a862-4437-87ef-4bae7353437e.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5b850d6c-7dc6-4b74-8cfb-146f47f3698d.png "image")](/assets/images/files/fdd59941-a862-4437-87ef-4bae7353437e.png)<!--kg-card-end: html-->
 - Restart IIS
 
 **DANGER WILL ROBINSON, DANGER!** This is insecure since the passwords are sent in plaintext. You may want to [enable https](https://msdn.microsoft.com/en-us/library/aa833872.aspx) so that the channel is secure.

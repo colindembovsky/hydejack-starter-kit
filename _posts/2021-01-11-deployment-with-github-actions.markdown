@@ -48,7 +48,7 @@ Let's make this a bit more concrete. For ease of use, I'll be using a DotNetCore
 
 Using Azure Pipelines, I would have a workflow that looks something like this:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2021/1/111917_image.png" class="kg-image" alt loading="lazy"><figcaption>Azure Pipeline for deploying TailWind Web App</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images2021/1/111917_image.png" class="kg-image" alt loading="lazy"><figcaption>Azure Pipeline for deploying TailWind Web App</figcaption></figure>
 
 There are multiple stages/jobs here:
 
@@ -72,7 +72,7 @@ All the jobs in the Pipeline are templatized - you'll note that I use the same `
 
 Since I don't have stages in Actions, my initial Action workflow looked like this:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2021/1/111933_image.png" class="kg-image" alt loading="lazy"><figcaption>End to end Action</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images2021/1/111933_image.png" class="kg-image" alt loading="lazy"><figcaption>End to end Action</figcaption></figure>
 
 Here I have the following jobs:
 
@@ -164,7 +164,7 @@ And the "Run Workflow" button **won't appear for that workflow** , even if it ha
 
 Another issue with the UI is the tree of workflows to the left of the run history UI:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2021/1/112238_image.png" class="kg-image" alt loading="lazy"><figcaption>Tree listing all workflows in the main branch of the repo</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images2021/1/112238_image.png" class="kg-image" alt loading="lazy"><figcaption>Tree listing all workflows in the main branch of the repo</figcaption></figure>
 
 I initially had a workflow called `End to End`. When I split it into two files for `App Deploy End to End` and `Infra Deploy End to End`, the node in the tree for `End to End` disappeared. The runs are still in the list (the 210 results you can see in the screenshot) but I can't filter by that workflow. I'm guessing that the tree on the left is built from _current_ workflows in the .github folder in the main branch - so if you delete or rename a workflow, you'll lose the node on the left.
 
@@ -183,11 +183,11 @@ This will set the URL of the job in the UI accordingly so that users can easily 
 
 Another quirk is that the URL updates for all jobs referencing the environment. In my scenario, I have two jobs for the `PROD` environment: a canary deployment that deploys to a staging slot and a "full" deployment that performs a slot swap. For the canary job, the URL is `http://my-site-staging.azurewebsites.net` while for the "full" deployment the URL is `http://my-site.azurewebsites.net`. But both are targeting the `PROD` environment. Here is what the workflow looks like after the canary job:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2021/1/11214_image.png" class="kg-image" alt loading="lazy"><figcaption>Workflow after the Canary job</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images2021/1/11214_image.png" class="kg-image" alt loading="lazy"><figcaption>Workflow after the Canary job</figcaption></figure>
 
 However, after the `prod_deploy` job, the URL is updated for `PROD` which both jobs reference, and the UI ends up dropping the canary URL:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2021/1/11218_image.png" class="kg-image" alt loading="lazy"><figcaption>Canary URL is gone</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images2021/1/11218_image.png" class="kg-image" alt loading="lazy"><figcaption>Canary URL is gone</figcaption></figure>
 
 I'm not sure why Actions does this - perhaps both environments should show the final value? It's strange that the value is wiped.
 

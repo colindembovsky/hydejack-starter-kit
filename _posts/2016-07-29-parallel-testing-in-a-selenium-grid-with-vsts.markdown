@@ -124,15 +124,15 @@ Of course I made sure that all these files are in source control!
 
 Again I had to make sure that the ports I specify were allowed in the Firewall. I just created a single Firewall rule to allow TCP traffic on ports 4444, 5550-5559 on both machines.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4d65dca6-6287-43ba-ac99-6cfe5cd52fe8.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/09a7359e-58df-4a0f-b501-907537859632.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4d65dca6-6287-43ba-ac99-6cfe5cd52fe8.png "image")](/assets/images/files/09a7359e-58df-4a0f-b501-907537859632.png)<!--kg-card-end: html-->
 
 I also opened those ports in the Azure network security group that both machines’ network cards are connected to:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/53001826-09d1-4183-b66b-f2131679a6a0.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3f834cfa-c5f4-48a1-bd23-e42694af2908.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/53001826-09d1-4183-b66b-f2131679a6a0.png "image")](/assets/images/files/3f834cfa-c5f4-48a1-bd23-e42694af2908.png)<!--kg-card-end: html-->
 
 Now I can browse to the Selenium console of my Grid:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0d1c0780-b0a2-4fcf-86fe-c34910f9aa5f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e80d0617-72c8-438e-a721-d0ec678def6b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/0d1c0780-b0a2-4fcf-86fe-c34910f9aa5f.png "image")](/assets/images/files/e80d0617-72c8-438e-a721-d0ec678def6b.png)<!--kg-card-end: html-->
 
 Now my hub is ready to run tests!
 
@@ -142,7 +142,7 @@ The Selenium Grid is capable of running tests in parallel, spreading tests acros
 
 It turns out that you can do this in Visual Studio 2015 and VSTS – but it’s not pretty. If you open up the Test Explorer Window, you’ll see an option to “Run Tests In Parallel” in the toolbar (next to the Group By button):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/36350e23-fa8f-4ea4-b66e-aa0dcf8bd973.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c9160528-daef-461f-8142-dae11f2c9dd0.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/36350e23-fa8f-4ea4-b66e-aa0dcf8bd973.png "image")](/assets/images/files/c9160528-daef-461f-8142-dae11f2c9dd0.png)<!--kg-card-end: html-->
 
 Again I hear you thinking: “Just flip the switch! Easy!” Whoa, slow down, Dear Reader – it’s not that easy. You have to consider the _unit_ of parallelization. In other words – what does it mean to “Run Tests In Parallel”? Well, Visual Studio runs different _assemblies_ in parallel. Which means that you have to have at least two test projects (assemblies) in order to get any benefit.
 
@@ -254,7 +254,7 @@ Again I’m using default values for the values of the parameters – this is ho
 
 Now I can set the runsettings file in the Test menu:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/809864a8-cb6f-4f92-b957-2673e43eaa91.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7fe06d56-1a53-484f-af74-eba2c1bec765.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/809864a8-cb6f-4f92-b957-2673e43eaa91.png "image")](/assets/images/files/7fe06d56-1a53-484f-af74-eba2c1bec765.png)<!--kg-card-end: html-->
 
 So what about the child test classes? Here’s what I have for the Firefox tests:
 
@@ -312,7 +312,7 @@ You can see it’s almost identical except for the class name prefix, the [TestC
 
 Here’s my project layout:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a91a95b8-e92d-4169-be8c-a2d36841ae4e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/063848b9-a77a-4d82-9599-5f0f1a93e6fd.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a91a95b8-e92d-4169-be8c-a2d36841ae4e.png "image")](/assets/images/files/063848b9-a77a-4d82-9599-5f0f1a93e6fd.png)<!--kg-card-end: html-->
 
 At this point I can run tests (in parallel) against my “local” grid (I started a hub and two nodes locally to test). Next we need to put all of this into a build/release pipeline.
 
@@ -322,27 +322,27 @@ You could run the tests during the build, but I wanted my UI tests to be run aga
 
 I committed all the code to source control in VSTS and created a build definition. Here’s what the tasks look like:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4c174b99-e3a1-4338-bd68-d31330d9c685.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/063e7832-6a22-4301-82d8-ffd0a5500848.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4c174b99-e3a1-4338-bd68-d31330d9c685.png "image")](/assets/images/files/063e7832-6a22-4301-82d8-ffd0a5500848.png)<!--kg-card-end: html-->
 
 The first three steps are for building the application and the solution – I won’t bore you with the details. Let’s look at the next five steps though:
 
 The first three “Copy Files” steps copy the binaries for the three test projects I want (one for IE, for Chrome and Firefox):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5b12a2c2-31a3-4021-a3aa-2c4954bd1f8e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/62310234-41c7-43d3-a605-e93e7305d975.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5b12a2c2-31a3-4021-a3aa-2c4954bd1f8e.png "image")](/assets/images/files/62310234-41c7-43d3-a605-e93e7305d975.png)<!--kg-card-end: html-->
 
 In each case I’m copying the compiled assemblies of the test project (from say test/PartsUnlimitedSelenium.Chrome\bin\$(BuildConfiguration) to $(Build.ArtifactStagingDirectory)\SeleniumTests.
 
 The fourth copy task copies the runsettings file:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4787dfc5-12c6-4e58-b622-4b341faa045b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0cdad628-a3c8-441f-a3c4-792b083876c0.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4787dfc5-12c6-4e58-b622-4b341faa045b.png "image")](/assets/images/files/0cdad628-a3c8-441f-a3c4-792b083876c0.png)<!--kg-card-end: html-->
 
 The final task publishes the $(Build.ArtifactStagingDirectory) to the server:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a6fbc201-467d-4245-861b-6f2587ca0442.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b6291e37-1f26-4a65-95df-157ebdd9e331.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a6fbc201-467d-4245-861b-6f2587ca0442.png "image")](/assets/images/files/b6291e37-1f26-4a65-95df-157ebdd9e331.png)<!--kg-card-end: html-->
 
 After running the build, I have the following drop:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b61298b8-5bcb-4b90-807c-c7359980dac9.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d071ed68-ff2f-40bd-a2ab-fa0546d06384.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/b61298b8-5bcb-4b90-807c-c7359980dac9.png "image")](/assets/images/files/d071ed68-ff2f-40bd-a2ab-fa0546d06384.png)<!--kg-card-end: html-->
 
 The “site” folder contains the webdeploy package for my site – but the important bit here is that all the test assemblies (and the runsettings file) are in the SeleniumTests folder.
 
@@ -350,17 +350,17 @@ The “site” folder contains the webdeploy package for my site – but the imp
 
 Now that we have the app code (the site) and the test assemblies in a drop location, we’re ready to define a Release. In the release for Dev I have the following steps:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3bb098b4-bff9-4e95-9827-41a41ef2cbb5.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c9ece48f-a63a-4456-8425-6f6b97568a6f.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/3bb098b4-bff9-4e95-9827-41a41ef2cbb5.png "image")](/assets/images/files/c9ece48f-a63a-4456-8425-6f6b97568a6f.png)<!--kg-card-end: html-->
 
 I have all the steps that I need to deploy the application (in this case I’m deploying to Azure). Again, that’s not the focus of this post. The Test Assemblies task is the important step to look at here:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b5a7c052-4c80-443d-80c4-b1be4d03bb29.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/19d774e5-cff0-4176-b6c0-e82345d97710.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/b5a7c052-4c80-443d-80c4-b1be4d03bb29.png "image")](/assets/images/files/19d774e5-cff0-4176-b6c0-e82345d97710.png)<!--kg-card-end: html-->
 
 It turns out to be pretty straightforward. I just make sure that “Test Assembly” includes all the assemblies I want to execute – remember you need at least two in order for “Run In Parallel” to have any effect. For Filter Criteria I’ve excluded IE tests – IE tests seem to fail for all sorts of arbitrary reasons that I couldn’t work out – you can leave this empty (or put in a positive expression) if you want to only run certain tests. I specify the path to the runsettings file, and then in “Override TestRun Parameters” I specify the gridUrl and baseUrl that I want to test in this particular environment. I’ve used variables that I define on the environment so that I can clone this for other environments if I need to.
 
 Now when I release, I see that the tests run as part of the release. Clicking on the Tests tab I see the test results. I changed the Outcome filter to show Passed tests and configured the columns to show the “Date started” and “Date completed”. Sure enough I can see that the tests are running in parallel:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/26ceccc9-a9b0-456e-b261-fcbd44831f82.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5c5aab1b-4cfe-43ea-8307-70ede93b4d82.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/26ceccc9-a9b0-456e-b261-fcbd44831f82.png "image")](/assets/images/files/5c5aab1b-4cfe-43ea-8307-70ede93b4d82.png)<!--kg-card-end: html-->
 
 Now you can see why I wanted to add the prefix to the test names – this lets me see exactly which browsers are behaving and which aren’t (ahem, IE).
 

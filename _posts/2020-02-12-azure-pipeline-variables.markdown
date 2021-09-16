@@ -67,7 +67,7 @@ One thing to note: if you specify a variable in the YML variables section, you c
 
 When should you use pipeline variables? These are useful if you plan on triggering the pipeline manually and want to set the value of a variable at queue time. Imagine you sometimes want to build in “DEBUG” and other times in “RELEASE”: you could specify “buildConfiguration” as a pipeline variable when you create the pipeline, giving it a default value of “debug”:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a42362d3-34a7-4a89-a075-00632243cbcb.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/704856b2-fdc7-4dc5-b318-6ef8a5af42a6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a42362d3-34a7-4a89-a075-00632243cbcb.png "image")](/assets/images/files/704856b2-fdc7-4dc5-b318-6ef8a5af42a6.png)<!--kg-card-end: html-->
 
 If you specify “Let users override this value when running this pipeline” then users can change the value of the pipeline when they manually queue it. Specifying “Keep this value secret” will make this value a secret (Azure DevOps will mask the value).
 
@@ -88,13 +88,13 @@ Let's look at a simple pipeline that consumes the pipeline variable:
 
 Running the pipeline without editing the variable produces the following log:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/03d237c0-0360-47e9-927e-040dc5def391.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e5016918-35d6-4037-a237-2669c32a66c4.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/03d237c0-0360-47e9-927e-040dc5def391.png "image")](/assets/images/files/e5016918-35d6-4037-a237-2669c32a66c4.png)<!--kg-card-end: html-->
 
 If the pipeline is not manually queued, but triggered, any pipeline variables default to the value that you specify in the parameter when you create it.
 
 Of course if we update the value when we queue the pipeline to “release”, of course the log reflects the new value:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ff8674b4-bfcf-49d0-83fd-5ae5a906ded8.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b47f930b-20dd-484a-ba87-3cf9078655a6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ff8674b4-bfcf-49d0-83fd-5ae5a906ded8.png "image")](/assets/images/files/b47f930b-20dd-484a-ba87-3cf9078655a6.png)<!--kg-card-end: html-->
 
 Referencing a pipeline variable is exactly the same as referencing an inline variable – once again, the distinction is purely for discussion.
 
@@ -157,11 +157,11 @@ You could create them as pipeline variables - but then you'd have to prefix the 
 
 This is what Variable Groups are designed for. You can find variable groups in the “Library" hub in Azure DevOps:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/623a4b38-40b4-41ba-b9da-3352a1ab04a1.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a4887fed-9394-4f2f-8742-1ffd05c8bc26.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/623a4b38-40b4-41ba-b9da-3352a1ab04a1.png "image")](/assets/images/files/a4887fed-9394-4f2f-8742-1ffd05c8bc26.png)<!--kg-card-end: html-->
 
 The image above shows two variable groups: one for DEV and one for QA. Let's create a new one for Prod, specifying the same variable name (“ConStr”) but this time entering in the value for Prod:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d4c5c376-a471-4aab-8f03-7452eaa9a112.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/faa615fb-4f15-4eb2-bc61-d5f22f370e59.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/d4c5c376-a471-4aab-8f03-7452eaa9a112.png "image")](/assets/images/files/faa615fb-4f15-4eb2-bc61-d5f22f370e59.png)<!--kg-card-end: html-->
 
 Security is beyond the scope of this post- but you can specify who has permission to view/edit variable groups, as well as which pipelines are allowed to consume them. You can of course mark any value in the variable group as secret by clicking the padlock icon next to the value.
 
@@ -171,7 +171,7 @@ The trick to making variable groups work for environment values is to keep the n
 
 You can also integrate variable groups to Azure KeyVaults. When you create the variable group, instead of specifying values in the variable group itself, you connect to a KeyVault and specify which keys from the vault should be synchronized when the variable group is instantiated in a pipeline run:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/766709c4-081e-4bed-8251-22f9e5fd6613.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7e8565f1-a6a3-4836-8348-80a83c4d46fe.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/766709c4-081e-4bed-8251-22f9e5fd6613.png "image")](/assets/images/files/7e8565f1-a6a3-4836-8348-80a83c4d46fe.png)<!--kg-card-end: html-->
 ### Consuming Variable Groups
 
 Now that we have some variable groups, we can consume them in a pipeline. Let's consider this pipeline:

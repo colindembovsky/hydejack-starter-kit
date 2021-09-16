@@ -85,17 +85,17 @@ I tried the same hypothetical deployment scenario I used in my previous post –
 
 Here’s the definition in the Dev environment:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4ae9d98a-cb72-430c-ba46-59d5b7c0a367.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/aa60a661-c377-4ffa-8db6-ccff14e51c38.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4ae9d98a-cb72-430c-ba46-59d5b7c0a367.png "image")](/assets/images/files/aa60a661-c377-4ffa-8db6-ccff14e51c38.png)<!--kg-card-end: html-->
 
 You can see the “Replace Tokens” task – I just specified the path to the SetParams.xml file as the “Target File”. The environment variables look like this:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a359a967-b5f7-48fd-8bbf-442ef8624828.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1a9b2619-525f-49c9-9033-781e183fadb9.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a359a967-b5f7-48fd-8bbf-442ef8624828.png "image")](/assets/images/files/1a9b2619-525f-49c9-9033-781e183fadb9.png)<!--kg-card-end: html-->
 
 Note how I define the app setting (CoolKey), the connection string (EntityDB) and the site name (the IIS virtual directory name of the website). The “Replace Tokens” path finds the corresponding tokens and replaces them with the values I’ve defined.
 
 To publish to IIS, I can just use the “Batch Script” task:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/456da677-1025-40e2-81d3-1487394b8db0.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/28c3cfb6-c24f-4e50-b4a9-d6255443e10d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/456da677-1025-40e2-81d3-1487394b8db0.png "image")](/assets/images/files/28c3cfb6-c24f-4e50-b4a9-d6255443e10d.png)<!--kg-card-end: html-->
 
 I specify the path to the cmd file (produced by the build) and then add the arguments “/Y” to do the deployment (as opposed to a what-if) and use the “/M” argument to specify the IIS server I’m deploying to. Very clean!
 
@@ -103,13 +103,13 @@ I specify the path to the cmd file (produced by the build) and then add the argu
 
 For the staging environment, I use the same “Replace Tokens” task. The variables, however, look as follows:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7f716985-f73f-430b-861a-9b107ed084e4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c8de9fec-749a-48ef-9066-5e5ec90827d6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/7f716985-f73f-430b-861a-9b107ed084e4.png "image")](/assets/images/files/c8de9fec-749a-48ef-9066-5e5ec90827d6.png)<!--kg-card-end: html-->
 
 The SiteName variable has been removed. This is because the “Azure WebDeploy” task will work out the site name internally before invoking WebDeploy.
 
 Here’s what the Azure WebDeploy task looks like in Staging:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/44ff7e2a-2917-48d3-a9fd-9293c63bf063.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fc295a17-a03a-4802-a4eb-23f7f79e95f5.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/44ff7e2a-2917-48d3-a9fd-9293c63bf063.png "image")](/assets/images/files/fc295a17-a03a-4802-a4eb-23f7f79e95f5.png)<!--kg-card-end: html-->
 
 The parameters are as follows:
 

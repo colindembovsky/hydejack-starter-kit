@@ -108,7 +108,7 @@ Then we can browse to [http://localhost:9090/graph](http://localhost:9090/graph)
 
 And then we can visualize it by clicking on the graph button:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d4097067-5591-4088-a6ec-e27a09e68f3e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a8121922-b998-4260-b51a-abfc4869ce20.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/d4097067-5591-4088-a6ec-e27a09e68f3e.png "image")](/assets/images/files/a8121922-b998-4260-b51a-abfc4869ce20.png)<!--kg-card-end: html-->
 
 This is a proxy for how well sales are doing on our site by category. And while this is certainly great, it's far better to visualize Prometheus metrics in Grafana dashboards - which we can do using the PromQL queries. But that's a topic for a future post in this series!
 

@@ -88,27 +88,27 @@ Meanwhile, in RM, I’ve set up an environment (using “New Standard Environmen
 
 I click on “Configure Apps” –\> Components and add a new component. I give it a name and specify the package path:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5c33849c-66e4-4675-a050-efdc8170b396.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4054bc65-0967-415e-8af1-3752290f5216.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5c33849c-66e4-4675-a050-efdc8170b396.png "image")](/assets/images/files/4054bc65-0967-415e-8af1-3752290f5216.png)<!--kg-card-end: html-->
 
 You can access the package path in your scripts using “$applicationPath”.
 
 Now I click on the “Deployment” tab and configure the tool – I select the “Run PowerShell on Standard Environment” tool (which introduces some parameters) and leave everything as default.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d3fc5510-321b-4fb7-8e06-9ce6db7c93f3.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6076c6b4-a6ef-426e-a370-e42f755475da.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/d3fc5510-321b-4fb7-8e06-9ce6db7c93f3.png "image")](/assets/images/files/6076c6b4-a6ef-426e-a370-e42f755475da.png)<!--kg-card-end: html-->
 
 Now let’s configure the Release Template. Click on “Configure Apps” –\> “Release Templates” and add a new Template. Give it a name and select a Release Path. In the toolbox, right-click on the Components node and add in the DSC script component we just created. Now drag into the designer the server and into the server activity drag the DSC component. We’ll then enter the credentials and the paths to the scripts:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6aeee89c-c910-470a-83f4-55b9eb074f32.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/613957e2-7199-4e86-a0b1-d136a71244be.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/6aeee89c-c910-470a-83f4-55b9eb074f32.png "image")](/assets/images/files/613957e2-7199-4e86-a0b1-d136a71244be.png)<!--kg-card-end: html-->
 
 Since I’m accessing a network share, I specify “UseCredSSP” to true. Both ScriptPath and ConfigurationFilePath are relative to the package path (configured in the Source tab of the component). I specify the DSC script for the ScriptPath and the config data file for the ConfigurationFilePath. Finally, I supply a username and password for executing the command. We can now run the deployment!
 
 Create a new Release and select the newly created template. Specify the build number (either a TFS build or external folder, depending on how you configured your components) and Start it.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/501030fa-4737-4961-8f90-7544b801754e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0180bc56-59e7-4b3f-bf44-5e29abf12480.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/501030fa-4737-4961-8f90-7544b801754e.png "image")](/assets/images/files/0180bc56-59e7-4b3f-bf44-5e29abf12480.png)<!--kg-card-end: html-->
 
 Hopefully you get a successful deployment!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5bf548b5-98d2-483c-894f-3939fb54150f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/00cc9fe9-0b3f-4778-9d78-3b7b75a511a1.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/5bf548b5-98d2-483c-894f-3939fb54150f.png "image")](/assets/images/files/00cc9fe9-0b3f-4778-9d78-3b7b75a511a1.png)<!--kg-card-end: html-->
 ## Issues You May Face
 
 Of course, not everything will run smoothly. Here are some errors I faced and what I did to rectify them.
@@ -121,7 +121,7 @@ Of course, not everything will run smoothly. Here are some errors I faced and wh
 
 **Fix:** In the RM DSC manual, they tell you to run an Enable-WSManCredSSP command to allow credential delegation. I have VMs that have checkpoints, so I’ve run this PoC several times, and each time I get stuck I just start again at the “clean” checkpoint. Even though this command always works in PowerShell, I found that sometimes I would get this error. The fix is to edit a group policy on the RM server machine. Type gpedit.msc to open up the console and browse to “Computer Configuration\Administrative Templates\System\Credentials Delegation”. Then click on the “Allow delegating fresh credentials with NTLM-only server authentication”. Enable this rule and then add in your target servers (click the “Show…” button). You can use wildcards if you want to delegate any machine on a domain. Interestingly, the Enable-WSManCredSSP command seems to “edit” the “Allow delegating fresh credentials” setting, not the NTLM-only one. Perhaps there’s a PowerShell command or extra argument that will edit the NTLM-only setting?
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2c026a3a-f8fd-449b-8f99-e80eff5c98d7.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d07dc23d-e926-400a-afdb-151d3bb88f94.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/2c026a3a-f8fd-449b-8f99-e80eff5c98d7.png "image")](/assets/images/files/d07dc23d-e926-400a-afdb-151d3bb88f94.png)<!--kg-card-end: html-->
 ### Configuration Data Errors
 
 **Symptom:** You get the following error message in the deployment log:

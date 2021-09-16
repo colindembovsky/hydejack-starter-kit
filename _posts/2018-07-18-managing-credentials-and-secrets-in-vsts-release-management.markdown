@@ -32,11 +32,11 @@ The KeyVault and Variable Group methods both define a Variable Group - but if yo
 
 Go to the VSTS release hub and click on Library to see variable groups. Create a new Variable Group and give it a name. If this is a "plain" Variable Group, define all your secrets and their values - don't forget to padlock the values that you want to hide. If you're using KeyVault, first define a Service Endpoint in the Services hub for authenticating to the KeyVault. Then come back and link the Variable Group to the KeyVault and specify which Secrets are synchronized.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3e2a7993-9152-4c88-b60e-5447179db634.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e34bd373-bcc6-4049-a58c-8ec88c10a454.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/3e2a7993-9152-4c88-b60e-5447179db634.png "image")](/assets/images/files/e34bd373-bcc6-4049-a58c-8ec88c10a454.png)<!--kg-card-end: html-->
 
 Now when you run define a release, you link the Variable Group (optionally scoping it) and voila - you have a centralized place to manage secrets, either directly in the Variable Group or via KeyVault.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/81c1ba4e-e21a-438e-b4bb-150ce1d58cf2.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/18eeb213-bcec-456c-b3d0-7e8de9957d68.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/81c1ba4e-e21a-438e-b4bb-150ce1d58cf2.png "image")](/assets/images/files/18eeb213-bcec-456c-b3d0-7e8de9957d68.png)<!--kg-card-end: html-->
 
 The variable group can be linked to many releases, so you only ever have to manage the values in one place, irrespective of how many releases reference them. To use the values, just use $(SecretName) in your tasks.
 

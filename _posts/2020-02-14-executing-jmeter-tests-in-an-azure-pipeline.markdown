@@ -34,13 +34,13 @@ It’s common to have some parameters for your test plans. For example, you may 
 
 In the figure below, I have a test plan called CartTest.jmx where I specify a User Defined Variable (UDV) called “host”. I use the parameter function to read the parameter value if it exists, or default to “cdpartsun2-prod.azurewebsites.net” if the parameter does not exist:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4359d3c5-a86f-4417-96bf-4479c18de9ce.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/383e1f2b-79bb-470a-95b7-3c5ad81e9a4e.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4359d3c5-a86f-4417-96bf-4479c18de9ce.png "image")](/assets/images/files/383e1f2b-79bb-470a-95b7-3c5ad81e9a4e.png)<!--kg-card-end: html-->
 
 The value of the host UDV is “${\_\_P(host,cdpartsun2-prod.azurewebsites.net)}”. Of course you can use the \_\_P function wherever you need it – not just for UDVs.
 
 In my test plan, I also have a CSV for test data. I set the path of this file as a relative path to the JMX file:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/dfe7f36d-bb44-4c5a-b841-d2d57b8d3b21.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9d59db6f-02f7-4e70-9e06-acd413a44420.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/dfe7f36d-bb44-4c5a-b841-d2d57b8d3b21.png "image")](/assets/images/files/9d59db6f-02f7-4e70-9e06-acd413a44420.png)<!--kg-card-end: html-->
 
 Now that I have the test plan and supporting data files, I am ready to script test execution. Before we get to running the test in a container, let’s see how I can run the test from the command line. I simply execute this command from within the folder containing the JMX file:
 
@@ -171,7 +171,7 @@ This is very simple – and we don’t even have to worry about installing Java 
 
 Here’s a snippet of the log while the test is executing: we can see the download of the Docker image and the boot up – now we just wait for the test to complete.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9a0be48f-24f9-49b0-b18b-88d91491d76f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8d34e502-8ec6-40cb-a6bc-9749ecc61b6b.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/9a0be48f-24f9-49b0-b18b-88d91491d76f.png "image")](/assets/images/files/8d34e502-8ec6-40cb-a6bc-9749ecc61b6b.png)<!--kg-card-end: html-->
 ### Executable Attributes
 
 One quick note: initially when I committed the scripts to the repo, they didn’t have the executable attribute set – this caused the build to fail because the scripts were not executable. To set the executable attribute, I ran the following command in the folder containing the sh files:
@@ -180,7 +180,7 @@ One quick note: initially when I committed the scripts to the repo, they didn’
 
 Once the build completes, we can download the report file and analyze the test run:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/15731b4e-5e66-4b24-bc2a-98077b02b689.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3f644203-2dc7-403c-bb3e-a0bd4a4a47fb.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b9d81a3e-d21e-429f-b612-27893b42205c.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f20ace7b-cab9-4c7c-b98e-77e64d6967aa.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/15731b4e-5e66-4b24-bc2a-98077b02b689.png "image")](/assets/images/files/3f644203-2dc7-403c-bb3e-a0bd4a4a47fb.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](/assets/images/files/b9d81a3e-d21e-429f-b612-27893b42205c.png "image")](/assets/images/files/f20ace7b-cab9-4c7c-b98e-77e64d6967aa.png)<!--kg-card-end: html-->
 ## Conclusion
 
 Once you have a JMeter test, it’s fairly simple to run the it in a Docker container as part of your build (or release) process. Of course this doesn’t test load from multiple locations and is limited to the amount of threads the agent can spin up, but for quick performance metrics it’s a clean and easy way to execute load tests. Add to that the powerful GUI authoring capabilities of JMeter and you have a good performance testing platform.

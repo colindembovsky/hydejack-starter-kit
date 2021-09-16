@@ -41,7 +41,7 @@ One concern is security - how do you secure the test rig since it's running in t
 
 Let's take a look at the architecture of this containers in ACI:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/39464a65-4351-482d-a373-35bf0698f964.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/46f87e72-d338-4297-9073-273943493756.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/39464a65-4351-482d-a373-35bf0698f964.png "image")](/assets/images/files/46f87e72-d338-4297-9073-273943493756.png)<!--kg-card-end: html-->
 
 Notes:
 
@@ -76,7 +76,7 @@ For the source code you can link directly to my [GitHub repo](https://github.com
 
 The build is really simple - and since it's yaml-based, the [code is already there](https://github.com/colindembovsky/vsts-selenium-aci/blob/master/.vsts-ci.yml). To create a build definition, enable the YAML build preview on your VSTS account, then browse to the Build page. Create a new YAML build and point to the .vsts-ci.yml file. The build compiles code, versions the assemblies, runs unit tests with code coverage and finally publishes the web app as a webdeploy package:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ad7f904a-53b5-4306-be3d-ddc014715926.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1216c9cf-e8f7-4bc7-b347-9df978e01b72.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ad7f904a-53b5-4306-be3d-ddc014715926.png "image")](/assets/images/files/1216c9cf-e8f7-4bc7-b347-9df978e01b72.png)<!--kg-card-end: html-->
 ### The Release
 
 You'll need to import the release definition to create it. First download the [WebApp.ReleaseDefinition.json](https://github.com/colindembovsky/vsts-selenium-aci/blob/master/WebApp.ReleaseDefinition.json) file (or clone the repo) so that you have the file on disk. Now, if you're using the "old" release view, just navigate to the Releases page and click the + button at the top of the left menu, then select "Import release pipeline". If you're using the new preview release view, you'll need to create a dummy release (since the landing page doesn't show the toolbar). Once you've created a dummy release, click the "+ New" button in the toolbar and click "Import a pipeline". Then browse to the WebApp.ReleaseDefinition.json file and click import. Once it's imported, you'll need to fix up a few settings:
@@ -92,7 +92,7 @@ Click on the Variables tab and update the names for:
 - VSTSAccount - the name of your VSTS account (i.e. the bit before .visualstudio.com)
 - VSTSPool - the name of the agent pool that you created earlier
 - VSTSToken - your PAT. Make sure to padlock this value (to make it secret)
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/18590a8c-0030-4c27-8de0-61b4f2e89785.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0aeb7471-3c09-4222-b543-79a45379ff1d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/18590a8c-0030-4c27-8de0-61b4f2e89785.png "image")](/assets/images/files/0aeb7471-3c09-4222-b543-79a45379ff1d.png)<!--kg-card-end: html-->
 #### Artifacts
 
 Click on the Pipeline tab top open the designer. You're going to have to delete and recreate the artifacts, since the id's are specific to my VSTS, so I cleared them in the definition json file. The primary artifact (so add this first) is your web app build - so add a new artifact of type "Build" and point to the WebApp build. Make sure the "Source alias" of this artifact is set to "WebApp" to preserve the paths in the tasks. You can also enable the CD trigger (to queue a release when a new build is available) if you want to. Now add another artifact - this time point to the source code repo (either on GitHub or your VSTS account) and alias this artifact as "infra" to preserve paths.
@@ -101,7 +101,7 @@ Click on the Pipeline tab top open the designer. You're going to have to delete 
 
 Now click on the Tasks tab. Click on the "Provision Infrastructure" job header and then select "Hosted Linux Preview" for the agent pool (we're running some Azure CLI commands via bash, so we need an Ubuntu agent). You can repeat this for the last job "Tear down ACI".
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fb613512-3b5e-40c0-8871-c101d354f659.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a2fdc707-53ce-4a0a-8d2f-e7848ab25361.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/fb613512-3b5e-40c0-8871-c101d354f659.png "image")](/assets/images/files/a2fdc707-53ce-4a0a-8d2f-e7848ab25361.png)<!--kg-card-end: html-->
 
 The "Deploy using WebDeploy" task requires a Windows agent, so change the queue on this job to "Hosted VS2017". Finally, change the "Run Tests" queue to the agent queue you created earlier (with the same name as the VSTSPool variable).
 
@@ -109,7 +109,7 @@ The "Deploy using WebDeploy" task requires a Windows agent, so change the queue 
 
 You'll need to click on each "Azure" task (the Azure CLI tasks, the Azure Resource Group Deployment task and the Azure App Service Deploy task and configure the correct Azure endpoint:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a5f18dfd-dad5-48eb-b674-ad97f52ec3be.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6d503890-0576-4b3d-9ca6-7b5c32010607.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a5f18dfd-dad5-48eb-b674-ad97f52ec3be.png "image")](/assets/images/files/6d503890-0576-4b3d-9ca6-7b5c32010607.png)<!--kg-card-end: html-->
 
 You should now be able to save the definition - remove "Copy" from the name before you do!
 
@@ -123,7 +123,7 @@ This job provisions infrastructure for the web app (via ARM template) as well as
 
 Finally we invoke the Azure CLI task using an inline script to create the ACI using the yaml file:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0e9cd7da-310f-44fc-89c7-59366c2a7c7b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/db90eece-c231-4220-916a-d457e3e2e458.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/0e9cd7da-310f-44fc-89c7-59366c2a7c7b.png "image")](/assets/images/files/db90eece-c231-4220-916a-d457e3e2e458.png)<!--kg-card-end: html-->
 
 The script itself is really a one-liner to "az container create" and we pass in the resource group name, the ACI name and the path to the yaml file.
 
@@ -131,7 +131,7 @@ The script itself is really a one-liner to "az container create" and we pass in 
 
 The deploy job is a single task: Deploy Azure App Service. This has to run on a windows agent because it's invoking webdeploy. We specify the App name from the variable and point to the webdeploy zip file (the artifact from the build).
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4511e36c-eebd-4dcb-bdd6-c0faaf0f1739.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ca200252-5c15-43d4-8ee7-24f05aa5962a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4511e36c-eebd-4dcb-bdd6-c0faaf0f1739.png "image")](/assets/images/files/ca200252-5c15-43d4-8ee7-24f05aa5962a.png)<!--kg-card-end: html-->
 
 Of course a real application may require more deployment steps - but this single step is enough for this demo.
 
@@ -139,15 +139,15 @@ Of course a real application may require more deployment steps - but this single
 
 This job should be executing on the agent queue that you've configured in variables - this is the queue that the ACI agents are going to join in the first job. The first task installs the correct .NET core framework. We then replace the tokens in the runsettings file (to set the browser and the BaseURL). Then we execute "dotnet test" and finally publish the test results.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c9ea1534-7837-4fcc-8281-b4563a1151e3.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c8fe1b7c-0b13-482e-8cbb-d1f216dbf64e.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/c9ea1534-7837-4fcc-8281-b4563a1151e3.png "image")](/assets/images/files/c8fe1b7c-0b13-482e-8cbb-d1f216dbf64e.png)<!--kg-card-end: html-->
 
 You'll notice that I have unset "Publish test results" in the dotnet test task. This is because the run is always published as "VSTest Test Run" - there's no way to distinguish which browser the test run is for. We tweak the test run title in the Publish Test Results step:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4b409e7e-450b-40c1-9d9f-f224d1e1dc26.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e7c9e2bd-e6d9-460c-bb32-145efe1d9d09.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4b409e7e-450b-40c1-9d9f-f224d1e1dc26.png "image")](/assets/images/files/e7c9e2bd-e6d9-460c-bb32-145efe1d9d09.png)<!--kg-card-end: html-->
 
 You'll also notice that we only have a single job - so how does the parallelization work? If you click on the Job name, you'll see that we've configured the parallelization settings for the job:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4baf0c8f-7c86-451e-89d6-e8dadb856477.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a2107607-e037-4265-95c4-cfd3ed7b9294.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4baf0c8f-7c86-451e-89d6-e8dadb856477.png "image")](/assets/images/files/a2107607-e037-4265-95c4-cfd3ed7b9294.png)<!--kg-card-end: html-->
 
 We're "splitting" the values for the variable "Browser" - in this case it's set to "chrome,firefox". In other words, this job will spawn twice - once for Browser=chrome and once for Browser=firefox. I've set the maximum number of agents to 2 since we only have 2 anyway.
 
@@ -155,20 +155,20 @@ We're "splitting" the values for the variable "Browser" - in this case it's set 
 
 Finally we tear down the ACI in a single Azure CLI inline script where we call "az container delete" (passing in the resource group and ACI names):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/96fc634f-35ef-40ba-9452-c343d5317dba.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5b832b40-7d1d-402a-a89a-df873d7f1b0e.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/96fc634f-35ef-40ba-9452-c343d5317dba.png "image")](/assets/images/files/5b832b40-7d1d-402a-a89a-df873d7f1b0e.png)<!--kg-card-end: html-->
 
 To ensure that this job always runs (even if the tests fail) we configure the Advanced options for the job itself, specifying that it should always run:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f6b6f455-76c6-4154-af96-c5d2379b3f7c.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9ff88399-5fd8-481b-843e-7df415a3086a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f6b6f455-76c6-4154-af96-c5d2379b3f7c.png "image")](/assets/images/files/9ff88399-5fd8-481b-843e-7df415a3086a.png)<!--kg-card-end: html-->
 ## Run It!
 
 Now that we have all the pieces in place, we can run it! Once it has completed, we can see 2 "Run Test" jobs were spawned:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c8bc9329-a1e2-4242-a454-be7de62c768f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/35b5d859-8559-4567-92de-6b0c0043266d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/c8bc9329-a1e2-4242-a454-be7de62c768f.png "image")](/assets/images/files/35b5d859-8559-4567-92de-6b0c0043266d.png)<!--kg-card-end: html-->
 
 If we navigate to the Test tab, we can see both runs (with the browser name):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8468eca2-7d31-44ea-bf8a-eadad866f847.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/273d0d68-f2e5-4efd-b02d-406926793dd8.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/8468eca2-7d31-44ea-bf8a-eadad866f847.png "image")](/assets/images/files/273d0d68-f2e5-4efd-b02d-406926793dd8.png)<!--kg-card-end: html-->
 ## Conclusion
 
 Using ACI we can get essentially serverless parallel Selenium tests running in a release pipeline. We're only charged for the compute that we actually used in Azure, so this is a great cost optimization. We also gain parallelization or just better test coverage (we are running the same tests in 2 browsers). All in all this proved to be a useful experiment!

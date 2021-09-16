@@ -63,21 +63,21 @@ I saved this to my build scripts folder under source control and checked it in.
 
 Opening up the build definition, I had to create a second build run to run the JavaScript tests – here’s the settings I used:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b236a53c-1ed2-4625-b4b9-340b571d9299.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a4f94785-d8fd-4e7b-af54-c648bc1c77a6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/b236a53c-1ed2-4625-b4b9-340b571d9299.png "image")](/assets/images/files/a4f94785-d8fd-4e7b-af54-c648bc1c77a6.png)<!--kg-card-end: html-->
 
 Note how I’ve enabled Code Coverage in the options dropdown.
 
 I added this folder to the source mappings for my build and then called the script in the post-test settings of the build:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c9497e2e-6641-4866-86ad-7bf08f41ba7e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6ad64dfc-ef5a-4c5b-b343-f0a25e2a5071.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/c9497e2e-6641-4866-86ad-7bf08f41ba7e.png "image")](/assets/images/files/6ad64dfc-ef5a-4c5b-b343-f0a25e2a5071.png)<!--kg-card-end: html-->
 
 Now when I run my build, I get a link to the JavaScript coverage file:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/94d99bff-5c69-4239-a145-6795dd3916e4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/99bcacbb-0bc3-4cac-a6ac-980b849166a4.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/94d99bff-5c69-4239-a145-6795dd3916e4.png "image")](/assets/images/files/99bcacbb-0bc3-4cac-a6ac-980b849166a4.png)<!--kg-card-end: html-->
 
 Clicking on the “coverage results” link opens the results page:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/033ce68c-1531-47b8-8241-cc884562de5f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e710bde6-a4bc-492b-a1df-d287ef0328b7.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/033ce68c-1531-47b8-8241-cc884562de5f.png "image")](/assets/images/files/e710bde6-a4bc-492b-a1df-d287ef0328b7.png)<!--kg-card-end: html-->
 
 As a next project, I want to see if I can incorporate the coverage results into the build warehouse so that there’s metrics not only on .NET coverage over time, but also for JavaScript tests.
 

@@ -157,7 +157,7 @@ Now that we have a private agent, we can deploy to the AKS cluster. However, the
 
 For public AKS cluster, you can create a [Pipeline Environment](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/environments?view=azure-devops) in AzDO and add a [Kubernetes resource](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/environments-kubernetes?view=azure-devops). Under the hood AzDO will query the namespaces of the target cluster so that you can select a namespace for the environment, as well as for querying workloads (services, deployments and pods) within the cluster. However, if you try this for a private cluster, you'll get an error:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/10/271718_image.png" class="kg-image" alt loading="lazy"><figcaption>Error when creating an AzDO environment to a private AKS cluster</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images2020/10/271718_image.png" class="kg-image" alt loading="lazy"><figcaption>Error when creating an AzDO environment to a private AKS cluster</figcaption></figure>
 
 You can see the URL to the cluster API has `.privatelink` in it - so this makes sense. AzDO is unable to connect to the AKS API.
 
@@ -168,7 +168,7 @@ To work around this, we need to:
 
 To create the environment, navigate to Pipelines-\>Environments and add a new environment. Simply select `None` for the resource type:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/10/271721_image.png" class="kg-image" alt loading="lazy"><figcaption>Creating a <code>generic</code> AzDO environment</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images2020/10/271721_image.png" class="kg-image" alt loading="lazy"><figcaption>Creating a <code>generic</code> AzDO environment</figcaption></figure>
 
 Now you can define [approvals](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass#approvals) and/or gates (checks) on the environment as you would for any other environment.
 
@@ -194,7 +194,7 @@ Now navigate to your Azure DevOps account and Team Project. Click on the gear ic
 
 Select `Kubernetes` from the connection type and click `Next`:
 
-<figure class="kg-card kg-image-card kg-card-hascaption"><img src="https://cdn.colinsalmcorner.com/ghostcontent/images/2020/10/271742_image.png" class="kg-image" alt loading="lazy"><figcaption>Creating a <code>KubeConfig</code> Service Connection</figcaption></figure>
+<figure class="kg-card kg-image-card kg-card-hascaption"><img src="/assets/images2020/10/271742_image.png" class="kg-image" alt loading="lazy"><figcaption>Creating a <code>KubeConfig</code> Service Connection</figcaption></figure>
 
 Fill out the form as follows:
 

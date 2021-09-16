@@ -48,7 +48,7 @@ In order to use AAD against the SQL Server, you'll need to configure an AAD admi
 
 Once you've done that, you need to grant Azure AD users (or groups) permissions in the databases (not the server). To do that you have to connect to the database using an Azure AD account. Open Visual Studio or SQL Server Management Studio and connect to the database as the admin (or a member of the admin group) using "Active Directory Password Authentication" or "Azure Directory Integrated Authentication" from the Authentication dropdown:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5c7acf37-8eb9-4ff5-b582-05b5016600ee.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/48392dc1-e100-4568-8122-413720245376.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5c7acf37-8eb9-4ff5-b582-05b5016600ee.png "image")](/assets/images/files/48392dc1-e100-4568-8122-413720245376.png)<!--kg-card-end: html-->
 
 If you don't see these options, then you'll need to update your SQL Management Studio or SSDT. If you're domain joined to the Azure Active Directory domain, you can use the integrated method - in my case my laptop isn't domain joined so I used the password method. For username and password, I used my Azure AD (org account) credentials. Once you're logged in and connected to the database, execute the following T-SQL:
 

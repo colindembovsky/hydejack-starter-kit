@@ -24,7 +24,7 @@ If you create a new Release Definition, there is an “Azure Web App Deployment�
 
 The Task is great in that it uses a predefined Azure Service Endpoint, which abstracts credentials away from the deployment. However, the underlying implementation invokes an Azure PowerShell cmdlet [Publish-AzureWebsiteProject](https://msdn.microsoft.com/en-us/library/azure/dn722468.aspx). This cmdlet works – as long as you don’t intend to change any configuration except the connection strings. Have different app settings in different environments? You’re hosed. Here’s the Task UI in VSTS:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/54e7111d-5892-44e8-b0f8-f2eb7f277d3b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2a26c2ff-f9a0-4dc4-9619-4111a7e8e9ab.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/54e7111d-5892-44e8-b0f8-f2eb7f277d3b.png "image")](/assets/images/files/2a26c2ff-f9a0-4dc4-9619-4111a7e8e9ab.png)<!--kg-card-end: html-->
 
 The good:
 
@@ -87,7 +87,7 @@ Note how I’m sticking with the double-underscore pre- and post-fix as the toke
 
 Once you’ve got a parameters.xml file and a publish profile committed into your source repo (Git or TFVC – either one works fine), you’re almost ready to create a Team Build (vNext Build). You will need the script that “hydrates” the parameters from the Environment variables. I’ll cover the contents of that script shortly – let’s assume for now that you have a script called “Replace-SetParameters.ps1” checked into your source repo along with your website. Here’s the structure I use:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0ca3df4c-51ba-486a-ae98-772b7034b779.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/47811e0e-47d3-4131-a14c-4da0c5fd828f.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/0ca3df4c-51ba-486a-ae98-772b7034b779.png "image")](/assets/images/files/47811e0e-47d3-4131-a14c-4da0c5fd828f.png)<!--kg-card-end: html-->
 
 Create a new Build Definition – select Visual Studio Build as the template to start from. You can then configure whatever you like in the build, but you have to do 3 things:
 
@@ -95,19 +95,19 @@ Create a new Build Definition – select Visual Studio Build as the template to 
 2. /p:DeployOnBuild=true /p:PublishProfile=Release /p:PackageLocation="$(build.StagingDirectory)"
 3. The name of the PublishProfile is the same name as the pubxml file in your solution
 4. The package location is set to the build staging directory
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4d9e81c0-4cd6-4685-b27d-080a7fa2b106.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2a5f8f9c-c7cf-4264-b22b-351cb07046bb.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4d9e81c0-4cd6-4685-b27d-080a7fa2b106.png "image")](/assets/images/files/2a5f8f9c-c7cf-4264-b22b-351cb07046bb.png)<!--kg-card-end: html-->
 1. Configure the “Copy and Publish Build Artifacts” Task to copy the staging directory to a server drop:
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6f8812b9-142f-434b-a6f9-4b060630517d.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a249909e-a879-4e40-9ef2-a2a3cff04ad2.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/6f8812b9-142f-434b-a6f9-4b060630517d.png "image")](/assets/images/files/a249909e-a879-4e40-9ef2-a2a3cff04ad2.png)<!--kg-card-end: html-->
 1. Add a new “Publish Build Artifact” Task to copy the “Replace-SetParameters.ps1” script to a server drop called “scripts”:
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/66fb8d87-a768-4adf-8ff8-6ab42fcfcf50.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/664fa560-0f9f-4034-b959-b97b5b5d88e3.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/66fb8d87-a768-4adf-8ff8-6ab42fcfcf50.png "image")](/assets/images/files/664fa560-0f9f-4034-b959-b97b5b5d88e3.png)<!--kg-card-end: html-->
 
 I like to version my assemblies so that my binary versions match my build number. I use a [custom build Task](https://github.com/colindembovsky/cols-agent-tasks/tree/master/Tasks/VersionAssemblies) to do just that. I also run unit tests as part of the build. Here’s my entire build definition:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4c86556e-4b23-4852-9aa3-9c0bf78486a8.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ddd96c1f-4c66-4cfe-b666-202738ffe9b9.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4c86556e-4b23-4852-9aa3-9c0bf78486a8.png "image")](/assets/images/files/ddd96c1f-4c66-4cfe-b666-202738ffe9b9.png)<!--kg-card-end: html-->
 
 Once the build has completed, the Artifacts look like this:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f90dcc60-02cc-429e-9016-9b401a7eb6e1.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/499b4107-1af6-4272-bbc1-a8d5fb0c4494.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1ec03479-9722-4704-a3bd-a028d1663996.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/374f429e-bcb4-49e4-9a94-4760f4703ae3.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/55f87666-1e7e-4228-91e7-260b515a0597.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/cfddee21-bdd1-4a0e-bbde-6bd7e61560b9.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f90dcc60-02cc-429e-9016-9b401a7eb6e1.png "image")](/assets/images/files/499b4107-1af6-4272-bbc1-a8d5fb0c4494.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](/assets/images/files/1ec03479-9722-4704-a3bd-a028d1663996.png "image")](/assets/images/files/374f429e-bcb4-49e4-9a94-4760f4703ae3.png)<!--kg-card-end: html--><!--kg-card-begin: html-->[![image](/assets/images/files/55f87666-1e7e-4228-91e7-260b515a0597.png "image")](/assets/images/files/cfddee21-bdd1-4a0e-bbde-6bd7e61560b9.png)<!--kg-card-end: html-->
 
 Here’s what the SetParameters file looks like if you open it up:
 
@@ -186,27 +186,27 @@ Here are the steps to configure the Release Definition:
 
 1. Go to the Release hub in VSTS and create a new Release Definition. Select “Empty” to start with an empty template.
 2. Enter a name for the Release Definition and change “Default Environment” to Dev
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/218622b6-48aa-453c-92d3-eb5d9884aacf.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e75f4709-35f4-44d0-aef2-b2dfbbe64479.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/218622b6-48aa-453c-92d3-eb5d9884aacf.png "image")](/assets/images/files/e75f4709-35f4-44d0-aef2-b2dfbbe64479.png)<!--kg-card-end: html-->
 1. Click “Link to a Build Definition” and select the build you created earlier:
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/509668ce-0c8d-4c0d-807c-e509c7f02c8b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7a9168c1-a851-4693-a267-6c6d420c42d8.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/509668ce-0c8d-4c0d-807c-e509c7f02c8b.png "image")](/assets/images/files/7a9168c1-a851-4693-a267-6c6d420c42d8.png)<!--kg-card-end: html-->
 1. Click “+ Add Tasks” and add a PowerShell Task:
 2. For the “Script filename”, browse to the location of the Replace-SetParameters.ps1 file:
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/45f0a4f9-0cd8-40af-bc7b-b26dd6fdb872.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/61cc8620-e0f0-49e4-9e52-95bc65246bc6.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/45f0a4f9-0cd8-40af-bc7b-b26dd6fdb872.png "image")](/assets/images/files/61cc8620-e0f0-49e4-9e52-95bc65246bc6.png)<!--kg-card-end: html-->
 1. For the “Arguments”, enter the following:
 2. -setParamsFilePath $(System.DefaultWorkingDirectory)\CoolWebApp\drop\CoolWebApp.SetParameters.xml
 3. Of course you’ll have to fix the path to set it to the correct SetParameters file – $(System.DefaultWorkingDirectory) is the root of the Release downloads. Then there is a folder with the name of the Build (e.g. CoolWebApp), then the artifact name (e.g. drop), then the path within the artifact source.
 4. Click “+ Add Tasks” and add a Batch Script Task:
 5. For the “Script filename”, browse to the location of the WebDeploy cmd file:
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5b4b9268-fc4e-408a-99bb-5d0899151fd4.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/58caff03-e790-4eec-96e1-8f9a4fa15a70.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5b4b9268-fc4e-408a-99bb-5d0899151fd4.png "image")](/assets/images/files/58caff03-e790-4eec-96e1-8f9a4fa15a70.png)<!--kg-card-end: html-->
 1. Enter the correct arguments (discussed below).
 2. Configure variables for the Dev environment by clicking the ellipses button on the Environment tile and selecting “Configure variables”
 3. Here you add any variable values you require for your web app – these are the values that you tokenized in the build:
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/67406726-55b5-4513-803d-7f9c372cfbf7.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c53f51fe-d3eb-4e92-9fd8-81875695b77c.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/67406726-55b5-4513-803d-7f9c372cfbf7.png "image")](/assets/images/files/c53f51fe-d3eb-4e92-9fd8-81875695b77c.png)<!--kg-card-end: html-->
 1. Azure sites require a username and password – I’ll cover those shortly.
 
 The Definition should now look something like this:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/854cc6b2-2d55-492f-bd3a-1ab7afd8de10.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3515cdc0-e574-4893-87d0-5313b84ef2ab.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/854cc6b2-2d55-492f-bd3a-1ab7afd8de10.png "image")](/assets/images/files/3515cdc0-e574-4893-87d0-5313b84ef2ab.png)<!--kg-card-end: html-->
 ### Cmd Arguments and Variables
 
 For IIS, you don’t need username and password for the deployments. This means you’ll need to configure the build agent to run as an identity that has permissions to invoke WebDeploy. The SiteName variable is going to be the name of the website in IIS plus the name of your virtual application – something like “Default Web Site/cool-webapp”. Also, you’ll need to configure the Agent on the Dev environment to be an on-premise agent (so select an on-premise queue) since the hosted agent won’t be able to deploy to your internal IIS servers.
@@ -226,15 +226,15 @@ For Azure, the WebDeploySiteName is of the form “siteName[-slot]”. So if you
 
 Once you’re happy with the Dev Environment, clone it to Staging and update the commands and variables. Then repeat for Production. You’ll now have 3 Environments in the Definition:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ed956818-8992-49a9-b73e-d4ca69dd7dd0.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ffd5137d-6ee4-4330-a9cd-1fc1401bffdc.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/ed956818-8992-49a9-b73e-d4ca69dd7dd0.png "image")](/assets/images/files/ffd5137d-6ee4-4330-a9cd-1fc1401bffdc.png)<!--kg-card-end: html-->
 
 Also, if you click on “Configuration”, you can see all the Environment variables by clicking “Release variables” and selecting “Environment Variables”:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/886e0140-1a69-41cb-9004-8c3df029bc7e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/ceef56c7-7946-4390-94b2-a3fd237b6d7f.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/886e0140-1a69-41cb-9004-8c3df029bc7e.png "image")](/assets/images/files/ceef56c7-7946-4390-94b2-a3fd237b6d7f.png)<!--kg-card-end: html-->
 
 That will open a grid so you can see all the variables side-by-side:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/62df6094-71eb-4416-b260-e4afe6b260f9.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/86ece78f-6886-40a8-951a-934cac54fc2d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/62df6094-71eb-4416-b260-e4afe6b260f9.png "image")](/assets/images/files/86ece78f-6886-40a8-951a-934cac54fc2d.png)<!--kg-card-end: html-->
 
 Now you can ensure that you’ve set each Environment’s variables correctly. Remember to set approvals on each environment as appropriate!
 

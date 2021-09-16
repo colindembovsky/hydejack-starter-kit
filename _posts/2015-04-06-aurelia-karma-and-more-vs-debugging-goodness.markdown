@@ -191,7 +191,7 @@ Notes:
 
 We can now run “gulp unit-test” from the command line, or we can execute the gulp “unit-test” task from the Visual Studio Task Runner Explorer (which is native to VS 2015 and can be installed into VS 2013 [via an extension](https://visualstudiogallery.msdn.microsoft.com/8e1b4368-4afb-467a-bc13-9650572db708)):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c1a1b3d7-1335-4a1a-839f-d95243937e2c.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/989fe25d-d1fb-4e2c-836e-b09eeb23b607.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/c1a1b3d7-1335-4a1a-839f-d95243937e2c.png "image")](/assets/images/files/989fe25d-d1fb-4e2c-836e-b09eeb23b607.png)<!--kg-card-end: html-->
 ### Debugging Tests
 
 Now that we can run the tests from Gulp, we may want to debug while testing. In order to do that, we’ll need to make sure the tests can run in IE (since VS will break on code running in IE). The karma launcher creates its own dynamic page to launch the tests, so we’re going to need to code an html page ourselves if we want to be able to debug tests. I create a “SpecRunner.html” page in my unit-test folder:
@@ -273,11 +273,11 @@ Notes:
 
 Again you see that we hijack the usual Jasmine startup so that we can get requirejs to load all the sources, libs and tests before launching the test runner. Now we set the SpecRunner.html page to be the startup page for the project, and hit F5:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3c97596e-1d60-4f91-b7e0-ff1df45debda.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/51bf3f4c-64f2-4f74-9dd3-7bf7c0825afa.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/3c97596e-1d60-4f91-b7e0-ff1df45debda.png "image")](/assets/images/files/51bf3f4c-64f2-4f74-9dd3-7bf7c0825afa.png)<!--kg-card-end: html-->
 
 Now that we can finally run the tests from VS in IE, we can set a breakpoint, hit F5 and we can debug!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/6f30f6e2-d174-4283-9029-1b8945ebfd43.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/49f3907d-044c-4be6-9b49-8260465651d8.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/6f30f6e2-d174-4283-9029-1b8945ebfd43.png "image")](/assets/images/files/49f3907d-044c-4be6-9b49-8260465651d8.png)<!--kg-card-end: html-->
 ### PhantomJS – mostly harmless\*, er, headless
 
 While debugging in IE or launching Chrome from karma is great, there are situations where we may want to run our tests without the need for an actual browser (like on the build server). Fortunately there is a tool that allows you to run “headless” tests – PhantomJS. And even better – there’s a PhantomJS launcher for karma! Let’s add it in:
@@ -329,11 +329,11 @@ We add the reporter in (just after “progress”). We also configure what sort 
 
 This tells the coverage engine to instrument all the js files in the dist folder. Any other files we want to calculate coverage from, we’ll need to add in the glob pattern.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4975c7b8-4961-4d9d-997f-68f2bcc6e6e6.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3ae2cabb-522c-4223-99e7-49c7ebe4852d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4975c7b8-4961-4d9d-997f-68f2bcc6e6e6.png "image")](/assets/images/files/3ae2cabb-522c-4223-99e7-49c7ebe4852d.png)<!--kg-card-end: html-->
 
 The output in the image above is from the “text” output. For more detailed coverage reports, we browse to test/coverage/report-lcov/lcov-report/index. We can then click through the folders and then down to the files, where we’ll be able to see exactly which lines our test covered (or missed):
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a99f2622-c202-4a67-aac3-559fac6b0d1a.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c6445ebf-6d48-4466-9226-a930de914efd.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a99f2622-c202-4a67-aac3-559fac6b0d1a.png "image")](/assets/images/files/c6445ebf-6d48-4466-9226-a930de914efd.png)<!--kg-card-end: html-->
 
 This will help us discover more test opportunities.
 
@@ -341,7 +341,7 @@ This will help us discover more test opportunities.
 
 With all the basics in place, we can easily include the unit tests into our builds. If you’re using TFS 2013 builds, you can just add a PowerShell script into your repo and then add that script as a pre- or post-test script. Inside the PowerShell you simply invoke “gulp unit-test” to run the unit tests via Gulp. I wanted to be a bit fancier, so I also added code to inspect the output from the test run and the coverage to add them into the build summary:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/05970f61-df8b-4506-8973-cdc631cdc600.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a37d8fdf-bdfe-4899-8f4b-d7374328e5bb.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/05970f61-df8b-4506-8973-cdc631cdc600.png "image")](/assets/images/files/a37d8fdf-bdfe-4899-8f4b-d7374328e5bb.png)<!--kg-card-end: html-->
 
 The full PowerShell script is [here](https://github.com/colindembovsky/aurelia-appInsights/blob/master/RunGulpTests.ps1).
 
@@ -349,7 +349,7 @@ The full PowerShell script is [here](https://github.com/colindembovsky/aurelia-a
 
 Finally, just in case we don’t have enough ways of running the tests, we can install the [Visual Studio Karma Test Adapter](https://visualstudiogallery.msdn.microsoft.com/4cd59e4a-82e8-4b4e-8302-d102fc81b090). This great adapter picks up the tests we’ve configured in karma and displays them in the test explorer window, where we can run them:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/5e16a06b-31b9-499c-9c76-be792410de29.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/db9e4f06-1ac0-40b8-bff4-15ab3edd2d34.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/5e16a06b-31b9-499c-9c76-be792410de29.png "image")](/assets/images/files/db9e4f06-1ac0-40b8-bff4-15ab3edd2d34.png)<!--kg-card-end: html-->
 ## Conclusion
 
 Unit testing your front-end view-model logic is essential if you’re going to deploy quality code. Enabling a good experience for unit testing requires a little bit of thought and some work – but once you’ve got the basics in place, you’ll be good to go. Ensuring quality as you code means you’ll have better quality down the road – and that means more time for new features and less time fixing bugs. Using Gulp and Karma enables continuous testing, and augmenting these with the techniques I’ve outlines you can also debug tests, run tests several ways and even integrate the tests (and coverage) into your builds.

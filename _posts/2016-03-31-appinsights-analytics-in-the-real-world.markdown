@@ -183,11 +183,11 @@ Pretty simple.
 
 Now that we’re getting some telemetry, including requests and custom events, we can start to query. Logging on to the Azure Portal I navigate to the AppInsights instance and click on the Analytics button in the toolbar:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/66d6768d-b2ac-4bb2-b9fa-a41d3b533a7a.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/d3f3fe7f-3b73-4a84-b1c3-3a550dd6ce89.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/66d6768d-b2ac-4bb2-b9fa-a41d3b533a7a.png "image")](/assets/images/files/d3f3fe7f-3b73-4a84-b1c3-3a550dd6ce89.png)<!--kg-card-end: html-->
 
 That will open the AppInsights Analytics page. Here I can start querying my telemetry. There are several “tables” that you can query – requests, traces, exceptions and so on. If I want to see the performance percentiles of my requests in 1 hour bins for the last 7 days, I can use this query which calculates the percentiles and then renders to a time chart:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/8f4b66db-f304-4d46-b596-01ae7a2853fd.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/2d1a099e-9795-44cb-bfe5-e72e46f02568.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/8f4b66db-f304-4d46-b596-01ae7a2853fd.png "image")](/assets/images/files/2d1a099e-9795-44cb-bfe5-e72e46f02568.png)<!--kg-card-end: html-->
 
     requests
     | where timestamp &gt;= ago(7d)
@@ -201,7 +201,7 @@ Sweet!
 
 You can even join the tables. Here’s an example from Brian Harry’s post that correlates exceptions and requests:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9eb64962-7829-4af4-9833-fbb68a72c20e.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/034d4bad-1c0a-4d92-b224-94de1c340742.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/9eb64962-7829-4af4-9833-fbb68a72c20e.png "image")](/assets/images/files/034d4bad-1c0a-4d92-b224-94de1c340742.png)<!--kg-card-end: html-->
 
     requests
     | where timestamp &gt; ago(2d)
@@ -217,7 +217,7 @@ Note that I did have some trouble with the order by direction – it could be a 
 
 Here are a couple of queries against our custom telemetry:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/73638438-1a40-4d31-a632-6fb776258470.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a3b253b5-eeb3-4987-b6b6-c547e42ccb8a.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/73638438-1a40-4d31-a632-6fb776258470.png "image")](/assets/images/files/a3b253b5-eeb3-4987-b6b6-c547e42ccb8a.png)<!--kg-card-end: html-->
 
     customEvents
     | where timestamp &gt; ago(7d)
@@ -231,7 +231,7 @@ Again, the ordering direction seems odd to me.
 
 I love the way that the customDimensions (which is just a json snippet) is directly addressable. Here’s what the json looks like for our custom events:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f8037c71-324a-4e4e-900e-53ce34503802.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/270acbcd-6b70-4605-bfb9-1ec2cdcb12d8.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/f8037c71-324a-4e4e-900e-53ce34503802.png "image")](/assets/images/files/270acbcd-6b70-4605-bfb9-1ec2cdcb12d8.png)<!--kg-card-end: html-->
 
 You can see how the “siteType” property is there because of our ITelemetryInitializer.
 
@@ -246,7 +246,7 @@ After writing a couple queries, we can then add a visualization by adding a rend
     | render barchart
     
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/4b41a4df-ed56-4f67-9a8a-4823deebeca9.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/9fd825be-e6a5-4d68-8630-a365617dfd51.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/4b41a4df-ed56-4f67-9a8a-4823deebeca9.png "image")](/assets/images/files/9fd825be-e6a5-4d68-8630-a365617dfd51.png)<!--kg-card-end: html-->
 
 This is just scratching the surface, but I hope you get a feel for what this tool can bring out of your telemetry.
 
@@ -301,33 +301,33 @@ The next step is to make a dashboard out of the queries that we’ve created. Yo
 
 Ah, so I’ll need PowerBI desktop. No problem. Download it, open it and follow the helpful instructions in the comments at the top of the file:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/a5cead1f-f37a-45ce-93b8-2050e98b8320.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/67b87404-e41f-4252-bb67-6352b93c52ff.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/a5cead1f-f37a-45ce-93b8-2050e98b8320.png "image")](/assets/images/files/67b87404-e41f-4252-bb67-6352b93c52ff.png)<!--kg-card-end: html-->
 
 Now I can create visualizations, add custom columns – do whatever I would normally do in PowerBI.
 
 One thing I did want to do was fix up the nasty “tenantId”. This is a guid which is the Partition Key for an Azure Table that we use to store our tenants. So I just added a new Query to the report to fetch the tenant data from the table. Then I was able to create a relationship (i.e. foreign key) that let me use the tenant name rather than the nasty guid in my reports:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/c2c86a37-e7aa-463c-b181-8046b3bdcade.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/3cbbe27e-17b2-4319-8f8b-48b97a47ed86.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/c2c86a37-e7aa-463c-b181-8046b3bdcade.png "image")](/assets/images/files/3cbbe27e-17b2-4319-8f8b-48b97a47ed86.png)<!--kg-card-end: html-->
 
 Here’s what the relationship looks like for the “Users Per Tenant Per Hour Query”:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/bae5a9dc-1b0b-41f2-98ba-4c02f445a6a7.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/f11921cc-7a26-458e-bc54-d31423f31290.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/bae5a9dc-1b0b-41f2-98ba-4c02f445a6a7.png "image")](/assets/images/files/f11921cc-7a26-458e-bc54-d31423f31290.png)<!--kg-card-end: html-->
 
 Once I had the tables in, I could create reports. Here’s a performance report:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/90252b21-893a-49e8-be63-1650268cfef5.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/382d58fd-fe06-4b54-a850-6ff1c9fed2b0.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/90252b21-893a-49e8-be63-1650268cfef5.png "image")](/assets/images/files/382d58fd-fe06-4b54-a850-6ff1c9fed2b0.png)<!--kg-card-end: html-->
 
 One tip – when you add the “timestamp” property, PowerBI defaults to a date hierarchy (Year, Quarter, Month, Day). To use the timestamp itself, you can just click on the field in the axis box and select “timestamp” from the values:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/e5c4c392-1968-4be5-9e0f-826eea025567.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/0863c82c-8865-4c55-8d02-6f94f3c4a260.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/e5c4c392-1968-4be5-9e0f-826eea025567.png "image")](/assets/images/files/0863c82c-8865-4c55-8d02-6f94f3c4a260.png)<!--kg-card-end: html-->
 
 Here’s one of our usage reports:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/330c3205-1117-46ab-ba18-c46c35d6b40f.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/27f766e0-950a-4a76-8afd-a01b1441cf4d.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/330c3205-1117-46ab-ba18-c46c35d6b40f.png "image")](/assets/images/files/27f766e0-950a-4a76-8afd-a01b1441cf4d.png)<!--kg-card-end: html-->
 
 And of course, once I’ve written the report, I can just upload it to PowerBI to share with the team:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/72d138c7-7cc7-4320-89ae-b760df0c6c76.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/7c95e26f-c8a1-4e1f-ac6b-f921085bd68f.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/72d138c7-7cc7-4320-89ae-b760df0c6c76.png "image")](/assets/images/files/7c95e26f-c8a1-4e1f-ac6b-f921085bd68f.png)<!--kg-card-end: html-->
 
 Look ma – it’s the same report!
 

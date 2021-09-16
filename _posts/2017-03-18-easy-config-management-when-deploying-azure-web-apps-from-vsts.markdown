@@ -24,7 +24,7 @@ Here’s what I recommend:
 
 You can now just paste that into the build task:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/15034800-5f57-4cdf-995d-b8439e785b68.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/657d0222-729e-447c-a46a-122b0b24ab9e.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/15034800-5f57-4cdf-995d-b8439e785b68.png "image")](/assets/images/files/657d0222-729e-447c-a46a-122b0b24ab9e.png)<!--kg-card-end: html-->
 
 You can see the args (in the new build UI). This tells VS to create the WebDeploy zip and put it into the artifact staging directory. The Publish Artifact Drop task uploads anything that it’s the artifact staging directory (again, by default) – which at the time it runs should be the WebDeploy files.
 
@@ -32,11 +32,11 @@ You can see the args (in the new build UI). This tells VS to create the WebDeplo
 
 Here’s where the magic comes in: drop in an Azure App Service Deploy task. Set it’s version to 3.\*(preview). You’ll see a new section called “File Transforms & Variable Substitution Options”. Just enable the “XML Override substitution”.
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1f640afd-820c-4eeb-b378-8a215c75b7b2.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/1af3ab91-6d0f-4f71-9b47-d12a5165d104.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/1f640afd-820c-4eeb-b378-8a215c75b7b2.png "image")](/assets/images/files/1af3ab91-6d0f-4f71-9b47-d12a5165d104.png)<!--kg-card-end: html-->
 
 That’s it! Except for defining the values we want to use for the said substitution. To do this, open the web.config and look at your app setting keys or connection string names. Create a variable that matches the name of the setting and enter a value. In my example, I have Azure B2C so I need a key called “ida:Tenant” so I just created a variable with that name and set the value for the DEV environment. I did the same for the other web.config variables:
 
-<!--kg-card-begin: html-->[![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/25157cd4-966d-4254-8b99-ab2932c2e60b.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/fbf32097-75bf-4130-95d1-db285fe0e931.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html-->[![image](/assets/images/files/25157cd4-966d-4254-8b99-ab2932c2e60b.png "image")](/assets/images/files/fbf32097-75bf-4130-95d1-db285fe0e931.png)<!--kg-card-end: html-->
 
 Now you can run your release!
 
@@ -44,7 +44,7 @@ Now you can run your release!
 
 Once the release had completed, I wanted to check if the value had been set. I opened up the web app in the Azure portal, but there were no app settings defined there. I suppose that makes sense – the substitutions are made onto the web.config itself. So I just opened the Kudu console for the web app and cat’ed the web.config by typing “cat Web.config”. I could see that the environment values had been injected!
 
-<!--kg-card-begin: html--> [![image](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/831d1f07-feb3-4a1b-93e4-fade36c84874.png "image")](https://colinsalmcorner.azureedge.net/ghostcontent/images/files/b824632d-0cc6-406f-8545-f14d8fc5b737.png)<!--kg-card-end: html-->
+<!--kg-card-begin: html--> [![image](/assets/images/files/831d1f07-feb3-4a1b-93e4-fade36c84874.png "image")](/assets/images/files/b824632d-0cc6-406f-8545-f14d8fc5b737.png)<!--kg-card-end: html-->
 ## Conclusion
 
 It’s finally become easy to manage web configs using the VSTS Azure Web App Deploy task. No more publish profiles, parameters.xml files, SetParameters.xml files or token replacement. It’s refreshingly clean and simple. Good job VSTS team!
